@@ -1,0 +1,60 @@
+Base
+    Utilisateur(idUtilisateur,email,mdp)
+    VoitureUtilisateur(idVoitureUtilisateur,idUtilisateur,idVoitureDefini,dateVenteDebut,dateVenteFin,matricule,kilometrage,prix,statut)
+    photoVoitureUtilisateur(idVoitureUtilisateur,nomPhoto)
+    VoitureDefini(idVoitureDefini,idMarque,idModele,idCarburant,idPuissance,idboiteDeVitesse,idTypeDeVehicule,nbrPorte,puissance)
+    
+    Comission(idComission,date,pourcentage)
+    Carburant(idCarburant,description)
+    Marque(idMarque,description)
+    
+    Modele(idModele,description)
+    Puissance(idPuissance,kw,cv)
+    boiteDeVitesse(idboiteDeVitesse,description)
+    
+    TypeDeVehicule(idTypeDeVehicule,description)
+
+Statitique
+    Nombre total d'utilisateurs enregistrés
+    Revenus générés par les ventes
+    Statitique vente des voitures
+    Statitique de rang des utilisateurs qui ont vendu le plus de Voiture
+    Statitique de rang des utilisateurs qui ont generer le plus de revenu
+    
+    recherche 
+
+TODO
+    Crud
+    Statitique
+
+tache1
+    Crud
+        Utilisateur(idUtilisateur,email,mdp)
+        VoitureUtilisateur(idVoitureUtilisateur,idUtilisateur,idVoitureDefini,dateVenteDebut,dateVenteFin,matricule,kilometrage,prix,statut)
+        VoitureDefini(idVoitureDefini,idMarque,idModele,idCarburant,idPuissance,idboiteDeVitesse,idTypeDeVehicule,nbrPorte,puissance)
+    Statitique vente des voitures
+
+tache2    
+    Crud
+        Comission(idComission,date,pourcentage)
+        Carburant(idCarburant,description)
+        Marque(idMarque,description)
+    Statitique de rang des utilisateurs qui ont vendu le plus de Voiture
+    
+tache3
+    Crud
+        Modele(idModele,description)
+        Puissance(idPuissance,kw,cv)
+        boiteDeVitesse(idboiteDeVitesse,description)
+    Statitique de rang des utilisateurs qui ont generer le plus de revenu
+    Github
+    Group fb
+    
+tache4
+    Crud
+        TypeDeVehicule(idTypeDeVehicule,description)
+        photoVoitureUtilisateur(idVoitureUtilisateur,nomPhoto)
+    Tables et donnees
+    Statitique
+        Nombre total d'utilisateurs enregistrés
+        Revenus générés par les ventes
