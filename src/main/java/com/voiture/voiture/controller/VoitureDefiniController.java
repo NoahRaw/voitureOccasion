@@ -2,7 +2,7 @@ package com.voiture.voiture.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.voiture.voiture.modele.VoitureDefini;
+import com.voiture.voiture.modele.Voituredefini;
 import com.voiture.voiture.service.VoitureDefiniService;
 
 import java.util.List;
@@ -24,17 +24,17 @@ public class VoitureDefiniController {
     }
 
     @PostMapping("/create")
-    public VoitureDefini create(@RequestBody VoitureDefini voitureDefini){
+    public Voituredefini create(@RequestBody Voituredefini voitureDefini){
         return this.voitureDefiniService.insertion(voitureDefini);
     }
 
      @PostMapping("/liste")
-    public List<VoitureDefini> getListeVoitureDefini(){ 
+    public List<Voituredefini> getListeVoitureDefini(){ 
         return this.voitureDefiniService.listeVoitureDefini();
     }
 
     @PostMapping("/updateVoitureDefini/{idVoitureDefini}")
-    public VoitureDefini updateVoitureDefini(@PathVariable int idVoitureDefini,@RequestBody VoitureDefini modifier){
+    public Voituredefini updateVoitureDefini(@PathVariable int idVoitureDefini,@RequestBody Voituredefini modifier){
         return this.voitureDefiniService.update(idVoitureDefini, modifier);
     }
 
