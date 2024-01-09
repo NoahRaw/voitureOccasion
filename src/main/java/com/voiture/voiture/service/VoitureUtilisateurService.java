@@ -2,6 +2,8 @@ package com.voiture.voiture.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import com.voiture.voiture.modele.Voitureutilisateur;
@@ -42,5 +44,10 @@ public class VoitureUtilisateurService {
 
     public void delete(int idVoitureUtilisateur){
         this.voitureUtilisateurRepository.deleteById(idVoitureUtilisateur);
+    }
+
+    @Transactional
+    public void validation(int status,int idutilisateur){
+        this.voitureUtilisateurRepository.validation(status, idutilisateur);
     }
 }
