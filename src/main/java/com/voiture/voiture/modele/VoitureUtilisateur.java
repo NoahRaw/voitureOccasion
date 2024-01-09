@@ -2,27 +2,27 @@ package com.voiture.voiture.modele;
 
 import java.sql.Timestamp;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
-@Table(name="Utilisateur")
+@Table(name="utilisateur")
 public class VoitureUtilisateur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //AUTO_INCREMENT
-    @Column(name = "idVoitureUtilisateur")
+    @Column(name = "idvoitureutilisateur")
     int idVoitureUtilisateur;
 
-    @Column(name = "idUtilisateur")
+    @Column(name = "idutilisateur")
     int idUtilisateur;
 
-    @Column(name = "idVoitureDefini")
+    @Column(name = "idvoituredefini")
     int idVoitureDefini;
 
-    @Column(name = "dateVenteDebut")
+    @Column(name = "dateventedebut")
     Timestamp dateVenteDebut;
 
-    @Column(name = "dateVenteFin")
+    @Column(name = "dateventefin")
     Timestamp dateVenteFin;
 
     @Column(name = "matricule")

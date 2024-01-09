@@ -1,35 +1,35 @@
 package com.voiture.voiture.modele;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
-@Table(name="VoitureDefini")
+@Table(name="voitureDefini")
 public class VoitureDefini {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //AUTO_INCREMENT
-    @Column(name = "idVoitureDefini")
+    @Column(name = "idvoitureDefini")
     int idVoitureDefini;
 
-    @Column(name = "idMarque")
+    @Column(name = "idmarque")
     int idMarque;
 
-    @Column(name = "idModele")
+    @Column(name = "idmodele")
     int idModele;
 
-    @Column(name = "idCarburant")
+    @Column(name = "idcarburant")
     int idCarburant;
 
-    @Column(name = "idPuissance")
+    @Column(name = "idpuissance")
     int idPuissance;
 
     @Column(name = "idboiteDeVitesse")
     int idboiteDeVitesse;
 
-    @Column(name = "idTypeDeVehicule")
+    @Column(name = "idtypeDeVehicule")
     int idTypeDeVehicule;
 
-    @Column(name = "nbrPorte")
+    @Column(name = "nbrporte")
     int nbrPorte;
 
     @Column(name = "puissance")

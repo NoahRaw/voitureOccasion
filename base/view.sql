@@ -1,9 +1,9 @@
-CREATE VIEW voiture_defini_stat_view AS 
-SELECT VoitureDefini.id_voituredefini,VoitureDefini.id_marque,marque.description as nom_marque,modele.description as nom_modele 
+CREATE OR REPLACE VIEW voiture_defini_stat_view AS 
+SELECT VoitureDefini.idvoituredefini,VoitureDefini.idmarque,marque.description as nommarque,modele.description as nommodele 
 FROM VoitureUtilisateur
-JOIN VoitureDefini ON VoitureUtilisateur.id_voituredefini = VoitureDefini.id_voituredefini
-JOIN marque ON VoitureDefini.id_marque = marque.id_marque
-JOIN modele ON VoitureDefini.id_modele = modele.id_modele
-GROUP BY VoitureDefini.id_voituredefini,VoitureDefini.id_marque,marque.description,modele.id_modele
+JOIN VoitureDefini ON VoitureUtilisateur.idvoituredefini = VoitureDefini.idvoituredefini
+JOIN marque ON VoitureDefini.idmarque = marque.idmarque
+JOIN modele ON VoitureDefini.idmodele = modele.idmodele
+GROUP BY VoitureDefini.idvoituredefini,VoitureDefini.idmarque,marque.description,modele.idmodele
 ORDER BY COUNT(*) DESC
 ;

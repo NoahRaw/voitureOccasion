@@ -1,26 +1,29 @@
 package com.voiture.voiture.modele;
 
-import jakarta.persistence.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
-@Table(name="voitureDefiniStatView")
+
+import com.voiture.voiture.connexion.ConnexionBdd;
+
+
+
 public class VoitureDefiniStatView {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //AUTO_INCREMENT
-    @Column(name = " idVoituredefini")
+
     int idVoituredefini;
 
-    @Column(name = " idMarque")
     int idMarque;
 
-    @Column(name = " nomMarque")
     String nomMarque;
 
-    @Column(name = " nomModele")
     String nomModele;
 
-
+    ConnexionBdd connexionBdd = new ConnexionBdd();
     public VoitureDefiniStatView() {
     }
 
@@ -67,5 +70,47 @@ public class VoitureDefiniStatView {
 
     public void setNomModele(String nomModele) {
         this.nomModele = nomModele;
+    }
+
+    public List<VoitureDefiniStatView> getVentetolal(Connection con,String dateMin,String dateMax) throws Exception {
+         List<VoitureDefiniStatView> liste = new ArrayList<>();
+        String query = "SELECT VoitureDefini.idvoituredefini,VoitureDefini.idmarque,marque.description as nom_marque,modele.description as nommodele \r\n" + //
+                "FROM VoitureUtilisateur\r\n" + //
+                "JOIN VoitureDefini ON VoitureUtilisateur.idvoituredefini = VoitureDefini.idvoituredefini\r\n" + //
+                "JOIN marque ON VoitureDefini.idmarque = marque.idmarque\r\n" + //
+                "JOIN modele ON VoitureDefini.idmodele = modele.idmodele\r\n" + //
+                "WHERE voitureutilisateur.statut=1 AND dateventefin >= '"+dateMin+"' AND dateventefin <= '"+dateMax+"' \r\n" + //
+                "GROUP BY VoitureDefini.idvoituredefini,VoitureDefini.idmarque,marque.description,modele.idmodele\r\n" + //
+                "ORDER BY COUNT(*) DESC";
+
+        try {
+            if(con==null){
+                con = connexionBdd.connexionPostgress();
+            }
+         
+
+            try (
+                PreparedStatement preparedStatement = con.prepareStatement(query);
+                ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                VoitureDefiniStatView v = new VoitureDefiniStatView();
+                v.setIdVoituredefini(resultSet.getInt("idvoituredefini"));
+                v.setIdMarque(resultSet.getInt("idmarque"));
+                v.setNomMarque(resultSet.getString("nommarque"));
+                v.setNomModele(resultSet.getString("nommodel"));
+                liste.add(v);
+            }
+        }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("Erreur lors de la récupération des enregistrements voiture defini", e);
+        }finally{
+            if (con!=null) {
+                con.close();
+            } 
+        }
+        return liste;
     }
 }
