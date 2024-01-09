@@ -42,4 +42,9 @@ public class VoitureUtilisateurController {
     public void deleteVoitureUtilisateur(@PathVariable int idVoitureUtilisateur){
         this.voitureUtilisateurService.delete(idVoitureUtilisateur);
     }
+
+    @PostMapping("/validation/{idutilisateur}")
+    public void validation(@PathVariable int idutilisateur){ 
+        this.voitureUtilisateurService.validation(11,idutilisateur);
+    }
 }
