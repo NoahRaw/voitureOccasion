@@ -1,15 +1,15 @@
 package com.voiture.voiture.modele;
 
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
-@Table(name="Utilisateur")
+@Table(name="utilisateur")
 public class Utilisateur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //AUTO_INCREMENT
-    @Column(name = " idUtilisateur")
+    @Column(name = "idutilisateur")
     int idUtilisateur;
 
     @Column(name = "email")
