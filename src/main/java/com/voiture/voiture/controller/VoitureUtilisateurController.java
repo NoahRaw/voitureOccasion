@@ -2,7 +2,7 @@ package com.voiture.voiture.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.voiture.voiture.modele.VoitureUtilisateur;
+import com.voiture.voiture.modele.Voitureutilisateur;
 import com.voiture.voiture.service.VoitureUtilisateurService;
 
 import java.util.List;
@@ -24,17 +24,17 @@ public class VoitureUtilisateurController {
     }
 
     @PostMapping("/create")
-    public VoitureUtilisateur create(@RequestBody VoitureUtilisateur voitureUtilisateur){
+    public Voitureutilisateur create(@RequestBody Voitureutilisateur voitureUtilisateur){
         return this.voitureUtilisateurService.insertion(voitureUtilisateur);
     }
 
     @PostMapping("/liste")
-    public List<VoitureUtilisateur> getListeVoitureUtilisateur(){ 
+    public List<Voitureutilisateur> getListeVoitureUtilisateur(){ 
         return this.voitureUtilisateurService.listeVoitureUtilisateur();
     }
 
     @PostMapping("/updateVoitureUtilisateur/{idVoitureUtilisateur}")
-    public VoitureUtilisateur updateVoitureUtilisateur(@PathVariable int idVoitureUtilisateur,@RequestBody VoitureUtilisateur modifier){
+    public Voitureutilisateur updateVoitureUtilisateur(@PathVariable int idVoitureUtilisateur,@RequestBody Voitureutilisateur modifier){
         return this.voitureUtilisateurService.update(idVoitureUtilisateur, modifier);
     }
 

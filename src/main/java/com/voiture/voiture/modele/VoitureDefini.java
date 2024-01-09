@@ -2,135 +2,104 @@ package com.voiture.voiture.modele;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="voitureDefini")
-public class VoitureDefini {
-
+@Entity()
+public class Voituredefini {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //AUTO_INCREMENT
-    @Column(name = "idvoitureDefini")
-    int idVoitureDefini;
+	@GeneratedValue()
+	int  idvoituredefini;
+	int  idmarque;
+	int  idmodele;
+	int  idcarburant;
+	int  idpuissance;
+	int  idboitedevitesse;
+	int  idtypedevehicule;
+	int  nbrporte;
+	Double puissance;
 
-    @Column(name = "idmarque")
-    int idMarque;
+    public Voituredefini() {
+    }
 
-    @Column(name = "idmodele")
-    int idModele;
+    public Voituredefini(int  idvoituredefini,int  idmarque,int  idmodele,int  idcarburant,int  idpuissance,int  idboitedevitesse,int  idtypedevehicule,int  nbrporte,Double puissance) {
+        this.idvoituredefini = idvoituredefini;
+		this.idmarque = idmarque;
+		this.idmodele = idmodele;
+		this.idcarburant = idcarburant;
+		this.idpuissance = idpuissance;
+		this.idboitedevitesse = idboitedevitesse;
+		this.idtypedevehicule = idtypedevehicule;
+		this.nbrporte = nbrporte;
+		this.puissance = puissance;
+    }
 
-    @Column(name = "idcarburant")
-    int idCarburant;
+    public int  getIdvoituredefini() {
+        return this.idvoituredefini;
+    }
 
-    @Column(name = "idpuissance")
-    int idPuissance;
+    public void setIdvoituredefini(int  idvoituredefini) {
+        this.idvoituredefini = idvoituredefini;
+    }
 
-    @Column(name = "idboiteDeVitesse")
-    int idboiteDeVitesse;
+	public int  getIdmarque() {
+        return this.idmarque;
+    }
 
-    @Column(name = "idtypeDeVehicule")
-    int idTypeDeVehicule;
+    public void setIdmarque(int  idmarque) {
+        this.idmarque = idmarque;
+    }
 
-    @Column(name = "nbrporte")
-    int nbrPorte;
+	public int  getIdmodele() {
+        return this.idmodele;
+    }
 
-    @Column(name = "puissance")
-    float puissance;
+    public void setIdmodele(int  idmodele) {
+        this.idmodele = idmodele;
+    }
 
-    public VoitureDefini(int idVoitureDefini, int idMarque, int idModele, int idCarburant, int idPuissance, int idboiteDeVitesse, int idTypeDeVehicule, int nbrPorte, float puissance) {
-        this.idVoitureDefini = idVoitureDefini;
-        this.idMarque = idMarque;
-        this.idModele = idModele;
-        this.idCarburant = idCarburant;
-        this.idPuissance = idPuissance;
-        this.idboiteDeVitesse = idboiteDeVitesse;
-        this.idTypeDeVehicule = idTypeDeVehicule;
-        this.nbrPorte = nbrPorte;
+	public int  getIdcarburant() {
+        return this.idcarburant;
+    }
+
+    public void setIdcarburant(int  idcarburant) {
+        this.idcarburant = idcarburant;
+    }
+
+	public int  getIdpuissance() {
+        return this.idpuissance;
+    }
+
+    public void setIdpuissance(int  idpuissance) {
+        this.idpuissance = idpuissance;
+    }
+
+	public int  getIdboitedevitesse() {
+        return this.idboitedevitesse;
+    }
+
+    public void setIdboitedevitesse(int  idboitedevitesse) {
+        this.idboitedevitesse = idboitedevitesse;
+    }
+
+	public int  getIdtypedevehicule() {
+        return this.idtypedevehicule;
+    }
+
+    public void setIdtypedevehicule(int  idtypedevehicule) {
+        this.idtypedevehicule = idtypedevehicule;
+    }
+
+	public int  getNbrporte() {
+        return this.nbrporte;
+    }
+
+    public void setNbrporte(int  nbrporte) {
+        this.nbrporte = nbrporte;
+    }
+
+	public Double getPuissance() {
+        return this.puissance;
+    }
+
+    public void setPuissance(Double puissance) {
         this.puissance = puissance;
-    }
-
-    public VoitureDefini() {
-    }
-
-    public VoitureDefini(int idMarque, int idModele, int idCarburant, int idPuissance, int idboiteDeVitesse, int idTypeDeVehicule, int nbrPorte, float puissance) {
-        this.idMarque = idMarque;
-        this.idModele = idModele;
-        this.idCarburant = idCarburant;
-        this.idPuissance = idPuissance;
-        this.idboiteDeVitesse = idboiteDeVitesse;
-        this.idTypeDeVehicule = idTypeDeVehicule;
-        this.nbrPorte = nbrPorte;
-        this.puissance = puissance;
-    }
-
-    public int getIdVoitureDefini() {
-        return idVoitureDefini;
-    }
-
-    public void setIdVoitureDefini(int idVoitureDefini) {
-        this.idVoitureDefini = idVoitureDefini;
-    }
-
-    public int getIdMarque() {
-        return idMarque;
-    }
-
-    public void setIdMarque(int idMarque) {
-        this.idMarque = idMarque;
-    }
-
-    public int getIdModele() {
-        return idModele;
-    }
-
-    public void setIdModele(int idModele) {
-        this.idModele = idModele;
-    }
-
-    public int getIdCarburant() {
-        return idCarburant;
-    }
-
-    public void setIdCarburant(int idCarburant) {
-        this.idCarburant = idCarburant;
-    }
-
-    public int getIdPuissance() {
-        return idPuissance;
-    }
-
-    public void setIdPuissance(int idPuissance) {
-        this.idPuissance = idPuissance;
-    }
-
-    public int getIdboiteDeVitesse() {
-        return idboiteDeVitesse;
-    }
-
-    public void setIdboiteDeVitesse(int idboiteDeVitesse) {
-        this.idboiteDeVitesse = idboiteDeVitesse;
-    }
-
-    public int getIdTypeDeVehicule() {
-        return idTypeDeVehicule;
-    }
-
-    public void setIdTypeDeVehicule(int idTypeDeVehicule) {
-        this.idTypeDeVehicule = idTypeDeVehicule;
-    }
-
-    public int getNbrPorte() {
-        return nbrPorte;
-    }
-
-    public void setNbrPorte(int nbrPorte) {
-        this.nbrPorte = nbrPorte;
-    }
-
-    public float getPuissance() {
-        return puissance;
-    }
-
-    public void setPuissance(float puissance) {
-        this.puissance = puissance;
-    }
-    
+    }  
 }
