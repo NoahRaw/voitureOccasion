@@ -3,58 +3,44 @@ package com.voiture.voiture.modele;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="utilisateur")
+@Entity()
 public class Utilisateur {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //AUTO_INCREMENT
-    @Column(name = "idutilisateur")
-    int idUtilisateur;
-
-    @Column(name = "email")
-    String email;
-
-    @Column(name = "mdp")
-    String mdp;
+	@GeneratedValue()
+	int  idutilisateur;
+	String email;
+	String mdp;
 
     public Utilisateur() {
     }
 
-    public Utilisateur(int idUtilisateur, String email, String mdp) {
-        this.idUtilisateur = idUtilisateur;
-        this.email = email;
-        this.mdp = mdp;
+    public Utilisateur(int  idutilisateur,String email,String mdp) {
+        this.idutilisateur = idutilisateur;
+		this.email = email;
+		this.mdp = mdp;
     }
 
-    public Utilisateur(String email, String mdp) {
-        this.email = email;
-        this.mdp = mdp;
+    public int  getIdutilisateur() {
+        return this.idutilisateur;
     }
 
-    public int getIdUtilisateur() {
-        return idUtilisateur;
+    public void setIdutilisateur(int  idutilisateur) {
+        this.idutilisateur = idutilisateur;
     }
 
-    public void setIdUtilisateur(int idUtilisateur) {
-        this.idUtilisateur = idUtilisateur;
-    }
-
-    public String getEmail() {
-        return email;
+	public String getEmail() {
+        return this.email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getMdp() {
-        return mdp;
+	public String getMdp() {
+        return this.mdp;
     }
 
     public void setMdp(String mdp) {
         this.mdp = mdp;
-    }
-    
-
+    }  
 }

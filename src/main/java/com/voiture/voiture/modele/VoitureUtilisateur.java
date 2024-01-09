@@ -1,137 +1,108 @@
 package com.voiture.voiture.modele;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="utilisateur")
-public class VoitureUtilisateur {
-
+@Entity()
+public class Voitureutilisateur {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //AUTO_INCREMENT
-    @Column(name = "idvoitureutilisateur")
-    int idVoitureUtilisateur;
+	@GeneratedValue()
+	int  idvoitureutilisateur;
+	int  idutilisateur;
+	int  idvoituredefini;
+	Date dateventedebut;
+	Date dateventefin;
+	String matricule;
+	Double kilometrage;
+	Double prix;
+	int  statut;
 
-    @Column(name = "idutilisateur")
-    int idUtilisateur;
-
-    @Column(name = "idvoituredefini")
-    int idVoitureDefini;
-
-    @Column(name = "dateventedebut")
-    Timestamp dateVenteDebut;
-
-    @Column(name = "dateventefin")
-    Timestamp dateVenteFin;
-
-    @Column(name = "matricule")
-    String matricule;
-
-    @Column(name = "kilometrage")
-    double kilometrage;
-
-    @Column(name = "prix")
-    double prix;
-
-    @Column(name = "statut")
-    String statut;
-
-    public VoitureUtilisateur() {
+    public Voitureutilisateur() {
     }
 
-    public VoitureUtilisateur(int idVoitureUtilisateur, int idUtilisateur, int idVoitureDefini, Timestamp dateVenteDebut, Timestamp dateVenteFin, String matricule, double kilometrage, double prix, String statut) {
-        this.idVoitureUtilisateur = idVoitureUtilisateur;
-        this.idUtilisateur = idUtilisateur;
-        this.idVoitureDefini = idVoitureDefini;
-        this.dateVenteDebut = dateVenteDebut;
-        this.dateVenteFin = dateVenteFin;
-        this.matricule = matricule;
-        this.kilometrage = kilometrage;
-        this.prix = prix;
-        this.statut = statut;
+    public Voitureutilisateur(int  idvoitureutilisateur,int  idutilisateur,int  idvoituredefini,Date dateventedebut,Date dateventefin,String matricule,Double kilometrage,Double prix,int  statut) {
+        this.idvoitureutilisateur = idvoitureutilisateur;
+		this.idutilisateur = idutilisateur;
+		this.idvoituredefini = idvoituredefini;
+		this.dateventedebut = dateventedebut;
+		this.dateventefin = dateventefin;
+		this.matricule = matricule;
+		this.kilometrage = kilometrage;
+		this.prix = prix;
+		this.statut = statut;
     }
 
-    public VoitureUtilisateur(int idUtilisateur, int idVoitureDefini, Timestamp dateVenteDebut, Timestamp dateVenteFin, String matricule, double kilometrage, double prix, String statut) {
-        this.idUtilisateur = idUtilisateur;
-        this.idVoitureDefini = idVoitureDefini;
-        this.dateVenteDebut = dateVenteDebut;
-        this.dateVenteFin = dateVenteFin;
-        this.matricule = matricule;
-        this.kilometrage = kilometrage;
-        this.prix = prix;
-        this.statut = statut;
+    public int  getIdvoitureutilisateur() {
+        return this.idvoitureutilisateur;
     }
 
-    public int getIdVoitureUtilisateur() {
-        return idVoitureUtilisateur;
+    public void setIdvoitureutilisateur(int  idvoitureutilisateur) {
+        this.idvoitureutilisateur = idvoitureutilisateur;
     }
 
-    public void setIdVoitureUtilisateur(int idVoitureUtilisateur) {
-        this.idVoitureUtilisateur = idVoitureUtilisateur;
+	public int  getIdutilisateur() {
+        return this.idutilisateur;
     }
 
-    public int getIdUtilisateur() {
-        return idUtilisateur;
+    public void setIdutilisateur(int  idutilisateur) {
+        this.idutilisateur = idutilisateur;
     }
 
-    public void setIdUtilisateur(int idUtilisateur) {
-        this.idUtilisateur = idUtilisateur;
+	public int  getIdvoituredefini() {
+        return this.idvoituredefini;
     }
 
-    public int getIdVoitureDefini() {
-        return idVoitureDefini;
+    public void setIdvoituredefini(int  idvoituredefini) {
+        this.idvoituredefini = idvoituredefini;
     }
 
-    public void setIdVoitureDefini(int idVoitureDefini) {
-        this.idVoitureDefini = idVoitureDefini;
+	public Date getDateventedebut() {
+        return this.dateventedebut;
     }
 
-    public Timestamp getDateVenteDebut() {
-        return dateVenteDebut;
+    public void setDateventedebut(Date dateventedebut) {
+        this.dateventedebut = dateventedebut;
     }
 
-    public void setDateVenteDebut(Timestamp dateVenteDebut) {
-        this.dateVenteDebut = dateVenteDebut;
+	public Date getDateventefin() {
+        return this.dateventefin;
     }
 
-    public Timestamp getDateVenteFin() {
-        return dateVenteFin;
+    public void setDateventefin(Date dateventefin) {
+        this.dateventefin = dateventefin;
     }
 
-    public void setDateVenteFin(Timestamp dateVenteFin) {
-        this.dateVenteFin = dateVenteFin;
-    }
-
-    public String getMatricule() {
-        return matricule;
+	public String getMatricule() {
+        return this.matricule;
     }
 
     public void setMatricule(String matricule) {
         this.matricule = matricule;
     }
 
-    public double getKilometrage() {
-        return kilometrage;
+	public Double getKilometrage() {
+        return this.kilometrage;
     }
 
-    public void setKilometrage(double kilometrage) {
+    public void setKilometrage(Double kilometrage) {
         this.kilometrage = kilometrage;
     }
 
-    public double getPrix() {
-        return prix;
+	public Double getPrix() {
+        return this.prix;
     }
 
-    public void setPrix(double prix) {
+    public void setPrix(Double prix) {
         this.prix = prix;
     }
 
-    public String getStatut() {
-        return statut;
+	public int  getStatut() {
+        return this.statut;
     }
 
-    public void setStatut(String statut) {
+    public void setStatut(int  statut) {
         this.statut = statut;
-    }
+    }  
 }
+

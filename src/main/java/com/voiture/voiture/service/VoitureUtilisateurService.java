@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.voiture.voiture.modele.VoitureUtilisateur;
+import com.voiture.voiture.modele.Voitureutilisateur;
 import com.voiture.voiture.repository.VoitureUtilisateurRepository;
 
 @Service
@@ -15,22 +15,21 @@ public class VoitureUtilisateurService {
         this.voitureUtilisateurRepository = voitureUtilisateurRepository;
     }
 
-    public VoitureUtilisateur insertion(VoitureUtilisateur voitureUtilisateur){
+    public Voitureutilisateur insertion(Voitureutilisateur voitureUtilisateur){
         return this.voitureUtilisateurRepository.save(voitureUtilisateur);
     }
     
-    public List<VoitureUtilisateur> listeVoitureUtilisateur(){
+    public List<Voitureutilisateur> listeVoitureUtilisateur(){
         return this.voitureUtilisateurRepository.findAll();
     }
     
-    public VoitureUtilisateur update(int idVoitureUtilisateur,VoitureUtilisateur modifier){
+    public Voitureutilisateur update(int idVoitureUtilisateur,Voitureutilisateur modifier){
         return this.voitureUtilisateurRepository.findById(idVoitureUtilisateur).map(
             newVoitureUtilisateur ->{
-                newVoitureUtilisateur.setIdVoitureUtilisateur(modifier.getIdVoitureUtilisateur());
-                newVoitureUtilisateur.setIdUtilisateur(modifier.getIdUtilisateur());
-                newVoitureUtilisateur.setIdVoitureDefini(modifier.getIdVoitureDefini());
-                newVoitureUtilisateur.setDateVenteDebut(modifier.getDateVenteDebut());
-                newVoitureUtilisateur.setDateVenteFin(modifier.getDateVenteFin());
+                newVoitureUtilisateur.setIdutilisateur(modifier.getIdutilisateur());
+                newVoitureUtilisateur.setIdvoituredefini(modifier.getIdvoituredefini());
+                newVoitureUtilisateur.setDateventedebut(modifier.getDateventedebut());
+                newVoitureUtilisateur.setDateventefin(modifier.getDateventefin());
                 newVoitureUtilisateur.setMatricule(modifier.getMatricule());
                 newVoitureUtilisateur.setKilometrage(modifier.getKilometrage());
                 newVoitureUtilisateur.setPrix(modifier.getPrix());

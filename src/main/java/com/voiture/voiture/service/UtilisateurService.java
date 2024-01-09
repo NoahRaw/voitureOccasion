@@ -26,7 +26,6 @@ public class UtilisateurService{
     public Utilisateur update(int idUtilisateur,Utilisateur modifier){
         return this.utilisateurRepository.findById(idUtilisateur).map(
             newUtilisateur ->{
-                newUtilisateur.setIdUtilisateur(modifier.getIdUtilisateur());
                 newUtilisateur.setEmail(modifier.getEmail());
                 newUtilisateur.setMdp(modifier.getMdp());
                 return utilisateurRepository.save(newUtilisateur);

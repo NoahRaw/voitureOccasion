@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.voiture.voiture.modele.VoitureDefini;
+import com.voiture.voiture.modele.Voituredefini;
 import com.voiture.voiture.repository.VoitureDefiniRepository;
 
 @Service
@@ -16,26 +16,25 @@ public class VoitureDefiniService {
         this.voitureDefiniRepository = voitureDefiniRepository;
     }
 
-    public VoitureDefini insertion(VoitureDefini voitureDefini){
+    public Voituredefini insertion(Voituredefini voitureDefini){
         return this.voitureDefiniRepository.save(voitureDefini);
     } 
 
-    public List<VoitureDefini> listeVoitureDefini(){
+    public List<Voituredefini> listeVoitureDefini(){
         return this.voitureDefiniRepository.findAll();
     }
 
 
-    public VoitureDefini update(int idVoitureDefini,VoitureDefini modifier){
+    public Voituredefini update(int idVoitureDefini,Voituredefini modifier){
         return this.voitureDefiniRepository.findById(idVoitureDefini).map(
             VoitureDefini ->{
-                VoitureDefini.setIdVoitureDefini(modifier.getIdVoitureDefini());
-                VoitureDefini.setIdMarque(modifier.getIdMarque());
-                VoitureDefini.setIdModele(modifier.getIdModele());
-                VoitureDefini.setIdCarburant(modifier.getIdCarburant());
-                VoitureDefini.setIdPuissance(modifier.getIdPuissance());
-                VoitureDefini.setIdboiteDeVitesse(modifier.getIdboiteDeVitesse());
-                VoitureDefini.setIdTypeDeVehicule(modifier.getIdTypeDeVehicule());
-                VoitureDefini.setNbrPorte(modifier.getNbrPorte());
+                VoitureDefini.setIdmarque(modifier.getIdmarque());
+                VoitureDefini.setIdmodele(modifier.getIdmodele());
+                VoitureDefini.setIdcarburant(modifier.getIdcarburant());
+                VoitureDefini.setIdpuissance(modifier.getIdpuissance());
+                VoitureDefini.setIdboitedevitesse(modifier.getIdboitedevitesse());
+                VoitureDefini.setIdtypedevehicule(modifier.getIdtypedevehicule());
+                VoitureDefini.setNbrporte(modifier.getNbrporte());
                 VoitureDefini.setPuissance(modifier.getPuissance());
                 return voitureDefiniRepository.save(VoitureDefini);
             }
