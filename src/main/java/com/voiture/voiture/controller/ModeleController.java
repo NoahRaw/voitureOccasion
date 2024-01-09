@@ -19,6 +19,7 @@ import lombok.AllArgsConstructor;
 @RestController
 @RequestMapping("/Modele")
 @AllArgsConstructor
+
 public class ModeleController {
     private final ModeleService ModeleService;
 
