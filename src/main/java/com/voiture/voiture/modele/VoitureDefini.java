@@ -2,6 +2,7 @@ package com.voiture.voiture.modele;
 
 import javax.persistence.*;
 
+
 @Entity()
 public class Voituredefini {
     @Id

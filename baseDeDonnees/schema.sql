@@ -80,8 +80,10 @@ CREATE TABLE VoitureUtilisateur (
 );
 
 CREATE TABLE photoVoitureUtilisateur (
-    idVoitureUtilisateur Int,
-    nomPhoto VARCHAR(255)
+    idphotoVoitureUtilisateur SERIAL PRIMARY KEY,
+    idVoitureUtilisateur INT,
+    nomPhoto VARCHAR(255),
+    FOREIGN KEY (idVoitureUtilisateur) REFERENCES VoitureUtilisateur(idVoitureUtilisateur)
 );
 
 

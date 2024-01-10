@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Carburant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idcarburant")
     int id_carburant;
 
     @Column(name = "description" , nullable = false)
