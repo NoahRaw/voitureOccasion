@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Marque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idmarque")
     int id_marque;
 
     @Column(name = "description" , nullable = false)
