@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.voiture.voiture.modele.VoitureDefiniStatView;
 
+import com.voiture.voiture.model.view.V_vente;
+
 @SpringBootApplication
 // @EnableJpaRepositories(basePackages = "com.voiture.voiture.repository")
 public class VoitureAppApplication {
