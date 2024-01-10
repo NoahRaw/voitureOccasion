@@ -1,7 +1,7 @@
 package com.voiture.voiture.controller;
 
-import com.voiture.voiture.model.TypeDeVehicule;
-import com.voiture.voiture.model.view.V_vente;
+import com.voiture.voiture.modele.TypeDeVehicule;
+import com.voiture.voiture.modele.view.V_vente;
 import com.voiture.voiture.repository.TypeDeVehiculeRepository;
 import com.voiture.voiture.repository.UtilisateurRepository;
 import com.voiture.voiture.service.TypeDeVehiculeService;

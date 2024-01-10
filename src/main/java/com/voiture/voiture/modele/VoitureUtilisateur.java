@@ -1,13 +1,16 @@
 package com.voiture.voiture.modele;
 
-import java.sql.Timestamp;
 import java.sql.Date;
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 
 @Entity()
 public class Voitureutilisateur {
     @Id
-	@GeneratedValue()
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int  idvoitureutilisateur;
 	int  idutilisateur;
 	int  idvoituredefini;
@@ -105,5 +108,4 @@ public class Voitureutilisateur {
         this.statut = statut;
     }  
 }
-
 

@@ -1,4 +1,4 @@
-package com.voiture.voiture.model.view;
+package com.voiture.voiture.modele.view;
 
 import java.sql.Connection;
 import java.sql.Date;

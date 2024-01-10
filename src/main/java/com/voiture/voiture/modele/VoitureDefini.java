@@ -1,11 +1,14 @@
 package com.voiture.voiture.modele;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity()
 public class Voituredefini {
     @Id
-	@GeneratedValue()
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int  idvoituredefini;
 	int  idmarque;
 	int  idmodele;
@@ -103,3 +106,4 @@ public class Voituredefini {
         this.puissance = puissance;
     }  
 }
+

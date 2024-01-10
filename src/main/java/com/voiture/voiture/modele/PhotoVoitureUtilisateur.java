@@ -1,4 +1,4 @@
-package com.voiture.voiture.model;
+package com.voiture.voiture.modele;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

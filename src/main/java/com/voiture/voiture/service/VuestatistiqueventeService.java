@@ -1,6 +1,5 @@
 package com.voiture.voiture.service;
 
-import com.voiture.voiture.modele.Comission;
 import com.voiture.voiture.modele.Vuestatistiquevente;
 import com.voiture.voiture.repository.VuestatistiqueventeRepository;
 import org.springframework.stereotype.Service;

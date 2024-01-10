@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity()
 public class Utilisateur {
     @Id
-	@GeneratedValue()
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int  idutilisateur;
 	String email;
 	String mdp;

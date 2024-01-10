@@ -1,8 +1,8 @@
 package com.voiture.voiture.service;
 
-import com.voiture.voiture.model.TypeDeVehicule;
-
 import java.util.List;
+
+import com.voiture.voiture.modele.TypeDeVehicule;
 
 
 public interface TypeDeVehiculeService {

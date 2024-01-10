@@ -1,13 +1,7 @@
 package com.voiture.voiture.service;
 
-import com.voiture.voiture.model.PhotoVoitureUtilisateur;
-import com.voiture.voiture.model.TypeDeVehicule;
-import com.voiture.voiture.repository.PhotoVoitureUtilisateurRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
+import com.voiture.voiture.modele.PhotoVoitureUtilisateur;
 import java.util.List;
-import java.util.Optional;
 
 
 public interface PhotoVoitureUtilisateurService {

@@ -1,7 +1,7 @@
 package com.voiture.voiture.service.imp;
 
-import com.voiture.voiture.model.PhotoVoitureUtilisateur;
-import com.voiture.voiture.model.TypeDeVehicule;
+import com.voiture.voiture.modele.PhotoVoitureUtilisateur;
+import com.voiture.voiture.modele.TypeDeVehicule;
 import com.voiture.voiture.repository.PhotoVoitureUtilisateurRepository;
 import com.voiture.voiture.service.PhotoVoitureUtilisateurService;
 
