@@ -1,35 +1,34 @@
 package com.voiture.voiture.controller;
 
-import com.voiture.voiture.modele.TypeDeVehicule;
+import com.voiture.voiture.modele.Utilisateurrevenue;
 import com.voiture.voiture.modele.view.V_vente;
-import com.voiture.voiture.repository.TypeDeVehiculeRepository;
 import com.voiture.voiture.repository.UtilisateurRepository;
-import com.voiture.voiture.service.TypeDeVehiculeService;
+import com.voiture.voiture.service.BoiteDeVitesseService;
 
 import lombok.AllArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/Statistique")
+@AllArgsConstructor
+@CrossOrigin
 public class StatistiqueController {
 
     
     @Autowired
-    private UtilisateurRepository up; 
+    private UtilisateurRepository up;
+    
+    private final BoiteDeVitesseService boiteDeVitesseService;
 
     V_vente v= new V_vente();
 
-    @GetMapping("/statUtilisateur")
+    @GetMapping("/utilisateur")
     public long getAllTypesDeVehicule() {
         // return 100;
         return up.count();
@@ -45,7 +44,7 @@ public class StatistiqueController {
     //     }
     //     return vente;
     // }
-    @GetMapping("/statVente")
+    @GetMapping("/vente")
     public V_vente getVentetolals(
             @RequestParam("dateDebut")  String dateDebut,
             @RequestParam("dateFin")  String dateFin) {
@@ -56,6 +55,14 @@ public class StatistiqueController {
             e.printStackTrace();
         }
         return vente;
+    }
+
+    @GetMapping("/revenueUtilisateur")
+    public List<Utilisateurrevenue> statistiqueUtilisateurRevenue(
+            @RequestParam("dateDebut") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateDebut,
+            @RequestParam("dateFin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateFin
+    ) {
+        return boiteDeVitesseService.statistiqueUtilisateurRevenue(dateDebut, dateFin);
     }
 
 }
