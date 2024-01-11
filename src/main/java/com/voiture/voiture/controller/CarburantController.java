@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Carburant")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CarburantController {
     private final CarburantService carburantService;
 
