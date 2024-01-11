@@ -9,13 +9,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-@RequestMapping("/VoitureUtilisateur")
+@RequestMapping("/VoitureUtilisateurs")
 @CrossOrigin
 public class VoitureUtilisateurController {
     private final VoitureUtilisateurService voitureUtilisateurService;
@@ -25,24 +28,24 @@ public class VoitureUtilisateurController {
         this.voitureUtilisateurService = voitureUtilisateurService;
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public Voitureutilisateur create(@RequestBody Voitureutilisateur voitureUtilisateur){
         return this.voitureUtilisateurService.insertion(voitureUtilisateur);
     }
 
-    @PostMapping("/liste")
+    @GetMapping
     public List<Voitureutilisateur> getListeVoitureUtilisateur(){ 
         return this.voitureUtilisateurService.listeVoitureUtilisateur();
     }
 
-    @PostMapping("/updateVoitureUtilisateur/{idVoitureUtilisateur}")
-    public Voitureutilisateur updateVoitureUtilisateur(@PathVariable int idVoitureUtilisateur,@RequestBody Voitureutilisateur modifier){
-        return this.voitureUtilisateurService.update(idVoitureUtilisateur, modifier);
+    @PutMapping("/{id}")
+    public Voitureutilisateur updateVoitureUtilisateur(@PathVariable int id,@RequestBody Voitureutilisateur modifier){
+        return this.voitureUtilisateurService.update(id, modifier);
     }
 
-    @PostMapping("/deleteVoitureUtilisateur/{idVoitureUtilisateur}")
-    public void deleteVoitureUtilisateur(@PathVariable int idVoitureUtilisateur){
-        this.voitureUtilisateurService.delete(idVoitureUtilisateur);
+    @DeleteMapping("/{id}")
+    public void deleteVoitureUtilisateur(@PathVariable int id){
+        this.voitureUtilisateurService.delete(id);
     }
 
     @PostMapping("/validation/{idutilisateur}")
