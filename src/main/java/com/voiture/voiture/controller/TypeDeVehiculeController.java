@@ -16,32 +16,32 @@ import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/typeDeVehicules")
 public class TypeDeVehiculeController {
 
     //@Autowired
     private TypeDeVehiculeService typeDeVehiculeService;
     
 
-    @GetMapping("/typeDeVehicules")
+    @GetMapping
     public List<TypeDeVehicule> getAllTypesDeVehicule() {
         return typeDeVehiculeService.getAllTypesDeVehicules();
     }
 
-    @GetMapping("/typeDeVehicules/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<TypeDeVehicule> getTypeDeVehiculeById(@PathVariable int id) {
         TypeDeVehicule typeDeVehicule = typeDeVehiculeService.getTypeDeVehiculeById(id);
         return new ResponseEntity<>(typeDeVehicule, HttpStatus.OK);
     }
 
-    @PostMapping("/typeDeVehicules")
+    @PostMapping
     public ResponseEntity<TypeDeVehicule> saveTypeDeVehicule(@RequestBody TypeDeVehicule typeDeVehicule) {
         TypeDeVehicule saveTypeDeVehicule = typeDeVehiculeService.saveTypeDeVehicule(typeDeVehicule);
         return new ResponseEntity<>(saveTypeDeVehicule, HttpStatus.CREATED);
     }
 
      // Build Update User REST API
-    @PutMapping("/typeDeVehicules/{id}")
+    @PutMapping("/{id}")
      // http://localhost:8080/api/typeDeVehicules/1
     public ResponseEntity<TypeDeVehicule> updateTypeDeVehicule(@PathVariable("id") int id,@RequestBody TypeDeVehicule typeDeVehicule){
          typeDeVehicule.setIdTypeDeVehicule(id);
@@ -49,7 +49,7 @@ public class TypeDeVehiculeController {
          return new ResponseEntity<>(updatedTypeDeVehicule, HttpStatus.OK);
     }
 
-    @DeleteMapping("/typeDeVehicules/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteTypeDeVehiculeById(@PathVariable int id) {
         typeDeVehiculeService.deleteTypeDeVehiculeById(id);
         return new ResponseEntity<>("TypeDeVehicule successfully deleted!", HttpStatus.OK);
