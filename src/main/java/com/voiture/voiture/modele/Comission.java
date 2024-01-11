@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 public class Comission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idcomission")
     int id_comission;
 
     @Column(name = "date" , nullable = false)

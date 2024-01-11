@@ -11,17 +11,17 @@ ORDER BY COUNT(*) DESC
 -----------------------VIEW FY ANTRA---------------------
 CREATE VIEW Vuestatistiquevente AS
 SELECT
-    u.id_utilisateur,
+    u.idutilisateur,
     u.email,
-    COUNT(vu.id_voitureUtilisateur) AS nombreDeVentes
+    COUNT(vu.idvoitureUtilisateur) AS nombreDeVentes
 FROM
     Utilisateur u
 JOIN
-    VoitureUtilisateur vu ON u.id_utilisateur = vu.id_utilisateur
+    VoitureUtilisateur vu ON u.idutilisateur = vu.idutilisateur
 WHERE
     vu.statut = 2
 GROUP BY
-    u.id_utilisateur, u.email
+    u.idutilisateur, u.email
 ORDER BY
     nombreDeVentes DESC;
 

@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity()
 public class Voituredefini {
     @Id
-	@GeneratedValue()
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int  idvoituredefini;
 	int  idmarque;
 	int  idmodele;

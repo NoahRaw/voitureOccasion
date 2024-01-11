@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Marque")
+@CrossOrigin
 public class MarqueController {
     private final MarqueService marqueService;
 
@@ -20,7 +21,7 @@ public class MarqueController {
         return marqueService.insertMarque(marque);
     }
 
-    @PostMapping("/read")
+    @GetMapping("/read")
     public List<Marque> read(){
         return marqueService.getAllMarque();
     }
