@@ -9,13 +9,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-@RequestMapping("/VoitureDefini")
+@RequestMapping("/VoitureDefinis")
 @CrossOrigin
 public class VoitureDefiniController {
     private final VoitureDefiniService voitureDefiniService;
@@ -25,23 +28,23 @@ public class VoitureDefiniController {
         this.voitureDefiniService = voitureDefiniService;
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public Voituredefini create(@RequestBody Voituredefini voitureDefini){
         return this.voitureDefiniService.insertion(voitureDefini);
     }
 
-     @PostMapping("/liste")
+     @GetMapping
     public List<Voituredefini> getListeVoitureDefini(){ 
         return this.voitureDefiniService.listeVoitureDefini();
     }
 
-    @PostMapping("/updateVoitureDefini/{idVoitureDefini}")
-    public Voituredefini updateVoitureDefini(@PathVariable int idVoitureDefini,@RequestBody Voituredefini modifier){
-        return this.voitureDefiniService.update(idVoitureDefini, modifier);
+    @PutMapping("/{id}")
+    public Voituredefini updateVoitureDefini(@PathVariable int id,@RequestBody Voituredefini modifier){
+        return this.voitureDefiniService.update(id, modifier);
     }
 
-    @PostMapping("/deleteVoitureDefini/{idVoitureDefini}")
-    public void deleteVoitureDefini(@PathVariable int idVoitureDefini){
-        this.voitureDefiniService.delete(idVoitureDefini);
+    @DeleteMapping("/{id}")
+    public void deleteVoitureDefini(@PathVariable int id){
+        this.voitureDefiniService.delete(id);
     }
 }

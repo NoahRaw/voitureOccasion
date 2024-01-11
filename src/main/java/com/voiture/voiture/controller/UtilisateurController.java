@@ -9,13 +9,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-@RequestMapping("/Utilisateur")
+@RequestMapping("/Utilisateurs")
 @CrossOrigin
 public class UtilisateurController {
     private final UtilisateurService utilisateurService;
@@ -25,22 +28,22 @@ public class UtilisateurController {
         this.utilisateurService = utilisateurService;
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public Utilisateur create(@RequestBody Utilisateur vehicule){
         return this.utilisateurService.insertion(vehicule);
     }
 
-    @PostMapping("/liste")
+    @GetMapping
     public List<Utilisateur> getListeUtilisateur(){ 
         return this.utilisateurService.listeUtilisateur();
     }
 
-    @PostMapping("/updateUtilisateur/{idUtilisateur}")
-    public Utilisateur updateUtilisateur(@PathVariable int idUtilisateur,@RequestBody Utilisateur modifier){
-        return this.utilisateurService.update(idUtilisateur, modifier);
+    @PutMapping("/{id}")
+    public Utilisateur updateUtilisateur(@PathVariable int id,@RequestBody Utilisateur modifier){
+        return this.utilisateurService.update(id, modifier);
     }
 
-    @PostMapping("/deleteUtilisateur/{idUtilisateur}")
+    @DeleteMapping("/{id}")
     public void deleteUtilisateur(@PathVariable int idUtilisateur){
         this.utilisateurService.delete(idUtilisateur);
     }
