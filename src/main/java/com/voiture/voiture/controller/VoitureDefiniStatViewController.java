@@ -8,12 +8,14 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
 
 @RestController
 @RequestMapping("/VoitureDefiniStatView")
+@CrossOrigin
 public class VoitureDefiniStatViewController {
 
     @PostMapping("/liste/{dateMin}/{dateMax}")

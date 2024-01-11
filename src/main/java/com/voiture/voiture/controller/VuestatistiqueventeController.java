@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Vuestatistiquevente")
+@CrossOrigin
 public class VuestatistiqueventeController {
     private  final VuestatistiqueventeService vuestatistiqueventeService;
 

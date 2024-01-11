@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Commission")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class ComissionController {
     private final ComissionService comissionService;
 
