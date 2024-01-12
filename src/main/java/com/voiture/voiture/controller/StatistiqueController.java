@@ -12,6 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -34,27 +35,17 @@ public class StatistiqueController {
         return up.count();
     }
 
-    // @GetMapping("/statVente")
-    // public V_vente getVentetolal() {
-    //     V_vente vente= new V_vente();
-    //     try {
-    //          vente=v.getVentetolal(null);
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //     }
-    //     return vente;
-    // }
-    @GetMapping("/vente")
-    public V_vente getVentetolals(
+    @GetMapping("/ventes")
+    public List<V_vente> getStatistiqueVentes(
             @RequestParam("dateDebut")  String dateDebut,
             @RequestParam("dateFin")  String dateFin) {
-        V_vente vente= new V_vente();
+                List<V_vente> ventes= new ArrayList<>();
         try {
-             vente=v.getVentetolal(null,dateDebut,dateFin);
+            ventes=v.getStatistiqueVentes(null,dateDebut,dateFin);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return vente;
+        return ventes;
     }
 
     @GetMapping("/revenueUtilisateur")

@@ -106,6 +106,8 @@ INSERT INTO Comission (date, pourcentage) VALUES
     (4, 7, 4, 4, 4, 4, 3, 170.0),
     (5, 9, 5, 5, 5, 5, 5, 200.0);
 
+INSERT INTO VoitureDefini (idMarque, idModele, idCarburant, idPuissance, idboiteDeVitesse, idTypeDeVehicule, nbrPorte, puissance)VALUES
+   (2, 3, 2, 2, 2, 2, 5, 150.0);
 
     INSERT INTO VoitureUtilisateur (idUtilisateur, idVoitureDefini, dateVenteDebut, dateVenteFin, matricule, kilometrage, prix, statut)VALUES
     (1, 1, '2024-01-06', '2025-01-06', 'ABC123', 50000.5, 25000.0, 0),
@@ -114,6 +116,8 @@ INSERT INTO Comission (date, pourcentage) VALUES
     (4, 4, '2024-01-09', '2025-01-09', '456GHI', 80000.8, 22000.0, 1),
     (5, 5, '2024-01-10', '2025-01-10', 'JKL321', 65000.1, 28000.0, 0);
 
+    INSERT INTO VoitureUtilisateur (idUtilisateur, idVoitureDefini, dateVenteDebut, dateVenteFin, matricule, kilometrage, prix, statut)VALUES
+    (1, 6, '2024-01-06', '2024-01-08', 'ABE124', 30000.0, 10000.0, 1);
 
 
 INSERT INTO photoVoitureUtilisateur (idVoitureUtilisateur, nomPhoto) VALUES

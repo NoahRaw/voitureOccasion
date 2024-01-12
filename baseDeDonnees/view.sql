@@ -53,3 +53,22 @@ GROUP BY
     u.idutilisateur, u.email
 ORDER BY
     nombreDeVentes DESC;
+
+
+
+-----------------------VIEW Rod-----------------
+CREATE VIEW v_voiturevendu AS 
+SELECT 
+        dateventefin as dateDeVente,idutilisateur,matricule,prix,statut 
+    FROM VoitureUtilisateur 
+    WHERE statut = 1 
+    ORDER BY dateDeVente ASC;
+
+   
+    SELECT 
+        datedevente,SUM(prix) as montant
+    FROM v_voiturevendu 
+    WHERE datedevente BETWEEN '2024-01-06' AND '2024-01-10' 
+    GROUP BY datedevente;
+
+
