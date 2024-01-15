@@ -23,6 +23,8 @@ SELECT
     FROM v_voiturevendu 
     WHERE datedevente BETWEEN '2024-01-06' AND '2024-01-10' 
     GROUP BY datedevente;
+
+    
 select idutilisateur,email,sum(nombredeventes) as nombredeventes from Vuestatistiquevente vu
 WHERE vu.dateVenteDebut >= '2024-01-01' AND vu.dateVenteFin <= '2024-01-10'
 GROUP BY idutilisateur,email;
