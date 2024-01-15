@@ -4,6 +4,7 @@ import com.voiture.voiture.modele.Vuestatistiquevente;
 import com.voiture.voiture.repository.VuestatistiqueventeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -25,8 +26,8 @@ public class VuestatistiqueventeService {
         return optionalVuestatistiquevente.orElseThrow(() -> new NoSuchElementException("optionalVuestatistiquevente non trouvé pour l'ID : " + idUtilisateur));
     }
 
-//    public List<Vuestatistiquevente> findByEmailAndNombreDeVentesGreaterThan(String email, int nombreVentes) {
-//        return vuestatistiqueventeRepository.findByEmailAndNombreDeVentesGreaterThan(email, nombreVentes);
-//    }
+    public List<Vuestatistiquevente> findByStatVenteUserBy2Date(Date date1, Date date2) {
+        return vuestatistiqueventeRepository.findByStatVenteUserBy2Date(date1, date2);
+    }
 
 }

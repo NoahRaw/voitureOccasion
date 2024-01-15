@@ -9,10 +9,10 @@ select
         order by revenue DESC;
 
 -----------------------VIEW FY ANTRA---------------------
-CREATE VIEW Vuestatistiquevente AS
+CREATE or replace VIEW Vuestatistiquevente AS
 SELECT
     u.idUtilisateur,
-    u.email,
+    u.email,vu.dateVenteDebut, vu.dateVenteFin,
     COUNT(vu.idVoitureUtilisateur) AS nombreDeVentes
 FROM
     Utilisateur u
@@ -21,7 +21,7 @@ JOIN
 WHERE
     vu.statut = 2
 GROUP BY
-    u.idUtilisateur, u.email
+    u.idUtilisateur, u.email, vu.dateVenteDebut, vu.dateVenteFin
 ORDER BY
     nombreDeVentes DESC;
 
