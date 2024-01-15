@@ -2,8 +2,10 @@ package com.voiture.voiture.controller;
 
 import com.voiture.voiture.modele.Vuestatistiquevente;
 import com.voiture.voiture.service.VuestatistiqueventeService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -25,8 +27,13 @@ public class VuestatistiqueventeController {
         return vuestatistiqueventeService.getVuestatistiqueventeByIdUtilisateur(idUtilisateur);
     }
 
-//    @PostMapping("/findByEmailAndNombreDeVentesGreaterThan")
-//    public List<Vuestatistiquevente> findByEmailAndNombreDeVentesGreaterThan(@RequestParam String email, @RequestParam int nombreVentes) {
-//        return vuestatistiqueventeService.findByEmailAndNombreDeVentesGreaterThan(email, nombreVentes);
+    @PostMapping("/findByStatVenteUserBy2Date")
+//    public List<Vuestatistiquevente> findByStatVenteUserBy2Date(@RequestParam Date date1, @RequestParam Date date2) {
+//        return vuestatistiqueventeService.findByStatVenteUserBy2Date(date1, date2);
 //    }
+    public List<Vuestatistiquevente> findByStatVenteUserBy2Date(
+            @RequestParam("date1") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date1,
+            @RequestParam("date2") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date2) {
+        return vuestatistiqueventeService.findByStatVenteUserBy2Date(date1, date2);
+    }
 }

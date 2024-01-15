@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Marque")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class MarqueController {
     private final MarqueService marqueService;
 
