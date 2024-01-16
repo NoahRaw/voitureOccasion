@@ -8,16 +8,18 @@ public class Utilisateur {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int  idutilisateur;
+    String nomutilisateur;
 	String email;
 	String mdp;
 
     public Utilisateur() {
     }
 
-    public Utilisateur(int  idutilisateur,String email,String mdp) {
+    public Utilisateur(int  idutilisateur,String email,String mdp,String nomutilisateur) {
         this.idutilisateur = idutilisateur;
 		this.email = email;
 		this.mdp = mdp;
+        this.nomutilisateur = nomutilisateur;
     }
 
     public int  getIdutilisateur() {
@@ -42,5 +44,13 @@ public class Utilisateur {
 
     public void setMdp(String mdp) {
         this.mdp = mdp;
-    }  
+    }
+    
+    public String getNomutilisateur(){
+        return this.nomutilisateur;
+    }
+
+    public void setNomutilisateur(String nomutilisateur){
+        this.nomutilisateur = nomutilisateur;
+    }
 }
