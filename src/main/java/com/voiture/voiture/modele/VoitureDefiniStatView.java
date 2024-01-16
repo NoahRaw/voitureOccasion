@@ -23,21 +23,25 @@ public class VoitureDefiniStatView {
 
     String nomModele;
 
+    double nombre;
+
     ConnexionBdd connexionBdd = new ConnexionBdd();
     public VoitureDefiniStatView() {
     }
 
-    public VoitureDefiniStatView(int idVoituredefini, int idMarque, String nomMarque, String nomModele) {
+    public VoitureDefiniStatView(int idVoituredefini, int idMarque, String nomMarque, String nomModele,double nombre) {
         this.idVoituredefini = idVoituredefini;
         this.idMarque = idMarque;
         this.nomMarque = nomMarque;
         this.nomModele = nomModele;
+        this.nombre = nombre;
     }
 
-    public VoitureDefiniStatView(int idMarque, String nomMarque, String nomModele) {
+    public VoitureDefiniStatView(int idMarque, String nomMarque, String nomModele,double nombre) {
         this.idMarque = idMarque;
         this.nomMarque = nomMarque;
         this.nomModele = nomModele;
+        this.nombre = nombre;
     }
 
     public int getIdVoituredefini() {
@@ -72,9 +76,17 @@ public class VoitureDefiniStatView {
         this.nomModele = nomModele;
     }
 
+    public double getNombre(){
+        return this.nombre;
+    }
+
+    public void setNombre(double nombre){
+        this.nombre = nombre;
+    }
+
     public List<VoitureDefiniStatView> getVentetolal(Connection con,String dateMin,String dateMax) throws Exception {
          List<VoitureDefiniStatView> liste = new ArrayList<>();
-        String query = "SELECT VoitureDefini.idvoituredefini,VoitureDefini.idmarque,marque.description as nom_marque,modele.description as nommodele \r\n" + //
+        String query = "SELECT VoitureDefini.idvoituredefini,VoitureDefini.idmarque,marque.description as nommarque,modele.description as nommodele,COUNT(*) as nombre \r\n" + //
                 "FROM VoitureUtilisateur\r\n" + //
                 "JOIN VoitureDefini ON VoitureUtilisateur.idvoituredefini = VoitureDefini.idvoituredefini\r\n" + //
                 "JOIN marque ON VoitureDefini.idmarque = marque.idmarque\r\n" + //
@@ -88,7 +100,6 @@ public class VoitureDefiniStatView {
                 con = connexionBdd.connexionPostgress();
             }
          
-
             try (
                 PreparedStatement preparedStatement = con.prepareStatement(query);
                 ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -98,7 +109,8 @@ public class VoitureDefiniStatView {
                 v.setIdVoituredefini(resultSet.getInt("idvoituredefini"));
                 v.setIdMarque(resultSet.getInt("idmarque"));
                 v.setNomMarque(resultSet.getString("nommarque"));
-                v.setNomModele(resultSet.getString("nommodel"));
+                v.setNomModele(resultSet.getString("nommodele"));
+                v.setNombre(resultSet.getDouble("nombre"));
                 liste.add(v);
             }
         }

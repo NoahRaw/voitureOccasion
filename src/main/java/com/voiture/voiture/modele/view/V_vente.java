@@ -1,7 +1,6 @@
 package com.voiture.voiture.modele.view;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,87 +8,56 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 import org.springframework.stereotype.Component;
 
 import com.voiture.voiture.connexion.ConnexionBdd;
 
-// @Entity
-// @NoArgsConstructor
-// @AllArgsConstructor
-// @Table(name="v_vente")
 @Component
 public class V_vente {
     
-    // @Column(name = "total_price")
-    private double total_price;
-    // @Column(name = "status")
-    private int status;
-    // private Date dateDebut;
-    // private Date dateFin;
+    private Timestamp dateVente;
+    private double vente;
+    private float pourcentage;
+    private double comission;
+    
+   
 
 
+    
     private ConnexionBdd connexionBdd = new ConnexionBdd();
 
-    public V_vente getVentetolal(Connection con, String dateDebut, String dateFin) throws Exception {
-        V_vente vente = new V_vente();
-        String query = "SELECT SUM(prix) as total_price, statut FROM VoitureUtilisateur WHERE statut = 1 AND dateventefin BETWEEN ? AND ? GROUP BY statut";
-    
-        try {
-            if (con == null) {
-                con = connexionBdd.connexionPostgress();
-            }
-    
-            try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
-                
-                Timestamp timestampDebut = Timestamp.valueOf(dateDebut + " 00:00:00");
-                Timestamp timestampFin = Timestamp.valueOf(dateFin + " 23:59:59");
-    
-                preparedStatement.setTimestamp(1, timestampDebut);
-                preparedStatement.setTimestamp(2, timestampFin);
-    
-                try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    while (resultSet.next()) {
-                        vente.setStatus(resultSet.getInt("statut"));
-                        vente.setTotal_price(resultSet.getDouble("total_price"));
-                    }
-                }
-            }
-            return vente;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new SQLException("Erreur lors de la récupération des enregistrements de vente", e);
-        } finally {
-            if (con != null) {
-                con.close();
-            }
-        }
-    }
-        public List<V_vente> getAllVentes(Connection con) throws Exception {
+    public List<V_vente> getStatistiqueVentes(Connection con, String dateDebut, String dateFin) throws Exception {
         List<V_vente> list = new ArrayList<>();
-        String query = "SELECT * FROM v_vente";
-
+        double comission=0;
+        String query = "SELECT datedevente,SUM(prix) as montant ,(select pourcentage from comission where date<=v_voiturevendu.datedevente order by date DESC limit 1) as comission FROM v_voiturevendu  WHERE datedevente BETWEEN ? AND ? GROUP BY datedevente";
         try {
             if(con==null){
                 con = connexionBdd.connexionPostgress();
             }
-        
-            try (
-                PreparedStatement preparedStatement = con.prepareStatement(query);
-                ResultSet resultSet = preparedStatement.executeQuery()) {
+    
+            try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
 
-            while (resultSet.next()) {
-                V_vente vente = new V_vente();
-                vente.setStatus(resultSet.getInt("statut"));
-                vente.setTotal_price(resultSet.getInt("total_price"));
+                Timestamp timestampDebut = Timestamp.valueOf(dateDebut + " 00:00:00");
+                Timestamp timestampFin = Timestamp.valueOf(dateFin + " 23:59:59");
+                // Timestamp timestampDebut = Timestamp.valueOf(dateDebut);
+                // Timestamp timestampFin = Timestamp.valueOf(dateFin);
 
-                list.add(vente);
+
+                preparedStatement.setTimestamp(1, timestampDebut);
+                preparedStatement.setTimestamp(2, timestampFin);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        V_vente vente = new V_vente();
+                        vente.setDateVente(resultSet.getTimestamp("datedevente"));
+                        vente.setVente(resultSet.getDouble("montant"));
+                        vente.setPourcentage(resultSet.getFloat("comission"));
+                        comission=(vente.getPourcentage()*vente.getVente())/100;
+                        vente.setComission(comission);
+                        list.add(vente);
+                    }
+                }
             }
-        }
-
         return list;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -102,28 +70,30 @@ public class V_vente {
     }
 
 
-    public double getTotal_price() {
-        return total_price;
+
+    public Timestamp getDateVente() {
+        return dateVente;
     }
-    public void setTotal_price(double total_price) {
-        this.total_price = total_price;
+    public void setDateVente(Timestamp dateVente) {
+        this.dateVente = dateVente;
     }
-    public int getStatus() {
-        return status;
+    public double getVente() {
+        return vente;
     }
-    public void setStatus(int status) {
-        this.status = status;
+    public void setVente(double vente) {
+        this.vente = vente;
     }
-    // public Date getDateDebut() {
-    //     return dateDebut;
-    // }
-    // public void setDateDebut(Date dateDebut) {
-    //     this.dateDebut = dateDebut;
-    // }
-    // public Date getDateFin() {
-    //     return dateFin;
-    // }
-    // public void setDateFin(Date dateFin) {
-    //     this.dateFin = dateFin;
-    // }
+    public float getPourcentage() {
+        return pourcentage;
+    }
+    public void setPourcentage(float pourcentage) {
+        this.pourcentage = pourcentage;
+    }
+    public double getComission() {
+        return comission;
+    }
+    public void setComission(double comission) {
+        this.comission = comission;
+    }
+
 }

@@ -9,10 +9,10 @@ select
         order by revenue DESC;
 
 -----------------------VIEW FY ANTRA---------------------
-CREATE VIEW Vuestatistiquevente AS
+CREATE or replace VIEW Vuestatistiquevente AS
 SELECT
     u.idUtilisateur,
-    u.email,
+    u.email,vu.dateVenteDebut, vu.dateVenteFin,
     COUNT(vu.idVoitureUtilisateur) AS nombreDeVentes
 FROM
     Utilisateur u
@@ -21,7 +21,7 @@ JOIN
 WHERE
     vu.statut = 2
 GROUP BY
-    u.idUtilisateur, u.email
+    u.idUtilisateur, u.email, vu.dateVenteDebut, vu.dateVenteFin
 ORDER BY
     nombreDeVentes DESC;
 
@@ -53,3 +53,36 @@ GROUP BY
     u.idutilisateur, u.email
 ORDER BY
     nombreDeVentes DESC;
+
+
+
+-----------------------VIEW Rod-----------------
+CREATE VIEW v_voiturevendu AS 
+SELECT 
+        dateventefin as dateDeVente,idutilisateur,matricule,prix,statut 
+    FROM VoitureUtilisateur 
+    WHERE statut = 1 
+    ORDER BY dateDeVente ASC;
+
+   
+    SELECT 
+        datedevente,SUM(prix) as montant
+    FROM v_voiturevendu 
+    WHERE datedevente BETWEEN '2024-01-06' AND '2024-01-10' 
+    GROUP BY datedevente;
+CREATE VIEW voitureutilisateur_view AS 
+SELECT voitureutilisateur.*,marque.description as nommarque,modele.description as nommodele,marque.idmarque,
+carburant.idcarburant,puissance.idpuissance,boitedevitesse.idboitedevitesse,typedevehicule.idtypedevehicule,
+carburant.description as nomcarburant,puissance.kw,puissance.cv,boitedevitesse.description as nomboitedevitesse,
+typedevehicule.description as nomtypedevehicule,voituredefini.nbrporte,voituredefini.puissance
+FROM voitureutilisateur
+JOIN voituredefini ON voituredefini.idvoituredefini = voitureutilisateur.idvoituredefini
+JOIN marque ON voituredefini.idmarque = marque.idmarque
+JOIN modele ON voituredefini.idmodele = modele.idmodele
+JOIN carburant ON voituredefini.idcarburant = carburant.idcarburant
+JOIN puissance ON voituredefini.idpuissance = puissance.idpuissance
+JOIN boitedevitesse ON voituredefini.idboitedevitesse = boitedevitesse.idboiteDeVitesse
+JOIN typedevehicule ON voituredefini.idtypedevehicule = typedevehicule.idtypedevehicule
+;
+
+

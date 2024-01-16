@@ -16,7 +16,7 @@ public class ComissionController {
         this.comissionService = comissionService;
     }
 
-    @PostMapping("/create")
+    @PostMapping//("/create")
     public Comission create(@RequestBody Comission comission){
         return comissionService.insertCommission(comission);
     }
