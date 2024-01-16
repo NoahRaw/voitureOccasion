@@ -121,3 +121,6 @@ INSERT INTO photoVoitureUtilisateur (idVoitureUtilisateur, nomPhoto) VALUES
     (1, 'photo2.jpg'),
     (2, 'photo3.jpg'),
     (3, 'photo4.jpg');
+
+
+    

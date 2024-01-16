@@ -53,3 +53,22 @@ GROUP BY
     u.idutilisateur, u.email
 ORDER BY
     nombreDeVentes DESC;
+
+
+
+CREATE VIEW voitureutilisateur_view AS 
+SELECT voitureutilisateur.*,marque.description as nommarque,modele.description as nommodele,marque.idmarque,
+carburant.idcarburant,puissance.idpuissance,boitedevitesse.idboitedevitesse,typedevehicule.idtypedevehicule,
+carburant.description as nomcarburant,puissance.kw,puissance.cv,boitedevitesse.description as nomboitedevitesse,
+typedevehicule.description as nomtypedevehicule,voituredefini.nbrporte,voituredefini.puissance
+FROM voitureutilisateur
+JOIN voituredefini ON voituredefini.idvoituredefini = voitureutilisateur.idvoituredefini
+JOIN marque ON voituredefini.idmarque = marque.idmarque
+JOIN modele ON voituredefini.idmodele = modele.idmodele
+JOIN carburant ON voituredefini.idcarburant = carburant.idcarburant
+JOIN puissance ON voituredefini.idpuissance = puissance.idpuissance
+JOIN boitedevitesse ON voituredefini.idboitedevitesse = boitedevitesse.idboiteDeVitesse
+JOIN typedevehicule ON voituredefini.idtypedevehicule = typedevehicule.idtypedevehicule
+;
+
+

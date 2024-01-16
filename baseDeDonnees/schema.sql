@@ -5,6 +5,7 @@ create database voiture;
 
 CREATE TABLE Utilisateur (
     idUtilisateur SERIAL PRIMARY KEY,
+    nomutilisateur VARCHAR(50),
     email VARCHAR(255) UNIQUE NOT NULL,
     mdp VARCHAR(255) NOT NULL
 );
@@ -68,7 +69,7 @@ CREATE TABLE VoitureDefini (
 CREATE TABLE VoitureUtilisateur (
     idVoitureUtilisateur SERIAL PRIMARY KEY,
     idUtilisateur INT,
-    idVoitureDefini INT ,
+    idVoitureDefini INT,
     dateVenteDebut DATE,
     dateVenteFin DATE,
     matricule VARCHAR(255),

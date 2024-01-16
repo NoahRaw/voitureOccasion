@@ -12,6 +12,6 @@ import com.voiture.voiture.modele.Voitureutilisateur;
 public interface VoitureUtilisateurRepository extends JpaRepository<Voitureutilisateur,Integer>{
     
     @Modifying
-    @Query(value = "UPDATE VoitureUtilisateur SET statut = :status WHERE idUtilisateur = :idUtilisateur",nativeQuery = true)
-    void validation(@Param("status") int status, @Param("idUtilisateur") int idUtilisateur);
+    @Query(value = "UPDATE VoitureUtilisateur SET statut = :status WHERE idvoitureutilisateur = :idvoitureutilisateur", nativeQuery = true)
+    void validation(@Param("status") int status, @Param("idvoitureutilisateur") int idvoitureutilisateur);    
 }
