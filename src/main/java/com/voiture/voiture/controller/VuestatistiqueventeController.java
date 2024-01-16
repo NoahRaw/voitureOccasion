@@ -28,10 +28,7 @@ public class VuestatistiqueventeController {
         return vuestatistiqueventeService.getVuestatistiqueventeByIdUtilisateur(idUtilisateur);
     }
 
-    @PostMapping("/findByStatVenteUserBy2Date")
-//    public List<Vuestatistiquevente> findByStatVenteUserBy2Date(@RequestParam Date date1, @RequestParam Date date2) {
-//        return vuestatistiqueventeService.findByStatVenteUserBy2Date(date1, date2);
-//    }
+    @GetMapping("/findByStatVenteUserBy2Date")
     public List<Vuestatistiquevente> findByStatVenteUserBy2Date(
             @RequestParam("date1") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date1,
             @RequestParam("date2") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date2) {
