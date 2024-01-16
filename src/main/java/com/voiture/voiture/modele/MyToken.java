@@ -19,6 +19,8 @@ public class MyToken implements Serializable{
     @Column(nullable = false)
     private String valeur;
 
+    private Integer idutilisateur;
+
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateHeureExpiration;

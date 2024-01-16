@@ -62,7 +62,8 @@ public class UtilisateurController {
 
     @GetMapping("/authenticate")
     public String authenticate(@RequestParam String login,@RequestParam String pwd) throws NoSuchAlgorithmException {
-        if(utilisateurService.findByEmailAndMdp(login, pwd).isPresent()){
+        Optional<Utilisateur> u=utilisateurService.findByEmailAndMdp(login, pwd);
+        if(u.isPresent()){
             // Récupérer la date et l'heure actuelles
             Date dateActuelle = new Date();
 
@@ -79,11 +80,12 @@ public class UtilisateurController {
             MyToken myToken = new MyToken();
             myToken.setValeur(token);
             myToken.setDateHeureExpiration(dateHeureExpiration);
+            myToken.setIdutilisateur(u.get().getIdutilisateur());
             myTokenService.Creer(myToken);
 
             return token;
         }
-		return "";
+		return null;
     }
 
     @GetMapping("/isTokenValide")
@@ -116,5 +118,21 @@ public class UtilisateurController {
             myTokenService.Supprimer(monTokenObjet.getIdMyToken());
         }
         return false;
+    }
+
+    @GetMapping("/deconnection")
+    public void deconnection(HttpServletRequest request) {
+        String authHeader = request.getHeader("Authorization");
+        String token=null;
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            token = authHeader.substring(7); // Extrait le token
+            // Utilisez le token
+        }
+        // Continuez votre logique de méthode
+        Date dateActuelle = new Date();
+        Optional<MyToken> monTokenObjet=myTokenService.findByDateHeureExpirationAfterAndValeur(dateActuelle, token);
+        if(monTokenObjet.isPresent()){
+            myTokenService.Supprimer(monTokenObjet.get().getIdMyToken());
+        }
     }
 }
