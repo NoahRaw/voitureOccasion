@@ -58,3 +58,15 @@ tache4
     Statitique
         Nombre total d'utilisateurs enregistrés
         Revenus générés par les ventes
+    
+--front office
+Fonction 
+    recherche avance
+    historique anonce
+    liste anonce des autres utilisateurs
+    mettre un annonce en favoris
+
+Base
+    AnnonceFavoris(idAnnonceFavoris,idUtilisateur,idVoitureUtilisateur)
+
+Systeme messagerie

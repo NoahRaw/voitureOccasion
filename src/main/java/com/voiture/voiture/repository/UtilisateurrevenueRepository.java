@@ -10,6 +10,6 @@ import org.springframework.data.repository.query.Param;
 import com.voiture.voiture.modele.Utilisateurrevenue;
 
 public interface UtilisateurrevenueRepository extends JpaRepository<Utilisateurrevenue,Integer>{
-    @Query(value = "select idutilisateur,sum(revenue) as revenue from UtilisateurRevenue where :dateDebut <=dateVenteFin and dateVenteFin<= :dateFin group by idUtilisateur", nativeQuery = true)
+    @Query(value = "select idutilisateur,sum(revenue) as revenue from UtilisateurRevenue where :dateDebut <=dateVenteFin and dateVenteFin<= :dateFin group by idUtilisateur order by sum(revenue) DESC", nativeQuery = true)
     List<Utilisateurrevenue> statistiqueUtilisateurRevenue(@Param("dateDebut") Date dateDebut,@Param("dateFin") Date dateFin);
 }

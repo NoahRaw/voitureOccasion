@@ -1,6 +1,7 @@
 package com.voiture.voiture.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -35,5 +36,10 @@ public class UtilisateurService{
 
     public void delete(int idUtilisateur){
         this.utilisateurRepository.deleteById(idUtilisateur);
+    }
+
+    public Optional<Utilisateur> findByEmailAndMdp(String login,String pwd)
+    {
+        return utilisateurRepository.findByEmailAndMdp(login, pwd);
     }
 }

@@ -7,36 +7,32 @@ GROUP BY VoitureDefini.id_voituredefini,VoitureDefini.id_marque,marque.descripti
 ORDER BY COUNT(*) DESC
 ;
 
+SELECT VoitureDefini.idvoituredefini,VoitureDefini.idmarque,marque.description as nommarque,modele.description as nommodele 
+FROM VoitureUtilisateur
+JOIN VoitureDefini ON VoitureUtilisateur.idvoituredefini = VoitureDefini.idvoituredefini
+JOIN marque ON VoitureDefini.idmarque = marque.idmarque
+JOIN modele ON VoitureDefini.idmodele = modele.idmodele
+WHERE voitureutilisateur.statut=1 AND dateventefin >= '2023-03-19' AND dateventefin <= '2023-05-26' 
+GROUP BY VoitureDefini.idvoituredefini,VoitureDefini.idmarque,marque.description,modele.idmodele
+ORDER BY COUNT(*) DESC;
 
------------------------ rod----------------------------
 
--- SELECT SUM(prix*(select pourcentage from comission where date<=VoitureUtilisateur.dateventefin order by date limit 1)) as total_price, statut FROM VoitureUtilisateur WHERE statut = 1 AND dateventefin BETWEEN '2024-01-06' AND '2024-01-10  ' GROUP BY statut;
+SELECT voitureutilisateur.*,marque.description as nommarque,modele.description as nommodele,
+carburant.description as nomcarburant,puissance.kw,puissance.cv,boitedevitesse.description as nomboitedevitesse,
+typedevehicule.description as nomtypedevehicule,voituredefini.nbrporte,voituredefini.puissance
+FROM voitureutilisateur
+JOIN voituredefini ON voituredefini.idvoituredefini = voitureutilisateur.idvoituredefini
+JOIN marque ON voituredefini.idmarque = marque.idmarque
+JOIN modele ON voituredefini.idmodele = modele.idmodele
+JOIN carburant ON voituredefini.idcarburant = carburant.idcarburant
+JOIN puissance ON voituredefini.idpuissance = puissance.idpuissance
+JOIN boitedevitesse ON voituredefini.idboitedevitesse = boitedevitesse.idboiteDeVitesse
+JOIN typedevehicule ON voituredefini.idtypedevehicule = typedevehicule.idtypedevehicule
+;
 
--- SELECT dateventefin,SUM(prix),statut FROM VoitureUtilisateur WHERE statut = 1 AND dateventefin BETWEEN '2024-01-06' AND '2024-01-10  ' GROUP BY statut,dateventefin;
+SELECT *
+FROM voitureutilisateur;
 
 
--- select pourcentage from comission where date<='2024-01-20' order by date DESC limit 1;
-
-
-SELECT 
-        datedevente,SUM(prix) as montant ,(select pourcentage from comission where date<=v_voiturevendu.datedevente order by date DESC limit 1) as comission
-    FROM v_voiturevendu 
-    WHERE datedevente BETWEEN '2024-01-06' AND '2024-01-10' 
-    GROUP BY datedevente;
-
-    
-select idutilisateur,email,sum(nombredeventes) as nombredeventes from Vuestatistiquevente vu
-WHERE vu.dateVenteDebut >= '2024-01-01' AND vu.dateVenteFin <= '2024-01-10'
-GROUP BY idutilisateur,email;
-
-SELECT
-    idUtilisateur,
-    email,
-    SUM(nombreDeVentes) AS nombreDeVentes
-FROM
-    Vuestatistiquevente
-WHERE
-    dateVenteDebut BETWEEN '2024-02-06' AND '2024-05-10'
-    or dateVenteFin BETWEEN '2024-02-06' AND '2024-05-10'
-GROUP BY
-    idUtilisateur, email;
+SELECT *
+FROM voitureutilisateur WHERE kilometrage = ;
