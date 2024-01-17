@@ -64,7 +64,7 @@ Fonction
     recherche avance
     historique anonce
     liste anonce des autres utilisateurs
-    mettre un annonce en favoris
+    mettre un annonce en annonceFavoris
 
 Base
     AnnonceFavoris(idAnnonceFavoris,idUtilisateur,idVoitureUtilisateur)

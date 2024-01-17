@@ -18,7 +18,7 @@ public class VuestatistiqueventeController {
         this.vuestatistiqueventeService = vuestatistiqueventeService;
     }
 
-    @PostMapping("/read")
+    @GetMapping("/read")
     public List<Vuestatistiquevente> read(){
         return  vuestatistiqueventeService.getAllVuestatistiquevente();
     }

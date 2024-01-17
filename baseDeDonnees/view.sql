@@ -70,6 +70,8 @@ SELECT
     FROM v_voiturevendu 
     WHERE datedevente BETWEEN '2024-01-06' AND '2024-01-10' 
     GROUP BY datedevente;
+
+
 CREATE VIEW voitureutilisateur_view AS 
 SELECT voitureutilisateur.*,marque.description as nommarque,modele.description as nommodele,marque.idmarque,
 carburant.idcarburant,puissance.idpuissance,boitedevitesse.idboitedevitesse,typedevehicule.idtypedevehicule,
@@ -84,5 +86,11 @@ JOIN puissance ON voituredefini.idpuissance = puissance.idpuissance
 JOIN boitedevitesse ON voituredefini.idboitedevitesse = boitedevitesse.idboiteDeVitesse
 JOIN typedevehicule ON voituredefini.idtypedevehicule = typedevehicule.idtypedevehicule
 ;
+
+CREATE or replace VIEW annonceFavoris_view AS  --liste des annonces dans favoris
+select idannoncefavoris, annonceFavoris.idvoitureutilisateur ,annonceFavoris.idutilisateur ,dateventedebut ,dateventefin ,matricule ,
+kilometrage ,prix,statut ,nommarque,nommodele ,nomcarburant, kw, cv ,nomboitedevitesse,nomtypedevehicule,nbrporte,puissance
+from voitureutilisateur_view join annonceFavoris on 
+voitureutilisateur_view.idutilisateur = annonceFavoris.idutilisateur and voitureutilisateur_view.idvoitureUtilisateur = annonceFavoris.idvoitureUtilisateur;
 
 

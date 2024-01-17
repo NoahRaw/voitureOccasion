@@ -128,5 +128,6 @@ INSERT INTO photoVoitureUtilisateur (idVoitureUtilisateur, nomPhoto) VALUES
     (2, 'photo3.jpg'),
     (3, 'photo4.jpg');
 
-
+INSERT INTO annoncefavoris (idUtilisateur, idVoitureUtilisateur) VALUES
+    (1, 15), (2,16), (3,17), (4,18), (5, 18);
     

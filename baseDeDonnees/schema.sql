@@ -87,4 +87,11 @@ CREATE TABLE photoVoitureUtilisateur (
     FOREIGN KEY (idVoitureUtilisateur) REFERENCES VoitureUtilisateur(idVoitureUtilisateur)
 );
 
+CREATE TABLE annonceFavoris(
+    idannonceFavoris serial primary key,
+    idUtilisateur int,
+    idVoitureUtilisateur int,
+    FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur (idUtilisateur),
+    FOREIGN KEY (idVoitureUtilisateur) REFERENCES VoitureUtilisateur(idVoitureUtilisateur)
+);
 

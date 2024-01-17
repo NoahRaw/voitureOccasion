@@ -36,3 +36,11 @@ FROM voitureutilisateur;
 
 SELECT *
 FROM voitureutilisateur WHERE kilometrage = ;
+
+select * from voitureutilisateur_view join annonceFavoris on 
+voitureutilisateur_view.idutilisateur = annonceFavoris.idutilisateur and voitureutilisateur_view.idvoitureUtilisateur = annonceFavoris.idvoitureUtilisateur
+where annonceFavoris.idutilisateur = 4;
+
+
+select * from voitureutilisateur_view where idutilisateur = 1;  --requete pour voir l`historique de ses recherches
+select * from annonceFavoris_view where idutilisateur = 1;  --requete pour avoir ses annonces dans favoris

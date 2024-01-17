@@ -1,6 +1,6 @@
 package com.voiture.voiture.controller;
 
-import com.voiture.voiture.modele.Favoris;
+import com.voiture.voiture.modele.AnnonceFavoris;
 import com.voiture.voiture.service.FavorisService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,12 +17,12 @@ public class FavorisController {
     }
 
     @PostMapping("/create")
-    public Favoris create(@RequestBody Favoris favoris){
-        return favorisService.insertFavoris(favoris);
+    public AnnonceFavoris create(@RequestBody AnnonceFavoris annonceFavoris){
+        return favorisService.insertFavoris(annonceFavoris);
     }
 
-    @PostMapping("/read")
-    public List<Favoris> read(){
+    @GetMapping("/read")
+    public List<AnnonceFavoris> read(){
         return favorisService.getAllFavoris();
     }
 

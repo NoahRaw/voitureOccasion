@@ -415,4 +415,55 @@ public class Voitureutilisateur_view {
        }
        return liste;
    }
+
+   //Historique des annonces
+   public List<Voitureutilisateur_view> getHistoriqueAnnonce(Connection con, int idutilisateur) throws Exception {
+        List<Voitureutilisateur_view> liste = new ArrayList<>();
+        String query = "SELECT * FROM voitureutilisateur_view WHERE idutilisateur =" +idutilisateur;
+
+        try {
+            if(con==null){
+                con = connexionBdd.connexionPostgress();
+            }
+
+
+            try (
+                    PreparedStatement preparedStatement = con.prepareStatement(query);
+                    ResultSet resultSet = preparedStatement.executeQuery()) {
+
+                while (resultSet.next()) {
+                    Voitureutilisateur_view v = new Voitureutilisateur_view();
+                    v.setIdvoitureutilisateur(resultSet.getInt("idvoitureutilisateur"));
+                    v.setIdutilisateur((resultSet.getInt("idutilisateur")));
+                    v.setIdvoituredefini(resultSet.getInt("idvoituredefini"));
+                    v.setDateventedebut(resultSet.getDate("dateventedebut"));
+                    v.setDateventefin(resultSet.getDate("dateventefin"));
+                    v.setMatricule(resultSet.getString("matricule"));
+                    v.setKilometrage(resultSet.getDouble("kilometrage"));
+                    v.setPrix(resultSet.getDouble("prix"));
+                    v.setStatut(resultSet.getInt("statut"));
+                    v.setNommarque(resultSet.getString("nommarque"));
+                    v.setNommodele(resultSet.getString("nommodele"));
+                    v.setNomcarburant(resultSet.getString("nomcarburant"));
+                    v.setKw(resultSet.getDouble("kw"));
+                    v.setCv(resultSet.getDouble("cv"));
+                    v.setNomboitedevitesse(resultSet.getString("nomboitedevitesse"));
+                    v.setNomtypedevehicule(resultSet.getString("nomtypedevehicule"));
+                    v.setNbrporte(resultSet.getInt("nbrporte"));
+                    v.setPuissance(resultSet.getDouble("puissance"));
+                    liste.add(v);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("Erreur lors de la récupération des enregistrements voiture defini", e);
+        }finally{
+            if (con!=null) {
+                con.close();
+            }
+        }
+        return liste;
+    }
+
 }

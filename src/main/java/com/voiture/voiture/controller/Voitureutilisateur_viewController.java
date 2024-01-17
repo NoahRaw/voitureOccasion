@@ -27,4 +27,9 @@ public class Voitureutilisateur_viewController {
     public List<Voitureutilisateur_view> rechercheMultiple(@RequestBody Voitureutilisateur_view v,@PathVariable double prixmin,@PathVariable double prixmax) throws Exception{
         return v.rechercheMultiple(null,prixmin,prixmax);
     }
+
+    @GetMapping("/getHistoriqueAnnonce/{idutilisateur}")
+    public List<Voitureutilisateur_view> getHistoriqueAnnonce(@RequestBody Voitureutilisateur_view v,@PathVariable int idutilisateur) throws Exception{
+        return v.getHistoriqueAnnonce(null,idutilisateur);
+    }
 }

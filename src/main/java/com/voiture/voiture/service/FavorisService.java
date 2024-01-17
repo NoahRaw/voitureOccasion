@@ -1,6 +1,6 @@
 package com.voiture.voiture.service;
 
-import com.voiture.voiture.modele.Favoris;
+import com.voiture.voiture.modele.AnnonceFavoris;
 import com.voiture.voiture.repository.FavorisRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +14,11 @@ public class FavorisService {
         this.favorisRepository = favorisRepository;
     }
 
-    public List<Favoris> getAllFavoris(){
+    public List<AnnonceFavoris> getAllFavoris(){
         return favorisRepository.findAll();
     }
-
-    public Favoris insertFavoris(Favoris favoris){
-        return favorisRepository.save(favoris);
+    public AnnonceFavoris insertFavoris(AnnonceFavoris annonceFavoris){
+        return favorisRepository.save(annonceFavoris);
     }
 
     public void deleteFavorisById(int idFavoris){
