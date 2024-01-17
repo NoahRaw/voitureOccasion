@@ -44,3 +44,12 @@ where annonceFavoris.idutilisateur = 4;
 
 select * from voitureutilisateur_view where idutilisateur = 1;  --requete pour voir l`historique de ses recherches
 select * from annonceFavoris_view where idutilisateur = 1;  --requete pour avoir ses annonces dans favoris
+
+SELECT VoitureDefini.idvoituredefini,VoitureDefini.idmarque,marque.description as nommarque,modele.description as nommodele,COUNT(*) as nombre 
+FROM VoitureUtilisateur
+JOIN VoitureDefini ON VoitureUtilisateur.idvoituredefini = VoitureDefini.idvoituredefini
+JOIN marque ON VoitureDefini.idmarque = marque.idmarque
+JOIN modele ON VoitureDefini.idmodele = modele.idmodele
+WHERE voitureutilisateur.statut=1 
+GROUP BY VoitureDefini.idvoituredefini,VoitureDefini.idmarque,marque.description,modele.idmodele
+ORDER BY COUNT(*) DESC
