@@ -2,12 +2,17 @@ package com.voiture.voiture.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.voiture.voiture.modele.PhotoVoitureUtilisateur;
 import com.voiture.voiture.modele.Voitureutilisateur;
+import com.voiture.voiture.service.PhotoVoitureUtilisateurService;
 import com.voiture.voiture.service.VoitureUtilisateurService;
+import com.voiture.voiture.modele.Annonce;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +26,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/VoitureUtilisateurs")
 @CrossOrigin
 public class VoitureUtilisateurController {
+
+
     private final VoitureUtilisateurService voitureUtilisateurService;
+    @Autowired
+    private PhotoVoitureUtilisateurService photoVoitureUtilisateurService;
 
     @Autowired
     public VoitureUtilisateurController(VoitureUtilisateurService voitureUtilisateurService){
@@ -52,4 +61,22 @@ public class VoitureUtilisateurController {
     public void validation(@PathVariable int idvoitureutilisateur){ 
         this.voitureUtilisateurService.validation(1,idvoitureutilisateur);
     }
+
+@PostMapping("/createAnnonce")
+public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestBody Annonce annonceRequest) {
+    Voitureutilisateur voitureUtilc = voitureUtilisateurService.insertion(annonceRequest.getVoitureUtilisateur());
+    PhotoVoitureUtilisateur photoVU = null;
+    int idVoitureUtilc = voitureUtilc.getIdvoitureutilisateur();
+    // 
+    for (int i = 0; i < annonceRequest.getPhoto().length; i++) {
+        photoVU = new PhotoVoitureUtilisateur();
+        photoVU.setIdVoitureUtilisateur(idVoitureUtilc);
+        photoVU.setNomPhoto(annonceRequest.getPhoto()[i]);
+        photoVoitureUtilisateurService.savePhotoVoitureUtilisateur(photoVU);
+    }
+
+    return new ResponseEntity<>(voitureUtilc, HttpStatus.CREATED);
+}
+
+
 }
