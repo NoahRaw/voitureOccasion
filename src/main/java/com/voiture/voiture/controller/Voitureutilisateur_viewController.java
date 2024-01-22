@@ -32,6 +32,7 @@ public class Voitureutilisateur_viewController {
     @GetMapping("/getHistoriqueAnnonce/{idutilisateur}")
     public List<Voitureutilisateur_view> getHistoriqueAnnonce(@RequestBody Voitureutilisateur_view v,@PathVariable int idutilisateur) throws Exception{
         return v.getHistoriqueAnnonce(null,idutilisateur);
+    }
     
     @PostMapping("/annonce/{idUtilisateur}")
     public List<Voitureutilisateur_view> get_annonce_autre_utilisateur(@PathVariable int idUtilisateur) throws Exception{
