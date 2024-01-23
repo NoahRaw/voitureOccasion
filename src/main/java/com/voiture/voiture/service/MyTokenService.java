@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.voiture.voiture.modele.MyToken;
 
 public interface MyTokenService {
@@ -15,4 +17,5 @@ public interface MyTokenService {
     Optional<MyToken> findByDateHeureExpirationAfterAndValeur(Date date, String valeur);
     Optional<MyToken> findByDateHeureExpirationBeforeAndValeur(Date date, String valeur);
     String Supprimer(Long Id);
+    boolean isTokenValide(HttpServletRequest request);
 }
