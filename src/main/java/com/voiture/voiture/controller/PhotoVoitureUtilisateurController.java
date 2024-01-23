@@ -54,5 +54,9 @@ public class PhotoVoitureUtilisateurController {
         
     }
     
+    @GetMapping("getPhotoVoitureUtilisateur/{idvoitureutilisateur}")
+    public List<PhotoVoitureUtilisateur> getPhotoVoitureUtilisateur(@PathVariable int idvoitureutilisateur){
+        return photoVoitureUtilisateurService.getPhotoVoitureUtilisateur(idvoitureutilisateur);
+    }
 }
 

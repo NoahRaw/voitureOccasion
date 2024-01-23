@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.voiture.voiture.modele.MyToken;
 import com.voiture.voiture.modele.Utilisateur;
+import com.voiture.voiture.modele.Utilisateurrevenue;
+import com.voiture.voiture.service.BoiteDeVitesseService;
 import com.voiture.voiture.service.MyTokenService;
 import com.voiture.voiture.service.MyTokenServiceIplement;
 import com.voiture.voiture.service.UtilisateurService;
@@ -17,6 +19,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,11 +36,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UtilisateurController {
     private final UtilisateurService utilisateurService;
     private final MyTokenService myTokenService;
+    private final BoiteDeVitesseService boiteDeVitesseService;
 
     @Autowired
-    public UtilisateurController(UtilisateurService utilisateurService,MyTokenService myTokenService){
+    public UtilisateurController(UtilisateurService utilisateurService,MyTokenService myTokenService,BoiteDeVitesseService boiteDeVitesseService){
         this.utilisateurService = utilisateurService;
         this.myTokenService = myTokenService;
+        this.boiteDeVitesseService=boiteDeVitesseService;
     }
 
     @PostMapping
@@ -90,34 +95,7 @@ public class UtilisateurController {
 
     @GetMapping("/isTokenValide")
     public boolean isTokenValide(HttpServletRequest request) {
-        String authHeader = request.getHeader("Authorization");
-        String token=null;
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
-            token = authHeader.substring(7); // Extrait le token
-            // Utilisez le token
-        }
-        // Continuez votre logique de méthode
-        Date dateActuelle = new Date();
-        if(myTokenService.findByDateHeureExpirationAfterAndValeur(dateActuelle, token).isPresent()){
-            // Ajouter une heure à la date actuelle
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(dateActuelle);
-            calendar.add(Calendar.HOUR_OF_DAY, 1);
-            Date dateHeureExpiration = calendar.getTime();
-
-            // Insérer le token avec la valeur, la date actuelle et la date d'expiration
-            MyToken myToken = new MyToken();
-            myToken.setValeur(token);
-            myToken.setDateHeureExpiration(dateHeureExpiration);
-            myTokenService.Modifier(token, myToken);
-            return true;
-        }
-        Optional<MyToken> myToken=myTokenService.findByDateHeureExpirationBeforeAndValeur(dateActuelle, token);
-        if(myToken.isPresent()){
-            MyToken monTokenObjet = myToken.get();
-            myTokenService.Supprimer(monTokenObjet.getIdMyToken());
-        }
-        return false;
+        return myTokenService.isTokenValide(request);
     }
 
     @GetMapping("/deconnection")
@@ -134,5 +112,13 @@ public class UtilisateurController {
         if(monTokenObjet.isPresent()){
             myTokenService.Supprimer(monTokenObjet.get().getIdMyToken());
         }
+    }
+
+    @GetMapping("/revenue")
+    public List<Utilisateurrevenue> statistiqueUtilisateurRevenue(
+            @RequestParam("dateDebut") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateDebut,
+            @RequestParam("dateFin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateFin
+    ) {
+        return boiteDeVitesseService.statistiqueUtilisateurRevenue(dateDebut, dateFin);
     }
 }

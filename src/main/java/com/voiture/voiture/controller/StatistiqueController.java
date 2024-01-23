@@ -47,13 +47,4 @@ public class StatistiqueController {
         }
         return ventes;
     }
-
-    @GetMapping("/revenueUtilisateur")
-    public List<Utilisateurrevenue> statistiqueUtilisateurRevenue(
-            @RequestParam("dateDebut") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateDebut,
-            @RequestParam("dateFin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateFin
-    ) {
-        return boiteDeVitesseService.statistiqueUtilisateurRevenue(dateDebut, dateFin);
-    }
-
 }

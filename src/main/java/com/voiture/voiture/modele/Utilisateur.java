@@ -11,15 +11,17 @@ public class Utilisateur {
     String nomutilisateur;
 	String email;
 	String mdp;
+    int etat;
 
     public Utilisateur() {
     }
 
-    public Utilisateur(int  idutilisateur,String email,String mdp,String nomutilisateur) {
+    public Utilisateur(int  idutilisateur,String email,String mdp,String nomutilisateur,int etat;) {
         this.idutilisateur = idutilisateur;
 		this.email = email;
 		this.mdp = mdp;
         this.nomutilisateur = nomutilisateur;
+        this.etat = etat;
     }
 
     public int  getIdutilisateur() {
@@ -52,5 +54,13 @@ public class Utilisateur {
 
     public void setNomutilisateur(String nomutilisateur){
         this.nomutilisateur = nomutilisateur;
+    }
+
+    public int getEtat() {
+        return etat;
+    }
+
+    public void setEtat(int etat) {
+        this.etat = etat;
     }
 }

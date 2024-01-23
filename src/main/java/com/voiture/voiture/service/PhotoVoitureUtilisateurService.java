@@ -15,4 +15,6 @@ public interface PhotoVoitureUtilisateurService {
     PhotoVoitureUtilisateur updatePhotoVoitureUtilisateur(PhotoVoitureUtilisateur photoVoitureUtilisateur);
 
     void deletePhotoVoitureUtilisateurById(int id);
+
+    List<PhotoVoitureUtilisateur> getPhotoVoitureUtilisateur(int idvoitureutilisateur);
 }

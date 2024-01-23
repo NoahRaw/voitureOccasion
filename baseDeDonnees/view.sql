@@ -1,11 +1,11 @@
 Create view UtilisateurRevenue as
 select 
-    Utilisateur.idUtilisateur, VoitureUtilisateur.dateVenteFin, 
-    (select pourcentage from Comission limit 1)*VoitureUtilisateur.prix/100 as revenue
+    Utilisateur.idUtilisateur,Utilisateur.nomutilisateur, VoitureUtilisateur.dateVenteFin, 
+    (select pourcentage from Comission where Comission.date<=VoitureUtilisateur.dateVenteFin limit 1)*VoitureUtilisateur.prix/100 as revenue
         from VoitureUtilisateur
         join Utilisateur 
             on Utilisateur.idUtilisateur=VoitureUtilisateur.idUtilisateur
-        where VoitureUtilisateur.statut=1
+        where VoitureUtilisateur.statut=2
         order by revenue DESC;
 
 -----------------------VIEW FY ANTRA---------------------

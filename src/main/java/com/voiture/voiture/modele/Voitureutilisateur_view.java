@@ -35,6 +35,7 @@ public class Voitureutilisateur_view {
     int idboitedevitesse;
     int idtypedevehicule;
     String nomutilisateur;
+    
 
 
     ConnexionBdd connexionBdd = new ConnexionBdd();
@@ -486,7 +487,7 @@ public class Voitureutilisateur_view {
                 con = connexionBdd.connexionPostgress();
             }
         
-            String query = "SELECT * FROM voitureutilisateur_view WHERE idutilisateur != "+id_utilisateur;
+            String query = "SELECT * FROM voitureutilisateur_view WHERE idutilisateur != "+id_utilisateur+" AND statut = 0";
             try (
                 PreparedStatement preparedStatement = con.prepareStatement(query);
                 ResultSet resultSet = preparedStatement.executeQuery()) {

@@ -48,11 +48,6 @@ public class BoitedevitesseController {
         return boiteDeVitesseService.Supprimer(Id);
     }
 
-    // @GetMapping("/statistiqueUtilisateurRevenue")
-    // public List<Utilisateurrevenue> statistiqueUtilisateurRevenue(){
-    //     return boiteDeVitesseService.statistiqueUtilisateurRevenue();
-    // }
-
     @GetMapping("/utilisateur-revenue")
     public List<Utilisateurrevenue> statistiqueUtilisateurRevenue(
             @RequestParam("dateDebut") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateDebut,

@@ -34,6 +34,7 @@ tache1
         VoitureDefini(idVoitureDefini,idMarque,idModele,idCarburant,idPuissance,idboiteDeVitesse,idTypeDeVehicule,nbrPorte,puissance)
     Statitique vente des voitures
 
+
 tache2    
     Crud
         Comission(idComission,date,pourcentage)
