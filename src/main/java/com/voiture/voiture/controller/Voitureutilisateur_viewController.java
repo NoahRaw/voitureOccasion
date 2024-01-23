@@ -41,4 +41,11 @@ public class Voitureutilisateur_viewController {
         Voitureutilisateur_view v = new Voitureutilisateur_view(); 
         return v.get_annonce_autre_utilisateur(null,idUtilisateur);
     }
+
+    @GetMapping("/ces_annonces")
+    public List<Voitureutilisateur_view> get_liste_de_ces_annonces(@PathVariable int idUtilisateur) throws Exception{
+        Voitureutilisateur_view v = new Voitureutilisateur_view(); 
+        return v.get_liste_de_ces_annonces(null,idUtilisateur);
+    }
+
 }
