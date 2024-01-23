@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -94,7 +96,7 @@ public class UtilisateurController {
     }
 
     @GetMapping("/authenticateSimpleUser")
-    public String authenticateSimpleUser(@RequestParam String login,@RequestParam String pwd) throws NoSuchAlgorithmException {
+    public ResponseEntity<String> authenticateSimpleUser(@RequestParam String login,@RequestParam String pwd) throws NoSuchAlgorithmException {
         Optional<Utilisateur> u=utilisateurService.findByEmailAndMdp(login, pwd, 0);
         if(u.isPresent()){
             // Récupérer la date et l'heure actuelles
@@ -116,9 +118,10 @@ public class UtilisateurController {
             myToken.setIdutilisateur(u.get().getIdutilisateur());
             myTokenService.Creer(myToken);
 
-            return token;
+            return ResponseEntity.ok(token);
         }
-		return null;
+		// Retourner une réponse avec un statut non autorisé (401) en cas de token non valide
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
     }
 
     @GetMapping("/isTokenValide")
