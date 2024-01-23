@@ -1,9 +1,13 @@
-INSERT INTO Utilisateur (email, mdp) VALUES
-    ('noah@gmail.com', '0000'),
-    ('thony@gmail.com', '1111'),
-    ('rod@gmail.com', '2222'),
-    ('antra@gmail.com', '3333'),
-    ('jean@gmail.com', '4444');
+INSERT INTO Utilisateur (nomutilisateur,email, mdp) VALUES
+    ('Noah Raw','noah@gmail.com', '0000'),
+    ('Thony','thony@gmail.com', '1111'),
+    ('Rodriguez','rod@gmail.com', '2222'),
+    ('Fy Amtra','antra@gmail.com', '3333'),
+    ('Jean','jean@gmail.com', '4444');
+
+    UPDATE utilisateur
+    SET etat = 0
+    WHERE idutilisateur = 5;
 
 INSERT INTO Carburant (description) VALUES
     ('Essence'),

@@ -12,14 +12,18 @@ public class Vuestatistiquevente {
     @Column(name = "idutilisateur" , nullable = false)
     int id_utilisateur;
 
+    @Column(name = "nomutilisateur" , nullable = false)
+    String nomutilisateur;
+
     @Column(name = "email" , nullable = false)
     String email;
 
     @Column(name = "nombredeventes" , nullable = false)
     int nombredeventes;
 
-    public Vuestatistiquevente(int id_utilisateur, String email, int nombredeventes) {
+    public Vuestatistiquevente(int id_utilisateur, String nomutilisateur, String email, int nombredeventes) {
         this.id_utilisateur = id_utilisateur;
+        this.nomutilisateur = nomutilisateur;
         this.email = email;
         this.nombredeventes = nombredeventes;
     }
@@ -49,5 +53,13 @@ public class Vuestatistiquevente {
 
     public int getNombredeventes() {
         return nombredeventes;
+    }
+
+    public String getNomutilisateur() {
+        return nomutilisateur;
+    }
+
+    public void setNomutilisateur(String nomutilisateur) {
+        this.nomutilisateur = nomutilisateur;
     }
 }

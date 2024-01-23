@@ -13,6 +13,7 @@ public interface VuestatistiqueventeRepository extends JpaRepository<Vuestatisti
 //    @Query(value = "SELECT * FROM VueStatistiqueVente WHERE email = :email AND nombredeventes > :nombreVentes", nativeQuery = true)
     @Query(value = "SELECT\n" +
             "    idUtilisateur,\n" +
+            "    nomutilisateur,\n" +
             "    email,\n" +
             "    SUM(nombreDeVentes) AS nombreDeVentes\n" +
             "FROM\n" +
@@ -21,6 +22,6 @@ public interface VuestatistiqueventeRepository extends JpaRepository<Vuestatisti
             "    dateVenteDebut BETWEEN :date1 AND :date2\n" +
             "    or dateVenteFin BETWEEN :date1 AND :date2\n" +
             "GROUP BY\n" +
-            "    idUtilisateur, email;", nativeQuery = true)
+            "    idUtilisateur,nomutilisateur, email;", nativeQuery = true)
     List<Vuestatistiquevente> findByStatVenteUserBy2Date(@Param("date1") Date date1, @Param("date2") Date date2);
 }

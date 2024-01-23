@@ -12,6 +12,7 @@ select
 CREATE or replace VIEW Vuestatistiquevente AS
 SELECT
     u.idUtilisateur,
+     u.nomutilisateur,
     u.email,vu.dateVenteDebut, vu.dateVenteFin,
     COUNT(vu.idVoitureUtilisateur) AS nombreDeVentes
 FROM
@@ -21,7 +22,7 @@ JOIN
 WHERE
     vu.statut = 2
 GROUP BY
-    u.idUtilisateur, u.email, vu.dateVenteDebut, vu.dateVenteFin
+    u.idUtilisateur, u.email, u.nomutilisateur, vu.dateVenteDebut, vu.dateVenteFin
 ORDER BY
     nombreDeVentes DESC;
 
@@ -37,22 +38,23 @@ GROUP BY VoitureDefini.idvoituredefini,VoitureDefini.idmarque,marque.description
 ORDER BY COUNT(*) DESC
 ;
 
------------------------VIEW FY ANTRA---------------------
-CREATE VIEW Vuestatistiquevente AS
-SELECT
-    u.idutilisateur,
-    u.email,
-    COUNT(vu.idvoitureUtilisateur) AS nombreDeVentes
-FROM
-    Utilisateur u
-JOIN
-    VoitureUtilisateur vu ON u.idutilisateur = vu.idutilisateur
-WHERE
-    vu.statut = 2
-GROUP BY
-    u.idutilisateur, u.email
-ORDER BY
-    nombreDeVentes DESC;
+-- -----------------------VIEW FY ANTRA---------------------
+-- CREATE VIEW Vuestatistiquevente AS
+-- SELECT
+--     u.idutilisateur,
+--     u.nomutilisateur,
+--     u.email,
+--     COUNT(vu.idvoitureUtilisateur) AS nombreDeVentes
+-- FROM
+--     Utilisateur u
+-- JOIN
+--     VoitureUtilisateur vu ON u.idutilisateur = vu.idutilisateur
+-- WHERE
+--     vu.statut = 2
+-- GROUP BY
+--     u.idutilisateur, u.email, u.nomutilisateur
+-- ORDER BY
+--     nombreDeVentes DESC;
 
 
 
