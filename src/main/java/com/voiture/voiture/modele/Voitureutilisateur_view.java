@@ -537,7 +537,8 @@ public class Voitureutilisateur_view {
                 con = connexionBdd.connexionPostgress();
             }
         
-            String query = "SELECT * FROM voitureutilisateur_view WHERE idutilisateur == "+id_utilisateur+" AND statut = 0";
+            String query = "SELECT * FROM voitureutilisateur_view WHERE idutilisateur = "+id_utilisateur+" AND statut = 0";
+            System.out.println(query);            
             try (
                 PreparedStatement preparedStatement = con.prepareStatement(query);
                 ResultSet resultSet = preparedStatement.executeQuery()) {
