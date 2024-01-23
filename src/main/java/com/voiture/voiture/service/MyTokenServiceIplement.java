@@ -160,7 +160,7 @@ public class MyTokenServiceIplement implements MyTokenService{
             MyToken myToken = new MyToken();
             myToken.setValeur(token);
             myToken.setDateHeureExpiration(dateHeureExpiration);
-            Modifier(token, myToken);
+            myToken=Modifier(token, myToken);
             return myToken;
         }
         Optional<MyToken> myToken=findByDateHeureExpirationBeforeAndValeur(dateActuelle, token);
