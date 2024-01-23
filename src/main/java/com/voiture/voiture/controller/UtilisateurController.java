@@ -65,9 +65,9 @@ public class UtilisateurController {
         this.utilisateurService.delete(idUtilisateur);
     }
 
-    @GetMapping("/authenticate")
+    @GetMapping("/authenticateAdmin")
     public String authenticate(@RequestParam String login,@RequestParam String pwd) throws NoSuchAlgorithmException {
-        Optional<Utilisateur> u=utilisateurService.findByEmailAndMdp(login, pwd);
+        Optional<Utilisateur> u=utilisateurService.findByEmailAndMdp(login, pwd, 1);
         if(u.isPresent()){
             // Récupérer la date et l'heure actuelles
             Date dateActuelle = new Date();
@@ -79,7 +79,35 @@ public class UtilisateurController {
             Date dateHeureExpiration = calendar.getTime();
 
             // Générer une valeur (tu peux la générer comme tu veux)
-            String token=MyTokenServiceIplement.generateToken(pwd, "/props");
+            String token=MyTokenServiceIplement.generateToken(pwd, login+pwd);
+
+            // Insérer le token avec la valeur, la date actuelle et la date d'expiration
+            MyToken myToken = new MyToken();
+            myToken.setValeur(token);
+            myToken.setDateHeureExpiration(dateHeureExpiration);
+            myToken.setIdutilisateur(u.get().getIdutilisateur());
+            myTokenService.Creer(myToken);
+
+            return token;
+        }
+		return null;
+    }
+
+    @GetMapping("/authenticateSimpleUser")
+    public String authenticateSimpleUser(@RequestParam String login,@RequestParam String pwd) throws NoSuchAlgorithmException {
+        Optional<Utilisateur> u=utilisateurService.findByEmailAndMdp(login, pwd, 0);
+        if(u.isPresent()){
+            // Récupérer la date et l'heure actuelles
+            Date dateActuelle = new Date();
+
+            // Ajouter une heure à la date actuelle
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(dateActuelle);
+            calendar.add(Calendar.HOUR_OF_DAY, 1);
+            Date dateHeureExpiration = calendar.getTime();
+
+            // Générer une valeur (tu peux la générer comme tu veux)
+            String token=MyTokenServiceIplement.generateToken(pwd, login+pwd);
 
             // Insérer le token avec la valeur, la date actuelle et la date d'expiration
             MyToken myToken = new MyToken();
