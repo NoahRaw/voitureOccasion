@@ -11,7 +11,7 @@ public class Utilisateur {
     String nomutilisateur;
 	String email;
 	String mdp;
-    int etat;
+    Integer etat;
 
     public Utilisateur() {
     }
