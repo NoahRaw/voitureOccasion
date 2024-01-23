@@ -53,3 +53,30 @@ JOIN modele ON VoitureDefini.idmodele = modele.idmodele
 WHERE voitureutilisateur.statut=1 
 GROUP BY VoitureDefini.idvoituredefini,VoitureDefini.idmarque,marque.description,modele.idmodele
 ORDER BY COUNT(*) DESC
+
+
+
+
+-- fonction
+@GetMapping
+    public ResponseEntity<List<ChatMessage>> getChatMessagesByRoomId(@RequestParam List<Integer> userIds, HttpServletRequest request) {
+        if (appelerAutreService(request)) {
+            List<ChatRoom> listChatRooms = chatRoomService.getChatRoomsByUserIds(userIds);
+            System.out.println("taille=" + listChatRooms.size());
+
+            String chatName = "chat";
+            for (Integer i : userIds) {
+                chatName = chatName + " user-" + i;
+            }
+
+            if (listChatRooms.size() > 0) {
+                return ResponseEntity.ok(chatMessageService.getChatMessagesByRoomId(listChatRooms.get(0).getId()));
+            }
+
+            ChatRoom cr = chatRoomService.createChatRoom(new ChatRoom("", chatName, userIds));
+            return ResponseEntity.ok(chatMessageService.getChatMessagesByRoomId(cr.getId()));
+        }
+
+        // Retourner une réponse avec un statut non autorisé (401) en cas de token non valide
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+    }

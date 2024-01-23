@@ -123,6 +123,7 @@ public class UtilisateurController {
 
     @GetMapping("/isTokenValide")
     public boolean isTokenValide(HttpServletRequest request) {
+        // MyToken token=myTokenService.getToken(request);
         return myTokenService.isTokenValide(request);
     }
 

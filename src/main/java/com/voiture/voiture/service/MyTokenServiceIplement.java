@@ -138,4 +138,36 @@ public class MyTokenServiceIplement implements MyTokenService{
         }
         return false;
     }
+
+    @Override
+    public MyToken getToken(HttpServletRequest request) {
+        String authHeader = request.getHeader("Authorization");
+        String token=null;
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            token = authHeader.substring(7); // Extrait le token
+            // Utilisez le token
+        }
+        // Continuez votre logique de méthode
+        Date dateActuelle = new Date();
+        if(findByDateHeureExpirationAfterAndValeur(dateActuelle, token).isPresent()){
+            // Ajouter une heure à la date actuelle
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(dateActuelle);
+            calendar.add(Calendar.HOUR_OF_DAY, 1);
+            Date dateHeureExpiration = calendar.getTime();
+
+            // Insérer le token avec la valeur, la date actuelle et la date d'expiration
+            MyToken myToken = new MyToken();
+            myToken.setValeur(token);
+            myToken.setDateHeureExpiration(dateHeureExpiration);
+            Modifier(token, myToken);
+            return myToken;
+        }
+        Optional<MyToken> myToken=findByDateHeureExpirationBeforeAndValeur(dateActuelle, token);
+        if(myToken.isPresent()){
+            MyToken monTokenObjet = myToken.get();
+            Supprimer(monTokenObjet.getIdMyToken());
+        }
+        return null;
+    }
 }

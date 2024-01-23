@@ -18,4 +18,5 @@ public interface MyTokenService {
     Optional<MyToken> findByDateHeureExpirationBeforeAndValeur(Date date, String valeur);
     String Supprimer(Long Id);
     boolean isTokenValide(HttpServletRequest request);
+    MyToken getToken(HttpServletRequest request);
 }
