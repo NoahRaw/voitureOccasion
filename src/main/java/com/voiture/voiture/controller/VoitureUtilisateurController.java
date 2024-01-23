@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 @RequestMapping("/VoitureUtilisateurs")
-@CrossOrigin
+@CrossOrigin    
 public class VoitureUtilisateurController {
     private final VoitureUtilisateurService voitureUtilisateurService;
 
