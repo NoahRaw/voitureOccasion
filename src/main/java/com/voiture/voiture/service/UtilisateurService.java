@@ -27,8 +27,10 @@ public class UtilisateurService{
     public Utilisateur update(int idUtilisateur,Utilisateur modifier){
         return this.utilisateurRepository.findById(idUtilisateur).map(
             newUtilisateur ->{
+                newUtilisateur.setNomutilisateur(modifier.getNomutilisateur());
                 newUtilisateur.setEmail(modifier.getEmail());
                 newUtilisateur.setMdp(modifier.getMdp());
+                newUtilisateur.setEtat(modifier.getEtat());
                 return utilisateurRepository.save(newUtilisateur);
             }
         ).orElseThrow(() -> new RuntimeException("utilisateur pas trouver"));
