@@ -11,5 +11,5 @@ import java.util.List;
 public interface AnnonceFavorisViewRepository extends JpaRepository<AnnonceFavorisView, Integer> {
 
     @Query(value = "SELECT * FROM annoncefavoris_view WHERE idutilisateur = :idutilisateur", nativeQuery = true)
-    List<AnnonceFavorisView> findAnnonceFavorisByIdUser(@Param("idutilisateur") int idutilisateur);
+    List<AnnonceFavorisView> findAnnonceFavorisByIdUser(@Param("idutilisateur") Integer idutilisateur);
 }

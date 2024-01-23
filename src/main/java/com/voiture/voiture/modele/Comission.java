@@ -9,7 +9,7 @@ public class Comission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idcomission")
-    int id_comission;
+    Integer id_comission;
 
     @Column(name = "date" , nullable = false)
     Timestamp date;
@@ -20,14 +20,14 @@ public class Comission {
     public Comission() {
     }
 
-    public Comission(int id_comission, Timestamp date, float pourcentage) {
+    public Comission(Integer id_comission, Timestamp date, float pourcentage) {
         super();
         this.id_comission = id_comission;
         this.date = date;
         this.pourcentage = pourcentage;
     }
 
-    public int getId_comission() {
+    public Integer getId_comission() {
         return id_comission;
     }
 
@@ -39,7 +39,7 @@ public class Comission {
         return pourcentage;
     }
 
-    public void setId_comission(int id_comission) {
+    public void setId_comission(Integer id_comission) {
         this.id_comission = id_comission;
     }
 

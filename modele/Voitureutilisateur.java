@@ -11,20 +11,20 @@ import javax.persistence.Id;
 public class Voitureutilisateur {
     @Id
 	@GeneratedValue()
-	int  idvoitureutilisateur;
-	int  idutilisateur;
-	int  idvoituredefini;
+	Integer  idvoitureutilisateur;
+	Integer  idutilisateur;
+	Integer  idvoituredefini;
 	Date dateventedebut;
 	Date dateventefin;
 	String matricule;
 	Double kilometrage;
 	Double prix;
-	int  statut;
+	Integer  statut;
 
     public Voitureutilisateur() {
     }
 
-    public Voitureutilisateur(int  idvoitureutilisateur,int  idutilisateur,int  idvoituredefini,Date dateventedebut,Date dateventefin,String matricule,Double kilometrage,Double prix,int  statut) {
+    public Voitureutilisateur(Integer  idvoitureutilisateur,Integer  idutilisateur,Integer  idvoituredefini,Date dateventedebut,Date dateventefin,String matricule,Double kilometrage,Double prix,Integer  statut) {
         this.idvoitureutilisateur = idvoitureutilisateur;
 		this.idutilisateur = idutilisateur;
 		this.idvoituredefini = idvoituredefini;
@@ -36,27 +36,27 @@ public class Voitureutilisateur {
 		this.statut = statut;
     }
 
-    public int  getIdvoitureutilisateur() {
+    public Integer  getIdvoitureutilisateur() {
         return this.idvoitureutilisateur;
     }
 
-    public void setIdvoitureutilisateur(int  idvoitureutilisateur) {
+    public void setIdvoitureutilisateur(Integer  idvoitureutilisateur) {
         this.idvoitureutilisateur = idvoitureutilisateur;
     }
 
-	public int  getIdutilisateur() {
+	public Integer  getIdutilisateur() {
         return this.idutilisateur;
     }
 
-    public void setIdutilisateur(int  idutilisateur) {
+    public void setIdutilisateur(Integer  idutilisateur) {
         this.idutilisateur = idutilisateur;
     }
 
-	public int  getIdvoituredefini() {
+	public Integer  getIdvoituredefini() {
         return this.idvoituredefini;
     }
 
-    public void setIdvoituredefini(int  idvoituredefini) {
+    public void setIdvoituredefini(Integer  idvoituredefini) {
         this.idvoituredefini = idvoituredefini;
     }
 
@@ -100,11 +100,11 @@ public class Voitureutilisateur {
         this.prix = prix;
     }
 
-	public int  getStatut() {
+	public Integer  getStatut() {
         return this.statut;
     }
 
-    public void setStatut(int  statut) {
+    public void setStatut(Integer  statut) {
         this.statut = statut;
     }  
 }

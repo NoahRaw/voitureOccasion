@@ -41,7 +41,7 @@ public class FavorisController {
     }
 
     @PostMapping("/delete/{idFavoris}")
-    public void delete(@PathVariable int idFavoris){
+    public void delete(@PathVariable Integer idFavoris){
         favorisService.deleteFavorisById(idFavoris);
     }
 }

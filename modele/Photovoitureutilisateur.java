@@ -8,22 +8,22 @@ import javax.persistence.Id;
 
 @Entity()
 public class Photovoitureutilisateur {
-    int  idvoitureutilisateur;
+    Integer  idvoitureutilisateur;
 	String nomphoto;
 
     public Photovoitureutilisateur() {
     }
 
-    public Photovoitureutilisateur(int  idvoitureutilisateur,String nomphoto) {
+    public Photovoitureutilisateur(Integer  idvoitureutilisateur,String nomphoto) {
         this.idvoitureutilisateur = idvoitureutilisateur;
 		this.nomphoto = nomphoto;
     }
 
-    public int  getIdvoitureutilisateur() {
+    public Integer  getIdvoitureutilisateur() {
         return this.idvoitureutilisateur;
     }
 
-    public void setIdvoitureutilisateur(int  idvoitureutilisateur) {
+    public void setIdvoitureutilisateur(Integer  idvoitureutilisateur) {
         this.idvoitureutilisateur = idvoitureutilisateur;
     }
 

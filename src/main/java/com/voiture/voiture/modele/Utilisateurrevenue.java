@@ -9,14 +9,14 @@ import javax.persistence.Id;
 public class Utilisateurrevenue {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    int  idutilisateur;
+    Integer  idutilisateur;
     String nomutilisateur;
     Double revenue;
 
     public Utilisateurrevenue() {
     }
 
-    public Utilisateurrevenue(int  idutilisateur,Double revenue,String nomutilisateur) {
+    public Utilisateurrevenue(Integer  idutilisateur,Double revenue,String nomutilisateur) {
         this.idutilisateur = idutilisateur;
 		this.revenue = revenue;
         this.nomutilisateur=nomutilisateur;
@@ -30,11 +30,11 @@ public class Utilisateurrevenue {
     public void setNomutilisateur(String nomutilisateur) {
         this.nomutilisateur = nomutilisateur;
     }
-    public int  getIdutilisateur() {
+    public Integer  getIdutilisateur() {
         return this.idutilisateur;
     }
 
-    public void setIdutilisateur(int  idutilisateur) {
+    public void setIdutilisateur(Integer  idutilisateur) {
         this.idutilisateur = idutilisateur;
     }
 

@@ -21,7 +21,7 @@ public class FavorisService {
         return favorisRepository.save(annonceFavoris);
     }
 
-    public void deleteFavorisById(int idFavoris){
+    public void deleteFavorisById(Integer idFavoris){
         favorisRepository.deleteById(idFavoris);
     }
 }

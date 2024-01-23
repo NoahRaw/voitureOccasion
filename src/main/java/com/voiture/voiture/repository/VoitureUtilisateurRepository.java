@@ -15,9 +15,9 @@ public interface VoitureUtilisateurRepository extends JpaRepository<Voitureutili
     
     @Modifying
     @Query(value = "UPDATE VoitureUtilisateur SET statut = :status WHERE idvoitureutilisateur = :idvoitureutilisateur", nativeQuery = true)
-    void validation(@Param("status") int status, @Param("idvoitureutilisateur") int idvoitureutilisateur); 
+    void validation(@Param("status") Integer status, @Param("idvoitureutilisateur") Integer idvoitureutilisateur); 
     
     @Modifying
     @Query(value = "UPDATE VoitureUtilisateur SET statut = :status , dateventefin = :dateventefin WHERE idvoitureutilisateur = :idvoitureutilisateur", nativeQuery = true)
-    void vendu(@Param("status") int status,@Param("dateventefin") Date dateventefin, @Param("idvoitureutilisateur") int idvoitureutilisateur);
+    void vendu(@Param("status") Integer status,@Param("dateventefin") Date dateventefin, @Param("idvoitureutilisateur") Integer idvoitureutilisateur);
 }

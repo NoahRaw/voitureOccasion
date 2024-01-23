@@ -10,22 +10,22 @@ import javax.persistence.Id;
 public class Carburant {
     @Id
 	@GeneratedValue()
-	int  idcarburant;
+	Integer  idcarburant;
 	String description;
 
     public Carburant() {
     }
 
-    public Carburant(int  idcarburant,String description) {
+    public Carburant(Integer  idcarburant,String description) {
         this.idcarburant = idcarburant;
 		this.description = description;
     }
 
-    public int  getIdcarburant() {
+    public Integer  getIdcarburant() {
         return this.idcarburant;
     }
 
-    public void setIdcarburant(int  idcarburant) {
+    public void setIdcarburant(Integer  idcarburant) {
         this.idcarburant = idcarburant;
     }
 

@@ -27,17 +27,17 @@ public class MarqueController {
     }
 
     @PostMapping("/read/{idMarque}")
-    public Marque readById(@PathVariable int idMarque){
+    public Marque readById(@PathVariable Integer idMarque){
         return marqueService.getMarqueById(idMarque);
     }
 
     @PostMapping("/update/{idMarque}")
-    public Marque update(@PathVariable int idMarque, @RequestBody Marque marque){
+    public Marque update(@PathVariable Integer idMarque, @RequestBody Marque marque){
         return marqueService.update(idMarque, marque);
     }
 
     @PostMapping("/delete/{idMarque}")
-    public void delete(@PathVariable int idMarque){
+    public void delete(@PathVariable Integer idMarque){
         marqueService.deleteMarqueById(idMarque);
     }
 }

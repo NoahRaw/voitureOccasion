@@ -27,7 +27,7 @@ public class PhotoVoitureUtilisateurServiceImp implements PhotoVoitureUtilisateu
     }
 
     @Override
-    public PhotoVoitureUtilisateur getPhotoVoitureUtilisateurById(int id) {
+    public PhotoVoitureUtilisateur getPhotoVoitureUtilisateurById(Integer id) {
         Optional<PhotoVoitureUtilisateur> optionalPhotoVoitureUtilisateur = photoVoitureUtilisateurRepository.findById(id);
         return optionalPhotoVoitureUtilisateur.get();
     }
@@ -47,12 +47,12 @@ public class PhotoVoitureUtilisateurServiceImp implements PhotoVoitureUtilisateu
     } 
     
     @Override
-    public void deletePhotoVoitureUtilisateurById(int id) {
+    public void deletePhotoVoitureUtilisateurById(Integer id) {
         photoVoitureUtilisateurRepository.deleteById(id);
     }
 
     @Override
-    public List<PhotoVoitureUtilisateur> getPhotoVoitureUtilisateur(int idvoitureutilisateur){
+    public List<PhotoVoitureUtilisateur> getPhotoVoitureUtilisateur(Integer idvoitureutilisateur){
         return photoVoitureUtilisateurRepository.getPhotoVoitureUtilisateur(idvoitureutilisateur);
     }
     

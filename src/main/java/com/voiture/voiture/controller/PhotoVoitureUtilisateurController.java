@@ -29,7 +29,7 @@ public class PhotoVoitureUtilisateurController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PhotoVoitureUtilisateur> getPhotoVoitureUtilisateurById(@PathVariable int id) {
+    public ResponseEntity<PhotoVoitureUtilisateur> getPhotoVoitureUtilisateurById(@PathVariable Integer id) {
         PhotoVoitureUtilisateur photoVoitureUtilisateur = photoVoitureUtilisateurService.getPhotoVoitureUtilisateurById(id);
         return new ResponseEntity<>(photoVoitureUtilisateur, HttpStatus.OK);
     }
@@ -41,21 +41,21 @@ public class PhotoVoitureUtilisateurController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PhotoVoitureUtilisateur> updatePhotoVoitureUtilisateur(@PathVariable("id") int id,@RequestBody PhotoVoitureUtilisateur photoVoitureUtilisateur){
+    public ResponseEntity<PhotoVoitureUtilisateur> updatePhotoVoitureUtilisateur(@PathVariable("id") Integer id,@RequestBody PhotoVoitureUtilisateur photoVoitureUtilisateur){
          photoVoitureUtilisateur.setIdPhotovoitureutilisateur(id);
          PhotoVoitureUtilisateur update = photoVoitureUtilisateurService.updatePhotoVoitureUtilisateur(photoVoitureUtilisateur);
          return new ResponseEntity<>(update, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePhotoVoitureUtilisateurById(@PathVariable int id) {
+    public ResponseEntity<String> deletePhotoVoitureUtilisateurById(@PathVariable Integer id) {
         photoVoitureUtilisateurService.deletePhotoVoitureUtilisateurById(id);
         return new ResponseEntity<>("PhotoVoitureUtilisateur successfully deleted!", HttpStatus.OK);
         
     }
     
     @GetMapping("getPhotoVoitureUtilisateur/{idvoitureutilisateur}")
-    public List<PhotoVoitureUtilisateur> getPhotoVoitureUtilisateur(@PathVariable int idvoitureutilisateur){
+    public List<PhotoVoitureUtilisateur> getPhotoVoitureUtilisateur(@PathVariable Integer idvoitureutilisateur){
         return photoVoitureUtilisateurService.getPhotoVoitureUtilisateur(idvoitureutilisateur);
     }
 }

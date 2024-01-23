@@ -8,7 +8,7 @@ public class Carburant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idcarburant")
-    int id_carburant;
+    Integer id_carburant;
 
     @Column(name = "description" , nullable = false)
     String description;
@@ -16,13 +16,13 @@ public class Carburant {
     public Carburant() {
     }
 
-    public Carburant(int id_carburant, String description) {
+    public Carburant(Integer id_carburant, String description) {
         super();
         this.id_carburant = id_carburant;
         this.description = description;
     }
 
-    public int getId_carburant() {
+    public Integer getId_carburant() {
         return id_carburant;
     }
 
@@ -30,7 +30,7 @@ public class Carburant {
         return description;
     }
 
-    public void setId_carburant(int id_carburant) {
+    public void setId_carburant(Integer id_carburant) {
         this.id_carburant = id_carburant;
     }
 

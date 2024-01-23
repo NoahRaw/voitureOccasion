@@ -8,15 +8,15 @@ public class AnnonceFavoris {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idannoncefavoris")
-    int idannonceFavoris;
+    Integer idannonceFavoris;
 
     @Column(name = "idutilisateur" , nullable = false)
-    int idutilisateur;
+    Integer idutilisateur;
 
     @Column(name = "idvoitureutilisateur" , nullable = false)
-    int idvoitureutilisateur;
+    Integer idvoitureutilisateur;
 
-    public AnnonceFavoris(int idannonceFavoris, int idutilisateur, int idvoitureutilisateur) {
+    public AnnonceFavoris(Integer idannonceFavoris, Integer idutilisateur, Integer idvoitureutilisateur) {
         this.idannonceFavoris = idannonceFavoris;
         this.idutilisateur = idutilisateur;
         this.idvoitureutilisateur = idvoitureutilisateur;
@@ -25,27 +25,27 @@ public class AnnonceFavoris {
     public AnnonceFavoris() {
     }
 
-    public int getIdannonceFavoris() {
+    public Integer getIdannonceFavoris() {
         return idannonceFavoris;
     }
 
-    public int getIdvoitureutilisateur() {
+    public Integer getIdvoitureutilisateur() {
         return idvoitureutilisateur;
     }
 
-    public void setIdannonceFavoris(int idannonceFavoris) {
+    public void setIdannonceFavoris(Integer idannonceFavoris) {
         this.idannonceFavoris = idannonceFavoris;
     }
 
-    public void setIdvoitureutilisateur(int idvoitureutilisateur) {
+    public void setIdvoitureutilisateur(Integer idvoitureutilisateur) {
         this.idvoitureutilisateur = idvoitureutilisateur;
     }
 
-    public void setIdutilisateur(int idutilisateur) {
+    public void setIdutilisateur(Integer idutilisateur) {
         this.idutilisateur = idutilisateur;
     }
 
-    public int getIdutilisateur() {
+    public Integer getIdutilisateur() {
         return idutilisateur;
     }
 }

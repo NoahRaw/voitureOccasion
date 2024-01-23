@@ -10,22 +10,22 @@ import javax.persistence.Id;
 public class Marque {
     @Id
 	@GeneratedValue()
-	int  idmarque;
+	Integer  idmarque;
 	String description;
 
     public Marque() {
     }
 
-    public Marque(int  idmarque,String description) {
+    public Marque(Integer  idmarque,String description) {
         this.idmarque = idmarque;
 		this.description = description;
     }
 
-    public int  getIdmarque() {
+    public Integer  getIdmarque() {
         return this.idmarque;
     }
 
-    public void setIdmarque(int  idmarque) {
+    public void setIdmarque(Integer  idmarque) {
         this.idmarque = idmarque;
     }
 

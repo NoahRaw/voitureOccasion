@@ -8,6 +8,6 @@ import com.voiture.voiture.modele.Utilisateur;
 
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Integer> {
     long count();
-    Optional<Utilisateur> findByEmailAndMdpAndEtat(String login, String pwd,int etat);
+    Optional<Utilisateur> findByEmailAndMdpAndEtat(String login, String pwd,Integer etat);
 }
 

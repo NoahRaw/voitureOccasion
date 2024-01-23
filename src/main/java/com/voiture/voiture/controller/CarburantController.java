@@ -27,17 +27,17 @@ public class CarburantController {
     }
 
     @PostMapping("/read/{idCarburant}")
-    public Carburant readById(@PathVariable int idCarburant){
+    public Carburant readById(@PathVariable Integer idCarburant){
         return carburantService.getCarburantById(idCarburant);
     }
 
     @PostMapping("/update/{idCarburant}")
-    public Carburant update(@PathVariable int idCarburant, @RequestBody Carburant carburant){
+    public Carburant update(@PathVariable Integer idCarburant, @RequestBody Carburant carburant){
         return carburantService.update(idCarburant, carburant);
     }
 
     @PostMapping("/delete/{idCarburant}")
-    public void delete(@PathVariable int idCarburant){
+    public void delete(@PathVariable Integer idCarburant){
         carburantService.deleteCarburantById(idCarburant);
     }
 }

@@ -15,9 +15,9 @@ import com.voiture.voiture.connexion.ConnexionBdd;
 public class VoitureDefiniStatView {
 
 
-    int idVoituredefini;
+    Integer idVoituredefini;
 
-    int idMarque;
+    Integer idMarque;
 
     String nomMarque;
 
@@ -29,7 +29,7 @@ public class VoitureDefiniStatView {
     public VoitureDefiniStatView() {
     }
 
-    public VoitureDefiniStatView(int idVoituredefini, int idMarque, String nomMarque, String nomModele,double nombre) {
+    public VoitureDefiniStatView(Integer idVoituredefini, Integer idMarque, String nomMarque, String nomModele,double nombre) {
         this.idVoituredefini = idVoituredefini;
         this.idMarque = idMarque;
         this.nomMarque = nomMarque;
@@ -37,26 +37,26 @@ public class VoitureDefiniStatView {
         this.nombre = nombre;
     }
 
-    public VoitureDefiniStatView(int idMarque, String nomMarque, String nomModele,double nombre) {
+    public VoitureDefiniStatView(Integer idMarque, String nomMarque, String nomModele,double nombre) {
         this.idMarque = idMarque;
         this.nomMarque = nomMarque;
         this.nomModele = nomModele;
         this.nombre = nombre;
     }
 
-    public int getIdVoituredefini() {
+    public Integer getIdVoituredefini() {
         return idVoituredefini;
     }
 
-    public void setIdVoituredefini(int idVoituredefini) {
+    public void setIdVoituredefini(Integer idVoituredefini) {
         this.idVoituredefini = idVoituredefini;
     }
 
-    public int getIdMarque() {
+    public Integer getIdMarque() {
         return idMarque;
     }
 
-    public void setIdMarque(int idMarque) {
+    public void setIdMarque(Integer idMarque) {
         this.idMarque = idMarque;
     }
 

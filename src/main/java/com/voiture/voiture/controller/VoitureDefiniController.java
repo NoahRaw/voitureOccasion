@@ -39,12 +39,12 @@ public class VoitureDefiniController {
     }
 
     @PutMapping("/{id}")
-    public Voituredefini updateVoitureDefini(@PathVariable int id,@RequestBody Voituredefini modifier){
+    public Voituredefini updateVoitureDefini(@PathVariable Integer id,@RequestBody Voituredefini modifier){
         return this.voitureDefiniService.update(id, modifier);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteVoitureDefini(@PathVariable int id){
+    public void deleteVoitureDefini(@PathVariable Integer id){
         this.voitureDefiniService.delete(id);
     }
 }

@@ -8,13 +8,13 @@ public interface PhotoVoitureUtilisateurService {
 
     List<PhotoVoitureUtilisateur> getAllPhotosVoitureUtilisateur();
 
-    PhotoVoitureUtilisateur getPhotoVoitureUtilisateurById(int id);
+    PhotoVoitureUtilisateur getPhotoVoitureUtilisateurById(Integer id);
 
     PhotoVoitureUtilisateur savePhotoVoitureUtilisateur(PhotoVoitureUtilisateur photoVoitureUtilisateur);
 
     PhotoVoitureUtilisateur updatePhotoVoitureUtilisateur(PhotoVoitureUtilisateur photoVoitureUtilisateur);
 
-    void deletePhotoVoitureUtilisateurById(int id);
+    void deletePhotoVoitureUtilisateurById(Integer id);
 
-    List<PhotoVoitureUtilisateur> getPhotoVoitureUtilisateur(int idvoitureutilisateur);
+    List<PhotoVoitureUtilisateur> getPhotoVoitureUtilisateur(Integer idvoitureutilisateur);
 }

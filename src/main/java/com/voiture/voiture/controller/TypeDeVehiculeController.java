@@ -30,7 +30,7 @@ public class TypeDeVehiculeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TypeDeVehicule> getTypeDeVehiculeById(@PathVariable int id) {
+    public ResponseEntity<TypeDeVehicule> getTypeDeVehiculeById(@PathVariable Integer id) {
         TypeDeVehicule typeDeVehicule = typeDeVehiculeService.getTypeDeVehiculeById(id);
         return new ResponseEntity<>(typeDeVehicule, HttpStatus.OK);
     }
@@ -44,14 +44,14 @@ public class TypeDeVehiculeController {
      // Build Update User REST API
     @PutMapping("/{id}")
      // http://localhost:8080/api/typeDeVehicules/1
-    public ResponseEntity<TypeDeVehicule> updateTypeDeVehicule(@PathVariable("id") int id,@RequestBody TypeDeVehicule typeDeVehicule){
+    public ResponseEntity<TypeDeVehicule> updateTypeDeVehicule(@PathVariable("id") Integer id,@RequestBody TypeDeVehicule typeDeVehicule){
          typeDeVehicule.setIdTypeDeVehicule(id);
          TypeDeVehicule updatedTypeDeVehicule = typeDeVehiculeService.updateTypeDeVehicule(typeDeVehicule);
          return new ResponseEntity<>(updatedTypeDeVehicule, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteTypeDeVehiculeById(@PathVariable int id) {
+    public ResponseEntity<String> deleteTypeDeVehiculeById(@PathVariable Integer id) {
         typeDeVehiculeService.deleteTypeDeVehiculeById(id);
         return new ResponseEntity<>("TypeDeVehicule successfully deleted!", HttpStatus.OK);
     }

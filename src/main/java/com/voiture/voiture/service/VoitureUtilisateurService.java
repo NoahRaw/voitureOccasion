@@ -27,7 +27,7 @@ public class VoitureUtilisateurService {
         return this.voitureUtilisateurRepository.findAll();
     }
     
-    public Voitureutilisateur update(int idVoitureUtilisateur,Voitureutilisateur modifier){
+    public Voitureutilisateur update(Integer idVoitureUtilisateur,Voitureutilisateur modifier){
         return this.voitureUtilisateurRepository.findById(idVoitureUtilisateur).map(
             newVoitureUtilisateur ->{
                 newVoitureUtilisateur.setIdutilisateur(modifier.getIdutilisateur());
@@ -44,17 +44,17 @@ public class VoitureUtilisateurService {
         ).orElseThrow(() -> new RuntimeException("VoitureUtilisateur pas trouver"));
     }
 
-    public void delete(int idVoitureUtilisateur){
+    public void delete(Integer idVoitureUtilisateur){
         this.voitureUtilisateurRepository.deleteById(idVoitureUtilisateur);
     }
 
     @Transactional
-    public void validation(int status,int idutilisateur){
+    public void validation(Integer status,Integer idutilisateur){
         this.voitureUtilisateurRepository.validation(status, idutilisateur);
     }
 
     @Transactional
-    public void vendu(int status,Date date,int idutilisateur){
+    public void vendu(Integer status,Date date,Integer idutilisateur){
         this.voitureUtilisateurRepository.vendu(status,date ,idutilisateur);
     }
 }

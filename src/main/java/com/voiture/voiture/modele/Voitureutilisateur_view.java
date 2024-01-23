@@ -11,15 +11,15 @@ import java.util.List;
 import com.voiture.voiture.connexion.ConnexionBdd;
 
 public class Voitureutilisateur_view {
-    int idvoitureutilisateur;
-    int idutilisateur;
-    int idvoituredefini;
+    Integer idvoitureutilisateur;
+    Integer idutilisateur;
+    Integer idvoituredefini;
     Date dateventedebut;
     Date dateventefin;
     String matricule;
     double kilometrage;
     double prix;
-    int statut;
+    Integer statut;
     String nommarque;
     String nommodele;
     String nomcarburant;
@@ -27,23 +27,23 @@ public class Voitureutilisateur_view {
     double cv;
     String nomboitedevitesse;
     String nomtypedevehicule;
-    int nbrporte;
+    Integer nbrporte;
     double puissance;
-    int idmarque;
-    int idcarburant;
-    int idpuissance;
-    int idboitedevitesse;
-    int idtypedevehicule;
+    Integer idmarque;
+    Integer idcarburant;
+    Integer idpuissance;
+    Integer idboitedevitesse;
+    Integer idtypedevehicule;
     String nomutilisateur;
     
 
 
     ConnexionBdd connexionBdd = new ConnexionBdd();
 
-    public Voitureutilisateur_view(int idvoitureutilisateur, int idutilisateur, int idvoituredefini,
-        Date dateventedebut, Date dateventefin, String matricule, double kilometrage, double prix, int statut,
+    public Voitureutilisateur_view(Integer idvoitureutilisateur, Integer idutilisateur, Integer idvoituredefini,
+        Date dateventedebut, Date dateventefin, String matricule, double kilometrage, double prix, Integer statut,
         String nommarque, String nommodele, String nomcarburant, double kw, double cv, String nomboitedevitesse,
-        String nomtypedevehicule, int nbrporte, double puissance) {
+        String nomtypedevehicule, Integer nbrporte, double puissance) {
         this.idvoitureutilisateur = idvoitureutilisateur;
         this.idutilisateur = idutilisateur;
         this.idvoituredefini = idvoituredefini;
@@ -73,44 +73,44 @@ public class Voitureutilisateur_view {
         this.nomutilisateur = nomutilisateur;
     }
 
-    public int getIdtypedevehicule() {
+    public Integer getIdtypedevehicule() {
         return idtypedevehicule;
     }
 
-    public void setIdtypedevehicule(int idtypedevehicule) {
+    public void setIdtypedevehicule(Integer idtypedevehicule) {
         this.idtypedevehicule = idtypedevehicule;
     }
 
 
-    public int getIdmarque() {
+    public Integer getIdmarque() {
         return idmarque;
     }
 
-    public void setIdmarque(int idmarque) {
+    public void setIdmarque(Integer idmarque) {
         this.idmarque = idmarque;
     }
 
-    public int getIdcarburant() {
+    public Integer getIdcarburant() {
         return idcarburant;
     }
 
-    public void setIdcarburant(int idcarburant) {
+    public void setIdcarburant(Integer idcarburant) {
         this.idcarburant = idcarburant;
     }
 
-    public int getIdpuissance() {
+    public Integer getIdpuissance() {
         return idpuissance;
     }
 
-    public void setIdpuissance(int idpuissance) {
+    public void setIdpuissance(Integer idpuissance) {
         this.idpuissance = idpuissance;
     }
 
-    public int getIdboitedevitesse() {
+    public Integer getIdboitedevitesse() {
         return idboitedevitesse;
     }
 
-    public void setIdboitedevitesse(int idboitedevitesse) {
+    public void setIdboitedevitesse(Integer idboitedevitesse) {
         this.idboitedevitesse = idboitedevitesse;
     }
 
@@ -176,12 +176,12 @@ public class Voitureutilisateur_view {
         this.nomtypedevehicule = nomtypedevehicule;
     }
 
-    public int getNbrporte() {
+    public Integer getNbrporte() {
         return nbrporte;
     }
 
 
-    public void setNbrporte(int nbrporte) {
+    public void setNbrporte(Integer nbrporte) {
         this.nbrporte = nbrporte;
     }
 
@@ -193,32 +193,32 @@ public class Voitureutilisateur_view {
         this.puissance = puissance;
     }
     
-    public int getIdvoitureutilisateur() {
+    public Integer getIdvoitureutilisateur() {
         return idvoitureutilisateur;
     }
 
 
-    public void setIdvoitureutilisateur(int idvoitureutilisateur) {
+    public void setIdvoitureutilisateur(Integer idvoitureutilisateur) {
         this.idvoitureutilisateur = idvoitureutilisateur;
     }
 
 
-    public int getIdutilisateur() {
+    public Integer getIdutilisateur() {
         return idutilisateur;
     }
 
 
-    public void setIdutilisateur(int idutilisateur) {
+    public void setIdutilisateur(Integer idutilisateur) {
         this.idutilisateur = idutilisateur;
     }
 
 
-    public int getIdvoituredefini() {
+    public Integer getIdvoituredefini() {
         return idvoituredefini;
     }
 
 
-    public void setIdvoituredefini(int idvoituredefini) {
+    public void setIdvoituredefini(Integer idvoituredefini) {
         this.idvoituredefini = idvoituredefini;
     }
 
@@ -273,12 +273,12 @@ public class Voitureutilisateur_view {
     }
 
 
-    public int getStatut() {
+    public Integer getStatut() {
         return statut;
     }
 
 
-    public void setStatut(int statut) {
+    public void setStatut(Integer statut) {
         this.statut = statut;
     }
 
@@ -429,7 +429,7 @@ public class Voitureutilisateur_view {
    }
 
    //Historique des annonces
-   public List<Voitureutilisateur_view> getHistoriqueAnnonce(Connection con, int idutilisateur) throws Exception {
+   public List<Voitureutilisateur_view> getHistoriqueAnnonce(Connection con, Integer idutilisateur) throws Exception {
         List<Voitureutilisateur_view> liste = new ArrayList<>();
         String query = "SELECT * FROM voitureutilisateur_view WHERE idutilisateur =" +idutilisateur;
 
@@ -479,7 +479,7 @@ public class Voitureutilisateur_view {
     }
 
 
-   public List<Voitureutilisateur_view> get_annonce_autre_utilisateur(Connection con,int id_utilisateur) throws Exception{
+   public List<Voitureutilisateur_view> get_annonce_autre_utilisateur(Connection con,Integer id_utilisateur) throws Exception{
     List<Voitureutilisateur_view> liste = new ArrayList<>();
         
     try {
@@ -529,7 +529,7 @@ public class Voitureutilisateur_view {
    }
 
 
-   public List<Voitureutilisateur_view> get_liste_de_ces_annonces(Connection con,int id_utilisateur) throws Exception{
+   public List<Voitureutilisateur_view> get_liste_de_ces_annonces(Connection con,Integer id_utilisateur) throws Exception{
     List<Voitureutilisateur_view> liste = new ArrayList<>();
         
     try {

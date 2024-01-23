@@ -21,7 +21,7 @@ public class VuestatistiqueventeService {
         return vuestatistiqueventeRepository.findAll();
     }
 
-    public Vuestatistiquevente getVuestatistiqueventeByIdUtilisateur(int idUtilisateur){
+    public Vuestatistiquevente getVuestatistiqueventeByIdUtilisateur(Integer idUtilisateur){
         Optional<Vuestatistiquevente> optionalVuestatistiquevente = vuestatistiqueventeRepository.findById(idUtilisateur);
         return optionalVuestatistiquevente.orElseThrow(() -> new NoSuchElementException("optionalVuestatistiquevente non trouvé pour l'ID : " + idUtilisateur));
     }

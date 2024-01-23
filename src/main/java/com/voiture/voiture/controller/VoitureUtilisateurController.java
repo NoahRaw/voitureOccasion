@@ -49,17 +49,17 @@ public class VoitureUtilisateurController {
     }
 
     @PutMapping("/{id}")
-    public Voitureutilisateur updateVoitureUtilisateur(@PathVariable int id,@RequestBody Voitureutilisateur modifier){
+    public Voitureutilisateur updateVoitureUtilisateur(@PathVariable Integer id,@RequestBody Voitureutilisateur modifier){
         return this.voitureUtilisateurService.update(id, modifier);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteVoitureUtilisateur(@PathVariable int id){
+    public void deleteVoitureUtilisateur(@PathVariable Integer id){
         this.voitureUtilisateurService.delete(id);
     }
 
     @PostMapping("/validation/{idvoitureutilisateur}")
-    public void validation(@PathVariable int idvoitureutilisateur){ 
+    public void validation(@PathVariable Integer idvoitureutilisateur){ 
         this.voitureUtilisateurService.validation(1,idvoitureutilisateur);
     }
 
@@ -67,9 +67,9 @@ public class VoitureUtilisateurController {
 public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestBody Annonce annonceRequest) {
     Voitureutilisateur voitureUtilc = voitureUtilisateurService.insertion(annonceRequest.getVoitureUtilisateur());
     PhotoVoitureUtilisateur photoVU = null;
-    int idVoitureUtilc = voitureUtilc.getIdvoitureutilisateur();
+    Integer idVoitureUtilc = voitureUtilc.getIdvoitureutilisateur();
     // 
-    for (int i = 0; i < annonceRequest.getPhoto().length; i++) {
+    for (Integer i = 0; i < annonceRequest.getPhoto().length; i++) {
         photoVU = new PhotoVoitureUtilisateur();
         photoVU.setIdVoitureUtilisateur(idVoitureUtilc);
         photoVU.setNomPhoto(annonceRequest.getPhoto()[i]);
@@ -81,7 +81,7 @@ public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestBody Annonce ann
 
 
     @PostMapping("/vendu/{idvoitureutilisateur}")
-    public void vendu(@PathVariable int idvoitureutilisateur){ 
+    public void vendu(@PathVariable Integer idvoitureutilisateur){ 
         Date aujourdhui = new Date();
         this.voitureUtilisateurService.vendu(2,aujourdhui,idvoitureutilisateur);
     }

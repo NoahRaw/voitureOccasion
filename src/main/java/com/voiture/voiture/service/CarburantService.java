@@ -25,12 +25,12 @@ public class CarburantService {
         return CarburantRepository.save(vehicule);
     }
 
-    public Carburant getCarburantById(int idCarburant) {
+    public Carburant getCarburantById(Integer idCarburant) {
         Optional<Carburant> optionalCarburant = CarburantRepository.findById(idCarburant);
         return optionalCarburant.orElseThrow(() -> new NoSuchElementException("Carburant non trouvé pour l'ID : " + idCarburant));
     }
 
-    public Carburant update(int idCarburant, Carburant carburant){
+    public Carburant update(Integer idCarburant, Carburant carburant){
         return this.CarburantRepository.findById(idCarburant).map(
                 newCarburant ->{
                     newCarburant.setId_carburant(carburant.getId_carburant());
@@ -40,7 +40,7 @@ public class CarburantService {
         ).orElseThrow(() -> new RuntimeException("carburant pas trouver"));
     }
 
-    public void deleteCarburantById(int idvehicule){
+    public void deleteCarburantById(Integer idvehicule){
         CarburantRepository.deleteById(idvehicule);
     }
 

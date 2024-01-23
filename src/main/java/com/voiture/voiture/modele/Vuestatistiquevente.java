@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Vuestatistiquevente {
     @Id
     @Column(name = "idutilisateur" , nullable = false)
-    int id_utilisateur;
+    Integer id_utilisateur;
 
     @Column(name = "nomutilisateur" , nullable = false)
     String nomutilisateur;
@@ -19,9 +19,9 @@ public class Vuestatistiquevente {
     String email;
 
     @Column(name = "nombredeventes" , nullable = false)
-    int nombredeventes;
+    Integer nombredeventes;
 
-    public Vuestatistiquevente(int id_utilisateur, String nomutilisateur, String email, int nombredeventes) {
+    public Vuestatistiquevente(Integer id_utilisateur, String nomutilisateur, String email, Integer nombredeventes) {
         this.id_utilisateur = id_utilisateur;
         this.nomutilisateur = nomutilisateur;
         this.email = email;
@@ -31,7 +31,7 @@ public class Vuestatistiquevente {
     public Vuestatistiquevente() {
     }
 
-    public void setId_utilisateur(int id_utilisateur) {
+    public void setId_utilisateur(Integer id_utilisateur) {
         this.id_utilisateur = id_utilisateur;
     }
 
@@ -39,11 +39,11 @@ public class Vuestatistiquevente {
         this.email = email;
     }
 
-    public void setNombredeventes(int nombredeventes) {
+    public void setNombredeventes(Integer nombredeventes) {
         this.nombredeventes = nombredeventes;
     }
 
-    public int getId_utilisateur() {
+    public Integer getId_utilisateur() {
         return id_utilisateur;
     }
 
@@ -51,7 +51,7 @@ public class Vuestatistiquevente {
         return email;
     }
 
-    public int getNombredeventes() {
+    public Integer getNombredeventes() {
         return nombredeventes;
     }
 

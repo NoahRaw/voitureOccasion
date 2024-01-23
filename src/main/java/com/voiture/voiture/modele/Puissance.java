@@ -10,24 +10,24 @@ import javax.persistence.Id;
 public class Puissance {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int  idpuissance;
+	Integer  idpuissance;
 	Double kw;
 	Double cv;
 
     public Puissance() {
     }
 
-    public Puissance(int  idpuissance,Double kw,Double cv) {
+    public Puissance(Integer  idpuissance,Double kw,Double cv) {
         this.idpuissance = idpuissance;
 		this.kw = kw;
 		this.cv = cv;
     }
 
-    public int  getIdpuissance() {
+    public Integer  getIdpuissance() {
         return this.idpuissance;
     }
 
-    public void setIdpuissance(int  idpuissance) {
+    public void setIdpuissance(Integer  idpuissance) {
         this.idpuissance = idpuissance;
     }
 

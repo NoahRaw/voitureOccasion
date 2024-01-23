@@ -11,7 +11,7 @@ import com.voiture.voiture.modele.PhotoVoitureUtilisateur;
 public interface PhotoVoitureUtilisateurRepository extends JpaRepository<PhotoVoitureUtilisateur, Integer> {
 
     @Query(value = "select * from photoVoitureUtilisateur where idvoitureutilisateur = :idvoitureutilisateur", nativeQuery = true)
-    List<PhotoVoitureUtilisateur> getPhotoVoitureUtilisateur(@Param("idvoitureutilisateur") int idvoitureutilisateur);
+    List<PhotoVoitureUtilisateur> getPhotoVoitureUtilisateur(@Param("idvoitureutilisateur") Integer idvoitureutilisateur);
 
 }
 

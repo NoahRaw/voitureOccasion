@@ -19,28 +19,28 @@ public class PhotoVoitureUtilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idphotovoitureutilisateur")
-    private int idPhotovoitureutilisateur;
+    private Integer idPhotovoitureutilisateur;
     @Column(name = "idvoitureutilisateur")
-    private int idVoitureUtilisateur;
+    private Integer idVoitureUtilisateur;
     @Column(name = "nomphoto")
     private String nomPhoto;
 
     
 
     // Getters et Setters
-    public int getIdPhotovoitureutilisateur() {
+    public Integer getIdPhotovoitureutilisateur() {
         return idPhotovoitureutilisateur;
     }
 
-    public void setIdPhotovoitureutilisateur(int idPhotoVoitureUtilisateur) {
+    public void setIdPhotovoitureutilisateur(Integer idPhotoVoitureUtilisateur) {
         this.idPhotovoitureutilisateur = idPhotoVoitureUtilisateur;
     }
 
-    public int getIdVoitureUtilisateur() {
+    public Integer getIdVoitureUtilisateur() {
         return idVoitureUtilisateur;
     }
 
-    public void setIdVoitureUtilisateur(int idVoitureUtilisateur) {
+    public void setIdVoitureUtilisateur(Integer idVoitureUtilisateur) {
         this.idVoitureUtilisateur = idVoitureUtilisateur;
     }
 

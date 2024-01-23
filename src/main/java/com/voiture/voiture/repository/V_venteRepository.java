@@ -9,5 +9,5 @@
 
 //     List<T> findAll();
 //     List<T> findAll(Sort sort);
-//     int count();
+//     Integer count();
 // }

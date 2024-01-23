@@ -27,17 +27,17 @@ public class ComissionController {
     }
 
     @PostMapping("/read/{idCommission}")
-    public Comission readById(@PathVariable int idCommission){
+    public Comission readById(@PathVariable Integer idCommission){
         return comissionService.getCommissionById(idCommission);
     }
 
     @PostMapping("/update/{idCommission}")
-    public Comission update(@PathVariable int idCommission, @RequestBody Comission comission){
+    public Comission update(@PathVariable Integer idCommission, @RequestBody Comission comission){
         return comissionService.update(idCommission, comission);
     }
 
     @PostMapping("/delete/{idCommission}")
-    public void delete(@PathVariable int idCommission){
+    public void delete(@PathVariable Integer idCommission){
         comissionService.deleteCommissionById(idCommission);
     }
 }

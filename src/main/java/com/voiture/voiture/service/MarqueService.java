@@ -24,12 +24,12 @@ public class MarqueService {
         return marqueRepository.findAll();
     }
 
-    public Marque getMarqueById(int idMarque) {
+    public Marque getMarqueById(Integer idMarque) {
         Optional<Marque> optionalMarque = marqueRepository.findById(idMarque);
         return optionalMarque.orElseThrow(() -> new NoSuchElementException("marque non trouvé pour l'ID : " + idMarque));
     }
 
-    public Marque update(int idMarque, Marque marque){
+    public Marque update(Integer idMarque, Marque marque){
         return this.marqueRepository.findById(idMarque).map(
                 newMarque ->{
                     newMarque.setId_marque(marque.getId_marque());
@@ -39,7 +39,7 @@ public class MarqueService {
         ).orElseThrow(() -> new RuntimeException("marque pas trouver"));
     }
 
-    public void deleteMarqueById(int idMarque){
+    public void deleteMarqueById(Integer idMarque){
         marqueRepository.deleteById(idMarque);
     }
 }

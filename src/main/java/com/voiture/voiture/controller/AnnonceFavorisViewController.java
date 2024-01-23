@@ -31,7 +31,7 @@ public class AnnonceFavorisViewController {
     }
 
     @GetMapping("/findAnnonceFavorisByIdUser/{idutilisateur}")
-    public ResponseEntity<List<AnnonceFavorisView>> findAnnonceFavorisByIdUser(@PathVariable int idutilisateur,HttpServletRequest request){
+    public ResponseEntity<List<AnnonceFavorisView>> findAnnonceFavorisByIdUser(@PathVariable Integer idutilisateur,HttpServletRequest request){
         MyToken token=myTokenService.getToken(request);
         if(token!=null){
             return ResponseEntity.ok(annonceFavorisViewService.findAnnonceFavorisByIdUser(idutilisateur));

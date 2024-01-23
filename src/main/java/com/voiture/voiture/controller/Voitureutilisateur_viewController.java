@@ -30,20 +30,20 @@ public class Voitureutilisateur_viewController {
     }
 
     @GetMapping("/getHistoriqueAnnonce/{idutilisateur}")
-    public List<Voitureutilisateur_view> getHistoriqueAnnonce(@PathVariable int idutilisateur) throws Exception{
+    public List<Voitureutilisateur_view> getHistoriqueAnnonce(@PathVariable Integer idutilisateur) throws Exception{
         Voitureutilisateur_view v = new Voitureutilisateur_view();
         return v.getHistoriqueAnnonce(null,idutilisateur);
     }
 
     
     @PostMapping("/annonce/{idUtilisateur}")
-    public List<Voitureutilisateur_view> get_annonce_autre_utilisateur(@PathVariable int idUtilisateur) throws Exception{
+    public List<Voitureutilisateur_view> get_annonce_autre_utilisateur(@PathVariable Integer idUtilisateur) throws Exception{
         Voitureutilisateur_view v = new Voitureutilisateur_view(); 
         return v.get_annonce_autre_utilisateur(null,idUtilisateur);
     }
 
     @GetMapping("/ces_annonces")
-    public List<Voitureutilisateur_view> get_liste_de_ces_annonces(@PathVariable int idUtilisateur) throws Exception{
+    public List<Voitureutilisateur_view> get_liste_de_ces_annonces(@PathVariable Integer idUtilisateur) throws Exception{
         Voitureutilisateur_view v = new Voitureutilisateur_view(); 
         return v.get_liste_de_ces_annonces(null,idUtilisateur);
     }

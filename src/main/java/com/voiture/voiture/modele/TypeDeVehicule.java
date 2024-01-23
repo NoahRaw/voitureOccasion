@@ -19,7 +19,7 @@ public class TypeDeVehicule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idtypedevehicule")
-    private int idTypeDeVehicule;
+    private Integer idTypeDeVehicule;
     @Column(name = "description")
     private String description;
 
@@ -27,11 +27,11 @@ public class TypeDeVehicule {
     
 
 
-    public int getIdTypeDeVehicule() {
+    public Integer getIdTypeDeVehicule() {
         return idTypeDeVehicule;
     }
 
-    public void setIdTypeDeVehicule(int idTypeDeVehicule) {
+    public void setIdTypeDeVehicule(Integer idTypeDeVehicule) {
         this.idTypeDeVehicule = idTypeDeVehicule;
     }
 

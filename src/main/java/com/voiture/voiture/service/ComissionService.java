@@ -24,12 +24,12 @@ public class ComissionService {
         return ComissionRepository.save(comission);
     }
 
-    public Comission getCommissionById(int idCommission){
+    public Comission getCommissionById(Integer idCommission){
         Optional<Comission> optionalCommission = ComissionRepository.findById(idCommission);
         return optionalCommission.orElseThrow(() -> new NoSuchElementException("Commission non trouvé pour l'ID : " + idCommission));
     }
 
-    public Comission update(int idCommission, Comission comission){
+    public Comission update(Integer idCommission, Comission comission){
         return this.ComissionRepository.findById(idCommission).map(
                 newCommision ->{
                     newCommision.setId_comission(comission.getId_comission());
@@ -40,7 +40,7 @@ public class ComissionService {
         ).orElseThrow(() -> new RuntimeException("commission pas trouver"));
     }
 
-    public void deleteCommissionById(int idCommission){
+    public void deleteCommissionById(Integer idCommission){
         ComissionRepository.deleteById(idCommission);
     }
 

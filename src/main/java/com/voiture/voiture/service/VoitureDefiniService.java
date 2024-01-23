@@ -25,7 +25,7 @@ public class VoitureDefiniService {
     }
 
 
-    public Voituredefini update(int idVoitureDefini,Voituredefini modifier){
+    public Voituredefini update(Integer idVoitureDefini,Voituredefini modifier){
         return this.voitureDefiniRepository.findById(idVoitureDefini).map(
             VoitureDefini ->{
                 VoitureDefini.setIdmarque(modifier.getIdmarque());
@@ -41,7 +41,7 @@ public class VoitureDefiniService {
         ).orElseThrow(() -> new RuntimeException("VoitureDefini pas trouver"));
     }
 
-    public void delete(int idVoitureDefini){
+    public void delete(Integer idVoitureDefini){
         this.voitureDefiniRepository.deleteById(idVoitureDefini);
     }
 }

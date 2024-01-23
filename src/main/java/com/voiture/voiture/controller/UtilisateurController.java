@@ -58,12 +58,12 @@ public class UtilisateurController {
     }
 
     @PutMapping("/{id}")
-    public Utilisateur updateUtilisateur(@PathVariable int id,@RequestBody Utilisateur modifier){
+    public Utilisateur updateUtilisateur(@PathVariable Integer id,@RequestBody Utilisateur modifier){
         return this.utilisateurService.update(id, modifier);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUtilisateur(@PathVariable int idUtilisateur){
+    public void deleteUtilisateur(@PathVariable Integer idUtilisateur){
         this.utilisateurService.delete(idUtilisateur);
     }
 

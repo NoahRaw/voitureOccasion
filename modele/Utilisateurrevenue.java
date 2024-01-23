@@ -8,22 +8,22 @@ import javax.persistence.Id;
 
 @Entity()
 public class Utilisateurrevenue {
-    int  idutilisateur;
+    Integer  idutilisateur;
 	Double revenue;
 
     public Utilisateurrevenue() {
     }
 
-    public Utilisateurrevenue(int  idutilisateur,Double revenue) {
+    public Utilisateurrevenue(Integer  idutilisateur,Double revenue) {
         this.idutilisateur = idutilisateur;
 		this.revenue = revenue;
     }
 
-    public int  getIdutilisateur() {
+    public Integer  getIdutilisateur() {
         return this.idutilisateur;
     }
 
-    public void setIdutilisateur(int  idutilisateur) {
+    public void setIdutilisateur(Integer  idutilisateur) {
         this.idutilisateur = idutilisateur;
     }
 

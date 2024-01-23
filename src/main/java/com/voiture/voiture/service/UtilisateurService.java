@@ -24,7 +24,7 @@ public class UtilisateurService{
         return this.utilisateurRepository.findAll();
     }
 
-    public Utilisateur update(int idUtilisateur,Utilisateur modifier){
+    public Utilisateur update(Integer idUtilisateur,Utilisateur modifier){
         return this.utilisateurRepository.findById(idUtilisateur).map(
             newUtilisateur ->{
                 newUtilisateur.setNomutilisateur(modifier.getNomutilisateur());
@@ -36,11 +36,11 @@ public class UtilisateurService{
         ).orElseThrow(() -> new RuntimeException("utilisateur pas trouver"));
     }
 
-    public void delete(int idUtilisateur){
+    public void delete(Integer idUtilisateur){
         this.utilisateurRepository.deleteById(idUtilisateur);
     }
 
-    public Optional<Utilisateur> findByEmailAndMdp(String login,String pwd,int etat)
+    public Optional<Utilisateur> findByEmailAndMdp(String login,String pwd,Integer etat)
     {
         return utilisateurRepository.findByEmailAndMdpAndEtat(login, pwd, etat);
     }

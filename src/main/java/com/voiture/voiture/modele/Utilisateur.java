@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Utilisateur {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int  idutilisateur;
+	Integer  idutilisateur;
     String nomutilisateur;
 	String email;
 	String mdp;
@@ -16,7 +16,7 @@ public class Utilisateur {
     public Utilisateur() {
     }
 
-    public Utilisateur(int  idutilisateur,String email,String mdp,String nomutilisateur,int etat) {
+    public Utilisateur(Integer  idutilisateur,String email,String mdp,String nomutilisateur,Integer etat) {
         this.idutilisateur = idutilisateur;
 		this.email = email;
 		this.mdp = mdp;
@@ -24,11 +24,11 @@ public class Utilisateur {
         this.etat = etat;
     }
 
-    public int  getIdutilisateur() {
+    public Integer  getIdutilisateur() {
         return this.idutilisateur;
     }
 
-    public void setIdutilisateur(int  idutilisateur) {
+    public void setIdutilisateur(Integer  idutilisateur) {
         this.idutilisateur = idutilisateur;
     }
 
@@ -56,11 +56,11 @@ public class Utilisateur {
         this.nomutilisateur = nomutilisateur;
     }
 
-    public int getEtat() {
+    public Integer getEtat() {
         return etat;
     }
 
-    public void setEtat(int etat) {
+    public void setEtat(Integer etat) {
         this.etat = etat;
     }
 }

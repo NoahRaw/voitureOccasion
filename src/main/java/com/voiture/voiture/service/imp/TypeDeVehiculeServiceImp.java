@@ -27,7 +27,7 @@ public class TypeDeVehiculeServiceImp implements TypeDeVehiculeService{
 
     ///
     @Override
-    public TypeDeVehicule getTypeDeVehiculeById(int id) {
+    public TypeDeVehicule getTypeDeVehiculeById(Integer id) {
         Optional<TypeDeVehicule> optionaltypeDeVehicule = typeDeVehiculeRepository.findById(id);
         return optionaltypeDeVehicule.get();
     }
@@ -46,7 +46,7 @@ public class TypeDeVehiculeServiceImp implements TypeDeVehiculeService{
     }
 
     @Override
-    public void deleteTypeDeVehiculeById(int id) {
+    public void deleteTypeDeVehiculeById(Integer id) {
         typeDeVehiculeRepository.deleteById(id);
     }
 }

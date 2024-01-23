@@ -10,22 +10,22 @@ import javax.persistence.Id;
 public class Boitedevitesse {
     @Id
 	@GeneratedValue()
-	int  idboitedevitesse;
+	Integer  idboitedevitesse;
 	String description;
 
     public Boitedevitesse() {
     }
 
-    public Boitedevitesse(int  idboitedevitesse,String description) {
+    public Boitedevitesse(Integer  idboitedevitesse,String description) {
         this.idboitedevitesse = idboitedevitesse;
 		this.description = description;
     }
 
-    public int  getIdboitedevitesse() {
+    public Integer  getIdboitedevitesse() {
         return this.idboitedevitesse;
     }
 
-    public void setIdboitedevitesse(int  idboitedevitesse) {
+    public void setIdboitedevitesse(Integer  idboitedevitesse) {
         this.idboitedevitesse = idboitedevitesse;
     }
 

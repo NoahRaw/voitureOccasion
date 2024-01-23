@@ -24,7 +24,7 @@ public class VuestatistiqueventeController {
     }
 
     @PostMapping("/read/{idUtilisateur}")
-    public Vuestatistiquevente readByIdUtilisateur(@PathVariable int idUtilisateur){
+    public Vuestatistiquevente readByIdUtilisateur(@PathVariable Integer idUtilisateur){
         return vuestatistiqueventeService.getVuestatistiqueventeByIdUtilisateur(idUtilisateur);
     }
 

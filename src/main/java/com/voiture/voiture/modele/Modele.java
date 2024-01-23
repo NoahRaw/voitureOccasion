@@ -10,22 +10,22 @@ import javax.persistence.Id;
 public class Modele {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int  idmodele;
+	Integer  idmodele;
 	String description;
 
     public Modele() {
     }
 
-    public Modele(int  idmodele,String description) {
+    public Modele(Integer  idmodele,String description) {
         this.idmodele = idmodele;
 		this.description = description;
     }
 
-    public int  getIdmodele() {
+    public Integer  getIdmodele() {
         return this.idmodele;
     }
 
-    public void setIdmodele(int  idmodele) {
+    public void setIdmodele(Integer  idmodele) {
         this.idmodele = idmodele;
     }
 

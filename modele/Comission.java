@@ -11,24 +11,24 @@ import javax.persistence.Id;
 public class Comission {
     @Id
 	@GeneratedValue()
-	int  idcomission;
+	Integer  idcomission;
 	Date date;
 	Double pourcentage;
 
     public Comission() {
     }
 
-    public Comission(int  idcomission,Date date,Double pourcentage) {
+    public Comission(Integer  idcomission,Date date,Double pourcentage) {
         this.idcomission = idcomission;
 		this.date = date;
 		this.pourcentage = pourcentage;
     }
 
-    public int  getIdcomission() {
+    public Integer  getIdcomission() {
         return this.idcomission;
     }
 
-    public void setIdcomission(int  idcomission) {
+    public void setIdcomission(Integer  idcomission) {
         this.idcomission = idcomission;
     }
 

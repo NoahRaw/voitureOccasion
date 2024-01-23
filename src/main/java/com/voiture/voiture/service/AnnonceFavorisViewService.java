@@ -18,7 +18,7 @@ public class AnnonceFavorisViewService {
         return annonceFavorisViewRepository.findAll();
     }
 
-    public List<AnnonceFavorisView> findAnnonceFavorisByIdUser(int iduser){
+    public List<AnnonceFavorisView> findAnnonceFavorisByIdUser(Integer iduser){
         return annonceFavorisViewRepository.findAnnonceFavorisByIdUser(iduser);
     }
 }

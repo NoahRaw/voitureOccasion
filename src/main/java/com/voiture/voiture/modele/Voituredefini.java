@@ -10,20 +10,20 @@ import javax.persistence.Id;
 public class Voituredefini {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int  idvoituredefini;
-	int  idmarque;
-	int  idmodele;
-	int  idcarburant;
-	int  idpuissance;
-	int  idboitedevitesse;
-	int  idtypedevehicule;
-	int  nbrporte;
+	Integer  idvoituredefini;
+	Integer  idmarque;
+	Integer  idmodele;
+	Integer  idcarburant;
+	Integer  idpuissance;
+	Integer  idboitedevitesse;
+	Integer  idtypedevehicule;
+	Integer  nbrporte;
 	Double puissance;
 
     public Voituredefini() {
     }
 
-    public Voituredefini(int  idvoituredefini,int  idmarque,int  idmodele,int  idcarburant,int  idpuissance,int  idboitedevitesse,int  idtypedevehicule,int  nbrporte,Double puissance) {
+    public Voituredefini(Integer  idvoituredefini,Integer  idmarque,Integer  idmodele,Integer  idcarburant,Integer  idpuissance,Integer  idboitedevitesse,Integer  idtypedevehicule,Integer  nbrporte,Double puissance) {
         this.idvoituredefini = idvoituredefini;
 		this.idmarque = idmarque;
 		this.idmodele = idmodele;
@@ -35,67 +35,67 @@ public class Voituredefini {
 		this.puissance = puissance;
     }
 
-    public int  getIdvoituredefini() {
+    public Integer  getIdvoituredefini() {
         return this.idvoituredefini;
     }
 
-    public void setIdvoituredefini(int  idvoituredefini) {
+    public void setIdvoituredefini(Integer  idvoituredefini) {
         this.idvoituredefini = idvoituredefini;
     }
 
-	public int  getIdmarque() {
+	public Integer  getIdmarque() {
         return this.idmarque;
     }
 
-    public void setIdmarque(int  idmarque) {
+    public void setIdmarque(Integer  idmarque) {
         this.idmarque = idmarque;
     }
 
-	public int  getIdmodele() {
+	public Integer  getIdmodele() {
         return this.idmodele;
     }
 
-    public void setIdmodele(int  idmodele) {
+    public void setIdmodele(Integer  idmodele) {
         this.idmodele = idmodele;
     }
 
-	public int  getIdcarburant() {
+	public Integer  getIdcarburant() {
         return this.idcarburant;
     }
 
-    public void setIdcarburant(int  idcarburant) {
+    public void setIdcarburant(Integer  idcarburant) {
         this.idcarburant = idcarburant;
     }
 
-	public int  getIdpuissance() {
+	public Integer  getIdpuissance() {
         return this.idpuissance;
     }
 
-    public void setIdpuissance(int  idpuissance) {
+    public void setIdpuissance(Integer  idpuissance) {
         this.idpuissance = idpuissance;
     }
 
-	public int  getIdboitedevitesse() {
+	public Integer  getIdboitedevitesse() {
         return this.idboitedevitesse;
     }
 
-    public void setIdboitedevitesse(int  idboitedevitesse) {
+    public void setIdboitedevitesse(Integer  idboitedevitesse) {
         this.idboitedevitesse = idboitedevitesse;
     }
 
-	public int  getIdtypedevehicule() {
+	public Integer  getIdtypedevehicule() {
         return this.idtypedevehicule;
     }
 
-    public void setIdtypedevehicule(int  idtypedevehicule) {
+    public void setIdtypedevehicule(Integer  idtypedevehicule) {
         this.idtypedevehicule = idtypedevehicule;
     }
 
-	public int  getNbrporte() {
+	public Integer  getNbrporte() {
         return this.nbrporte;
     }
 
-    public void setNbrporte(int  nbrporte) {
+    public void setNbrporte(Integer  nbrporte) {
         this.nbrporte = nbrporte;
     }
 

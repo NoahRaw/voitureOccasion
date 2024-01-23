@@ -8,7 +8,7 @@ public class Marque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idmarque")
-    int id_marque;
+    Integer id_marque;
 
     @Column(name = "description" , nullable = false)
     String description;
@@ -16,13 +16,13 @@ public class Marque {
     public Marque() {
     }
 
-    public Marque(int id_marque, String description) {
+    public Marque(Integer id_marque, String description) {
         super();
         this.id_marque = id_marque;
         this.description = description;
     }
 
-    public void setId_marque(int id_marque) {
+    public void setId_marque(Integer id_marque) {
         this.id_marque = id_marque;
     }
 
@@ -30,7 +30,7 @@ public class Marque {
         this.description = description;
     }
 
-    public int getId_marque() {
+    public Integer getId_marque() {
         return id_marque;
     }
 

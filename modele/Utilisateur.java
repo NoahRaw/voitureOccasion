@@ -10,24 +10,24 @@ import javax.persistence.Id;
 public class Utilisateur {
     @Id
 	@GeneratedValue()
-	int  idutilisateur;
+	Integer  idutilisateur;
 	String email;
 	String mdp;
 
     public Utilisateur() {
     }
 
-    public Utilisateur(int  idutilisateur,String email,String mdp) {
+    public Utilisateur(Integer  idutilisateur,String email,String mdp) {
         this.idutilisateur = idutilisateur;
 		this.email = email;
 		this.mdp = mdp;
     }
 
-    public int  getIdutilisateur() {
+    public Integer  getIdutilisateur() {
         return this.idutilisateur;
     }
 
-    public void setIdutilisateur(int  idutilisateur) {
+    public void setIdutilisateur(Integer  idutilisateur) {
         this.idutilisateur = idutilisateur;
     }
 
