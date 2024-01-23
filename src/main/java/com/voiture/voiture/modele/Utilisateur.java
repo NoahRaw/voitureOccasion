@@ -16,7 +16,7 @@ public class Utilisateur {
     public Utilisateur() {
     }
 
-    public Utilisateur(int  idutilisateur,String email,String mdp,String nomutilisateur,int etat;) {
+    public Utilisateur(int  idutilisateur,String email,String mdp,String nomutilisateur,int etat) {
         this.idutilisateur = idutilisateur;
 		this.email = email;
 		this.mdp = mdp;

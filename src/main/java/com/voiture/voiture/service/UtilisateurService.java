@@ -40,8 +40,8 @@ public class UtilisateurService{
         this.utilisateurRepository.deleteById(idUtilisateur);
     }
 
-    public Optional<Utilisateur> findByEmailAndMdp(String login,String pwd)
+    public Optional<Utilisateur> findByEmailAndMdp(String login,String pwd,int etat)
     {
-        return utilisateurRepository.findByEmailAndMdp(login, pwd);
+        return utilisateurRepository.findByEmailAndMdpAndEtat(login, pwd, etat);
     }
 }
