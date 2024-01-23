@@ -8,6 +8,7 @@ import com.voiture.voiture.service.PhotoVoitureUtilisateurService;
 import com.voiture.voiture.service.VoitureUtilisateurService;
 import com.voiture.voiture.modele.Annonce;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,4 +80,9 @@ public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestBody Annonce ann
 }
 
 
+    @PostMapping("/vendu/{idvoitureutilisateur}")
+    public void vendu(@PathVariable int idvoitureutilisateur){ 
+        Date aujourdhui = new Date();
+        this.voitureUtilisateurService.vendu(2,aujourdhui,idvoitureutilisateur);
+    }
 }

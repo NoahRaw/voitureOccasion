@@ -1,6 +1,8 @@
 package com.voiture.voiture.service;
 
 import java.util.List;
+import java.util.Date;
+
 
 import javax.transaction.Transactional;
 
@@ -49,5 +51,10 @@ public class VoitureUtilisateurService {
     @Transactional
     public void validation(int status,int idutilisateur){
         this.voitureUtilisateurRepository.validation(status, idutilisateur);
+    }
+
+    @Transactional
+    public void vendu(int status,Date date,int idutilisateur){
+        this.voitureUtilisateurRepository.vendu(status,date ,idutilisateur);
     }
 }
