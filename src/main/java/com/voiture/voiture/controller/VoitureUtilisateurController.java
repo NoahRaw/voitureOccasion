@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.voiture.voiture.modele.Voitureutilisateur;
 import com.voiture.voiture.service.VoitureUtilisateurService;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,11 @@ public class VoitureUtilisateurController {
     @PostMapping("/validation/{idvoitureutilisateur}")
     public void validation(@PathVariable int idvoitureutilisateur){ 
         this.voitureUtilisateurService.validation(1,idvoitureutilisateur);
+    }
+
+    @PostMapping("/vendu/{idvoitureutilisateur}")
+    public void vendu(@PathVariable int idvoitureutilisateur){ 
+        Date aujourdhui = new Date();
+        this.voitureUtilisateurService.vendu(2,aujourdhui,idvoitureutilisateur);
     }
 }

@@ -51,6 +51,9 @@ public class PhotoVoitureUtilisateurServiceImp implements PhotoVoitureUtilisateu
         photoVoitureUtilisateurRepository.deleteById(id);
     }
 
-
+    @Override
+    public List<PhotoVoitureUtilisateur> getPhotoVoitureUtilisateur(int idvoitureutilisateur){
+        return photoVoitureUtilisateurRepository.getPhotoVoitureUtilisateur(idvoitureutilisateur);
+    }
     
 }
