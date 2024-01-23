@@ -2,6 +2,10 @@ package com.voiture.voiture.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.voiture.voiture.modele.MyToken;
 import com.voiture.voiture.modele.Voitureutilisateur_view;
+import com.voiture.voiture.service.AnnonceFavorisViewService;
+import com.voiture.voiture.service.MyTokenService;
 
 
 @RestController
@@ -18,6 +25,12 @@ import com.voiture.voiture.modele.Voitureutilisateur_view;
 @CrossOrigin
 public class Voitureutilisateur_viewController {
     
+    private final MyTokenService myTokenService;
+
+    public Voitureutilisateur_viewController(MyTokenService myTokenService) {
+        this.myTokenService =myTokenService;
+    }
+
     @GetMapping
     public List<Voitureutilisateur_view> read() throws Exception{
         Voitureutilisateur_view v = new Voitureutilisateur_view(); 
@@ -43,9 +56,13 @@ public class Voitureutilisateur_viewController {
     }
 
     @GetMapping("/ces_annonces")
-    public List<Voitureutilisateur_view> get_liste_de_ces_annonces(@PathVariable int idUtilisateur) throws Exception{
-        Voitureutilisateur_view v = new Voitureutilisateur_view(); 
-        return v.get_liste_de_ces_annonces(null,idUtilisateur);
+    public ResponseEntity<List<Voitureutilisateur_view>> get_liste_de_ces_annonces(HttpServletRequest request) throws Exception{
+        MyToken token=myTokenService.getToken(request);
+        if(token!=null){
+            Voitureutilisateur_view v = new Voitureutilisateur_view(); 
+            return ResponseEntity.ok(v.get_liste_de_ces_annonces(null,token.getIdutilisateur()));
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
     }
 
 }
