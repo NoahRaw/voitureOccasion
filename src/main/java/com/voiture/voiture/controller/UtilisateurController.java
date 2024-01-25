@@ -130,6 +130,12 @@ public class UtilisateurController {
         return myTokenService.isTokenValide(request);
     }
 
+    @GetMapping("/getToken")
+    public MyToken getToken(HttpServletRequest request) {
+        // MyToken token=myTokenService.getToken(request);
+        return myTokenService.getToken(request);
+    }
+
     @GetMapping("/deconnection")
     public void deconnection(HttpServletRequest request) {
         String authHeader = request.getHeader("Authorization");
