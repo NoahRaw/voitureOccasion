@@ -95,7 +95,7 @@ public class UtilisateurController {
 		return null;
     }
 
-    @GetMapping("/authenticateSimpleUser")
+    @PostMapping("/authenticateSimpleUser")
     public ResponseEntity<String> authenticateSimpleUser(@RequestParam String login,@RequestParam String pwd) throws NoSuchAlgorithmException {
         Optional<Utilisateur> u=utilisateurService.findByEmailAndMdp(login, pwd, 0);
         if(u.isPresent()){
