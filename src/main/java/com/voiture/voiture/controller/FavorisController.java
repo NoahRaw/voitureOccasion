@@ -25,7 +25,7 @@ public class FavorisController {
         this.myTokenService = myTokenService;
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<AnnonceFavoris> create(@RequestBody AnnonceFavoris annonceFavoris,HttpServletRequest request){
         MyToken token=myTokenService.getToken(request);
         if(token!=null){
@@ -35,13 +35,13 @@ public class FavorisController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
     }
 
-    @GetMapping("/read")
+    @GetMapping
     public List<AnnonceFavoris> read(){
         return favorisService.getAllFavoris();
     }
 
-    @PostMapping("/delete/{idFavoris}")
-    public void delete(@PathVariable Integer idFavoris){
-        favorisService.deleteFavorisById(idFavoris);
+    @DeleteMapping("/{Id}")
+    public void delete(@PathVariable Integer Id){
+        favorisService.deleteFavorisById(Id);
     }
 }

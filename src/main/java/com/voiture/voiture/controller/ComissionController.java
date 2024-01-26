@@ -16,12 +16,12 @@ public class ComissionController {
         this.comissionService = comissionService;
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public Comission create(@RequestBody Comission comission){
         return comissionService.insertCommission(comission);
     }
 
-    @PostMapping("/read")
+    @GetMapping
     public List<Comission> read(){
         return comissionService.getAllCommission();
     }
@@ -31,13 +31,13 @@ public class ComissionController {
         return comissionService.getCommissionById(idCommission);
     }
 
-    @PostMapping("/update/{idCommission}")
-    public Comission update(@PathVariable Integer idCommission, @RequestBody Comission comission){
-        return comissionService.update(idCommission, comission);
+    @PutMapping("/{Id}")
+    public Comission update(@PathVariable Integer Id, @RequestBody Comission comission){
+        return comissionService.update(Id, comission);
     }
 
-    @PostMapping("/delete/{idCommission}")
-    public void delete(@PathVariable Integer idCommission){
-        comissionService.deleteCommissionById(idCommission);
+    @DeleteMapping("/{Id}")
+    public void delete(@PathVariable Integer Id){
+        comissionService.deleteCommissionById(Id);
     }
 }

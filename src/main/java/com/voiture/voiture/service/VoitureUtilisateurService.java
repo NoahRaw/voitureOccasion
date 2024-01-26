@@ -1,7 +1,7 @@
 package com.voiture.voiture.service;
 
 import java.util.List;
-import java.util.Date;
+import java.sql.Date;
 
 
 import javax.transaction.Transactional;
@@ -20,6 +20,9 @@ public class VoitureUtilisateurService {
     }
 
     public Voitureutilisateur insertion(Voitureutilisateur voitureUtilisateur){
+        long timestamp_aujourdhui = System.currentTimeMillis();
+        Date date = new Date(timestamp_aujourdhui);
+        voitureUtilisateur.setDateventedebut(date);
         return this.voitureUtilisateurRepository.save(voitureUtilisateur);
     }
     

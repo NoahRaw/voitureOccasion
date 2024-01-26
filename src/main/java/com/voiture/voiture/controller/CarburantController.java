@@ -16,12 +16,12 @@ public class CarburantController {
         this.carburantService = carburantService;
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public Carburant create(@RequestBody Carburant carburant){
         return carburantService.insertCarburant(carburant);
     }
 
-    @GetMapping("/read")
+    @GetMapping
     public List<Carburant> read(){
         return carburantService.getAllCarburant();
     }
@@ -31,13 +31,13 @@ public class CarburantController {
         return carburantService.getCarburantById(idCarburant);
     }
 
-    @PostMapping("/update/{idCarburant}")
-    public Carburant update(@PathVariable Integer idCarburant, @RequestBody Carburant carburant){
-        return carburantService.update(idCarburant, carburant);
+    @PutMapping("/{Id}")
+    public Carburant update(@PathVariable Integer Id, @RequestBody Carburant carburant){
+        return carburantService.update(Id, carburant);
     }
 
-    @PostMapping("/delete/{idCarburant}")
-    public void delete(@PathVariable Integer idCarburant){
-        carburantService.deleteCarburantById(idCarburant);
+    @DeleteMapping("/{Id}")
+    public void delete(@PathVariable Integer Id){
+        carburantService.deleteCarburantById(Id);
     }
 }

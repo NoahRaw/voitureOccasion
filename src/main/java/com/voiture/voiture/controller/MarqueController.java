@@ -16,28 +16,28 @@ public class MarqueController {
         this.marqueService = marqueService;
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public Marque create(@RequestBody Marque marque){
         return marqueService.insertMarque(marque);
     }
 
-    @GetMapping("/read")
+    @GetMapping
     public List<Marque> read(){
         return marqueService.getAllMarque();
     }
 
-    @PostMapping("/read/{idMarque}")
-    public Marque readById(@PathVariable Integer idMarque){
-        return marqueService.getMarqueById(idMarque);
+    @GetMapping("/{Id}")
+    public Marque readById(@PathVariable Integer Id){
+        return marqueService.getMarqueById(Id);
     }
 
-    @PostMapping("/update/{idMarque}")
-    public Marque update(@PathVariable Integer idMarque, @RequestBody Marque marque){
-        return marqueService.update(idMarque, marque);
+    @PutMapping("/{Id}")
+    public Marque update(@PathVariable Integer Id, @RequestBody Marque marque){
+        return marqueService.update(Id, marque);
     }
 
-    @PostMapping("/delete/{idMarque}")
-    public void delete(@PathVariable Integer idMarque){
-        marqueService.deleteMarqueById(idMarque);
+    @DeleteMapping("/{Id}")
+    public void delete(@PathVariable Integer Id){
+        marqueService.deleteMarqueById(Id);
     }
 }

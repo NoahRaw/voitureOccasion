@@ -63,8 +63,8 @@ public class UtilisateurController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUtilisateur(@PathVariable Integer idUtilisateur){
-        this.utilisateurService.delete(idUtilisateur);
+    public void deleteUtilisateur(@PathVariable Integer id){
+        this.utilisateurService.delete(id);
     }
 
     @GetMapping("/authenticateAdmin")
