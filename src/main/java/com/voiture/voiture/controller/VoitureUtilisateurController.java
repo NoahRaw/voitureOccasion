@@ -4,12 +4,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.voiture.voiture.modele.PhotoVoitureUtilisateur;
 import com.voiture.voiture.modele.Voitureutilisateur;
+import com.voiture.voiture.service.MyTokenService;
 import com.voiture.voiture.service.PhotoVoitureUtilisateurService;
 import com.voiture.voiture.service.VoitureUtilisateurService;
 import com.voiture.voiture.modele.Annonce;
+import com.voiture.voiture.modele.MyToken;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,17 +34,24 @@ public class VoitureUtilisateurController {
 
 
     private final VoitureUtilisateurService voitureUtilisateurService;
+        private final MyTokenService myTokenService;
+
     @Autowired
     private PhotoVoitureUtilisateurService photoVoitureUtilisateurService;
 
     @Autowired
-    public VoitureUtilisateurController(VoitureUtilisateurService voitureUtilisateurService){
+    public VoitureUtilisateurController(VoitureUtilisateurService voitureUtilisateurService,MyTokenService myTokenService){
         this.voitureUtilisateurService = voitureUtilisateurService;
+        this.myTokenService =myTokenService;
     }
 
     @PostMapping
-    public Voitureutilisateur create(@RequestBody Voitureutilisateur voitureUtilisateur){
-        return this.voitureUtilisateurService.insertion(voitureUtilisateur);
+    public ResponseEntity<Voitureutilisateur> create(@RequestBody Voitureutilisateur voitureUtilisateur,HttpServletRequest request){
+        MyToken token=myTokenService.getToken(request);
+        if(token!=null){
+            return  ResponseEntity.ok(this.voitureUtilisateurService.insertion(voitureUtilisateur));
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
     }
 
     @GetMapping
@@ -80,9 +91,16 @@ public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestBody Annonce ann
 }
 
 
-    @PostMapping("/vendu/{idvoitureutilisateur}")
-    public void vendu(@PathVariable Integer idvoitureutilisateur){ 
-        Date aujourdhui = new Date();
-        this.voitureUtilisateurService.vendu(2,aujourdhui,idvoitureutilisateur);
+    @PutMapping("/vendu/{idvoitureutilisateur}")
+    public ResponseEntity<Boolean> vendu(@PathVariable int idvoitureutilisateur,HttpServletRequest request){ 
+        MyToken token=myTokenService.getToken(request);
+        if(token!=null){
+            long timestamp_aujourdhui = System.currentTimeMillis();
+        Date date = new Date(timestamp_aujourdhui);
+            this.voitureUtilisateurService.vendu(2,date,idvoitureutilisateur);
+            return ResponseEntity.ok(true);
+            
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
     }
 }

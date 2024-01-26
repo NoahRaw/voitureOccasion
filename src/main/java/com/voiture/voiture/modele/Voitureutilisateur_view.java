@@ -284,7 +284,7 @@ public class Voitureutilisateur_view {
 
     public List<Voitureutilisateur_view> getAllVoitureUtilisateutNonVendu(Connection con) throws Exception {
          List<Voitureutilisateur_view> liste = new ArrayList<>();
-        String query = "SELECT * FROM voitureutilisateur_view WHERE statut = 0";
+        String query = "SELECT * FROM voitureutilisateur_view WHERE statut = 1";
 
         try {
             if(con==null){
@@ -337,7 +337,7 @@ public class Voitureutilisateur_view {
         List<Voitureutilisateur_view> liste = new ArrayList<>();
 
        String query = "SELECT * FROM voitureutilisateur_view WHERE \r\n"+
-       "statut = 0";
+       "statut = 1";
        String dateventedebut = " dateventedebut >= '"+this.getDateventedebut()+"'";
        String kilometrageRequete = " kilometrage <= "+this.getKilometrage();
        String prixMaxRequete = " prix <= "+prixmax;
@@ -537,7 +537,7 @@ public class Voitureutilisateur_view {
                 con = connexionBdd.connexionPostgress();
             }
         
-            String query = "SELECT * FROM voitureutilisateur_view WHERE idutilisateur = "+id_utilisateur+" AND statut = 0";
+            String query = "SELECT * FROM voitureutilisateur_view WHERE idutilisateur = "+id_utilisateur+" AND statut = 1";
             System.out.println(query);            
             try (
                 PreparedStatement preparedStatement = con.prepareStatement(query);

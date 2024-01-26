@@ -91,7 +91,7 @@ public class VoitureDefiniStatView {
                 "JOIN VoitureDefini ON VoitureUtilisateur.idvoituredefini = VoitureDefini.idvoituredefini\r\n" + //
                 "JOIN marque ON VoitureDefini.idmarque = marque.idmarque\r\n" + //
                 "JOIN modele ON VoitureDefini.idmodele = modele.idmodele\r\n" + //
-                "WHERE voitureutilisateur.statut=11 AND dateventefin >= '"+dateMin+"' AND dateventefin <= '"+dateMax+"' \r\n" + //
+                "WHERE voitureutilisateur.statut=2 AND dateventefin >= '"+dateMin+"' AND dateventefin <= '"+dateMax+"' \r\n" + //
                 "GROUP BY VoitureDefini.idvoituredefini,VoitureDefini.idmarque,marque.description,modele.idmodele\r\n" + //
                 "ORDER BY COUNT(*) DESC";
 
