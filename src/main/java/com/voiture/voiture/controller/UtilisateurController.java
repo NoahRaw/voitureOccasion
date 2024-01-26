@@ -136,7 +136,7 @@ public class UtilisateurController {
         return myTokenService.getToken(request);
     }
 
-    @GetMapping("/deconnection")
+    @PostMapping("/deconnection")
     public void deconnection(HttpServletRequest request) {
         String authHeader = request.getHeader("Authorization");
         String token=null;

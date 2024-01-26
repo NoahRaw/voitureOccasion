@@ -66,13 +66,6 @@ SELECT
     WHERE statut = 1 
     ORDER BY dateDeVente ASC;
 
-   
-    SELECT 
-        datedevente,SUM(prix) as montant
-    FROM v_voiturevendu 
-    WHERE datedevente BETWEEN '2024-01-06' AND '2024-01-10' 
-    GROUP BY datedevente;
-
 
 CREATE VIEW voitureutilisateur_view AS 
 SELECT voitureutilisateur.*,marque.description as nommarque,modele.description as nommodele,marque.idmarque,
