@@ -1,9 +1,11 @@
-INSERT INTO Utilisateur (nomutilisateur,email, mdp) VALUES
-    ('Noah Raw','noah@gmail.com', '0000'),
-    ('Thony','thony@gmail.com', '1111'),
-    ('Rodriguez','rod@gmail.com', '2222'),
-    ('Fy Amtra','antra@gmail.com', '3333'),
-    ('Jean','jean@gmail.com', '4444');
+INSERT INTO Utilisateur (nomutilisateur,email, mdp,etat) VALUES
+    ('Noah Raw','noah@gmail.com', '0000',0),
+    ('Thony','thony@gmail.com', '1111',0),
+    ('Rodriguez','rod@gmail.com', '2222',0),
+    ('Fy Amtra','antra@gmail.com', '3333',0),
+    ('Jean','jean@gmail.com', '4444',0);
+INSERT INTO Utilisateur (nomutilisateur,email, mdp,etat) VALUES
+    ('Admin','admin@gmail.com', '0000',1);
 
     UPDATE utilisateur
     SET etat = 0
