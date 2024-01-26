@@ -488,6 +488,7 @@ public class Voitureutilisateur_view {
             }
         
             String query = "SELECT * FROM voitureutilisateur_view WHERE idutilisateur != "+id_utilisateur+" AND statut = 1";
+
             try (
                 PreparedStatement preparedStatement = con.prepareStatement(query);
                 ResultSet resultSet = preparedStatement.executeQuery()) {
