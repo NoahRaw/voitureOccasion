@@ -24,8 +24,7 @@ public class StatistiqueController {
     
     @Autowired
     private UtilisateurRepository up;
-    
-    private final BoiteDeVitesseService boiteDeVitesseService;
+
 
     V_vente v= new V_vente();
 
