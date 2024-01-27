@@ -4,12 +4,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.voiture.voiture.modele.PhotoVoitureUtilisateur;
 import com.voiture.voiture.modele.Voitureutilisateur;
+import com.voiture.voiture.service.ImgBBService;
 import com.voiture.voiture.service.MyTokenService;
 import com.voiture.voiture.service.PhotoVoitureUtilisateurService;
 import com.voiture.voiture.service.VoitureUtilisateurService;
 import com.voiture.voiture.modele.Annonce;
 import com.voiture.voiture.modele.MyToken;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Date;
 import java.util.List;
 
@@ -40,9 +45,13 @@ public class VoitureUtilisateurController {
     private PhotoVoitureUtilisateurService photoVoitureUtilisateurService;
 
     @Autowired
-    public VoitureUtilisateurController(VoitureUtilisateurService voitureUtilisateurService,MyTokenService myTokenService){
+    private ImgBBService imgBBService;
+
+    @Autowired
+    public VoitureUtilisateurController(VoitureUtilisateurService voitureUtilisateurService,MyTokenService myTokenService,ImgBBService imgBBService){
         this.voitureUtilisateurService = voitureUtilisateurService;
         this.myTokenService =myTokenService;
+        this.imgBBService = imgBBService;
     }
 
     @PostMapping
@@ -75,7 +84,7 @@ public class VoitureUtilisateurController {
     }
 
 @PostMapping("/createAnnonce")
-public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestBody Annonce annonceRequest) {
+public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestBody Annonce annonceRequest) throws IOException {
     Voitureutilisateur voitureUtilc = voitureUtilisateurService.insertion(annonceRequest.getVoitureUtilisateur());
     PhotoVoitureUtilisateur photoVU = null;
     Integer idVoitureUtilc = voitureUtilc.getIdvoitureutilisateur();
@@ -83,7 +92,14 @@ public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestBody Annonce ann
     for (Integer i = 0; i < annonceRequest.getPhoto().length; i++) {
         photoVU = new PhotoVoitureUtilisateur();
         photoVU.setIdVoitureUtilisateur(idVoitureUtilc);
-        photoVU.setNomPhoto(annonceRequest.getPhoto()[i]);
+
+        String filePath = annonceRequest.getPhoto()[i];
+        Path path = Paths.get(filePath);
+        byte[] imageData = Files.readAllBytes(path);
+
+        String imageUrl = imgBBService.uploadImage(imageData);
+
+        photoVU.setNomPhoto(imageUrl);
         photoVoitureUtilisateurService.savePhotoVoitureUtilisateur(photoVU);
     }
 
