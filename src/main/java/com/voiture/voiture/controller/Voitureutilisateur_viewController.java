@@ -31,11 +31,17 @@ public class Voitureutilisateur_viewController {
     public Voitureutilisateur_viewController(MyTokenService myTokenService) {
         this.myTokenService =myTokenService;
     }
-
+    
     @GetMapping
     public List<Voitureutilisateur_view> read() throws Exception{
         Voitureutilisateur_view v = new Voitureutilisateur_view(); 
         return v.getAllVoitureUtilisateutNonVendu(null);
+    }
+
+    @GetMapping("/voitureNonConfirmer")
+    public List<Voitureutilisateur_view> voitureNonConfirmer() throws Exception{
+        Voitureutilisateur_view v = new Voitureutilisateur_view(); 
+        return v.getAllVoitureUtilisateutNonConfirmer(null);
     }
 
     @GetMapping("/rechercheMultiple")
