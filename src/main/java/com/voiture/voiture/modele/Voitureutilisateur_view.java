@@ -317,6 +317,11 @@ public class Voitureutilisateur_view {
                 v.setNbrporte(resultSet.getInt("nbrporte"));
                 v.setPuissance(resultSet.getDouble("puissance"));
                 v.setNomutilisateur(resultSet.getString("nomutilisateur"));
+                v.setIdmarque(resultSet.getInt("idmarque"));
+                v.setIdcarburant(resultSet.getInt("idcarburant"));
+                v.setIdpuissance(resultSet.getInt("idpuissance"));
+                v.setIdboitedevitesse(resultSet.getInt("idboitedevitesse"));
+                v.setIdtypedevehicule(resultSet.getInt("idtypedevehicule"));
                 liste.add(v);
             }
         }
@@ -331,6 +336,61 @@ public class Voitureutilisateur_view {
         }
         return liste;
     }
+
+    public List<Voitureutilisateur_view> getAllVoitureUtilisateutNonConfirmer(Connection con) throws Exception {
+        List<Voitureutilisateur_view> liste = new ArrayList<>();
+       String query = "SELECT * FROM voitureutilisateur_view WHERE statut = 0";
+
+       try {
+           if(con==null){
+               con = connexionBdd.connexionPostgress();
+           }
+        
+
+           try (
+               PreparedStatement preparedStatement = con.prepareStatement(query);
+               ResultSet resultSet = preparedStatement.executeQuery()) {
+
+           while (resultSet.next()) {
+               Voitureutilisateur_view v = new Voitureutilisateur_view();
+               v.setIdvoitureutilisateur(resultSet.getInt("idvoitureutilisateur"));
+               v.setIdutilisateur((resultSet.getInt("idutilisateur")));
+               v.setIdvoituredefini(resultSet.getInt("idvoituredefini"));
+               v.setDateventedebut(resultSet.getDate("dateventedebut"));
+               v.setDateventefin(resultSet.getDate("dateventefin"));
+               v.setMatricule(resultSet.getString("matricule"));
+               v.setKilometrage(resultSet.getDouble("kilometrage"));
+               v.setPrix(resultSet.getDouble("prix"));
+               v.setStatut(resultSet.getInt("statut"));
+               v.setNommarque(resultSet.getString("nommarque"));
+               v.setNommodele(resultSet.getString("nommodele"));
+               v.setNomcarburant(resultSet.getString("nomcarburant"));
+               v.setKw(resultSet.getDouble("kw"));
+               v.setCv(resultSet.getDouble("cv"));
+               v.setNomboitedevitesse(resultSet.getString("nomboitedevitesse"));
+               v.setNomtypedevehicule(resultSet.getString("nomtypedevehicule"));
+               v.setNbrporte(resultSet.getInt("nbrporte"));
+               v.setPuissance(resultSet.getDouble("puissance"));
+               v.setNomutilisateur(resultSet.getString("nomutilisateur"));
+               v.setIdmarque(resultSet.getInt("idmarque"));
+                v.setIdcarburant(resultSet.getInt("idcarburant"));
+                v.setIdpuissance(resultSet.getInt("idpuissance"));
+                v.setIdboitedevitesse(resultSet.getInt("idboitedevitesse"));
+                v.setIdtypedevehicule(resultSet.getInt("idtypedevehicule"));
+               liste.add(v);
+           }
+       }
+
+       } catch (SQLException e) {
+           e.printStackTrace();
+           throw new SQLException("Erreur lors de la récupération des enregistrements voiture defini", e);
+       }finally{
+           if (con!=null) {
+               con.close();
+           } 
+       }
+       return liste;
+   }
 
 
     public List<Voitureutilisateur_view> rechercheMultiple(Connection con,double prixmin,double prixmax) throws Exception {
@@ -413,6 +473,11 @@ public class Voitureutilisateur_view {
                v.setNbrporte(resultSet.getInt("nbrporte"));
                v.setPuissance(resultSet.getDouble("puissance"));
                v.setNomutilisateur(resultSet.getString("nomutilisateur"));
+               v.setIdmarque(resultSet.getInt("idmarque"));
+                v.setIdcarburant(resultSet.getInt("idcarburant"));
+                v.setIdpuissance(resultSet.getInt("idpuissance"));
+                v.setIdboitedevitesse(resultSet.getInt("idboitedevitesse"));
+                v.setIdtypedevehicule(resultSet.getInt("idtypedevehicule"));
                liste.add(v);
            }
        }
@@ -514,6 +579,11 @@ public class Voitureutilisateur_view {
                 v.setNbrporte(resultSet.getInt("nbrporte"));
                 v.setPuissance(resultSet.getDouble("puissance"));
                 v.setNomutilisateur(resultSet.getString("nomutilisateur"));
+                v.setIdmarque(resultSet.getInt("idmarque"));
+                v.setIdcarburant(resultSet.getInt("idcarburant"));
+                v.setIdpuissance(resultSet.getInt("idpuissance"));
+                v.setIdboitedevitesse(resultSet.getInt("idboitedevitesse"));
+                v.setIdtypedevehicule(resultSet.getInt("idtypedevehicule"));
                 liste.add(v);
             }
         }
@@ -538,7 +608,7 @@ public class Voitureutilisateur_view {
                 con = connexionBdd.connexionPostgress();
             }
         
-            String query = "SELECT * FROM voitureutilisateur_view WHERE idutilisateur = "+id_utilisateur+" AND statut = 1";
+            String query = "SELECT * FROM voitureutilisateur_view WHERE idutilisateur = "+id_utilisateur+" AND statut != 0";
             System.out.println(query);            
             try (
                 PreparedStatement preparedStatement = con.prepareStatement(query);
@@ -565,6 +635,11 @@ public class Voitureutilisateur_view {
                 v.setNbrporte(resultSet.getInt("nbrporte"));
                 v.setPuissance(resultSet.getDouble("puissance"));
                 v.setNomutilisateur(resultSet.getString("nomutilisateur"));
+                v.setIdmarque(resultSet.getInt("idmarque"));
+                v.setIdcarburant(resultSet.getInt("idcarburant"));
+                v.setIdpuissance(resultSet.getInt("idpuissance"));
+                v.setIdboitedevitesse(resultSet.getInt("idboitedevitesse"));
+                v.setIdtypedevehicule(resultSet.getInt("idtypedevehicule"));
                 liste.add(v);
             }
         }
