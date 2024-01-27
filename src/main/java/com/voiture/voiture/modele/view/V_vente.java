@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import com.voiture.voiture.connexion.ConnexionBdd;
 @Component
 public class V_vente {
     
-    private Timestamp dateVente;
+    private Date dateVente;
     private double vente;
     private float pourcentage;
     private double comission;
@@ -37,19 +38,19 @@ public class V_vente {
     
             try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
 
-                Timestamp timestampDebut = Timestamp.valueOf(dateDebut + " 00:00:00");
-                Timestamp timestampFin = Timestamp.valueOf(dateFin + " 23:59:59");
-                // Timestamp timestampDebut = Timestamp.valueOf(dateDebut);
-                // Timestamp timestampFin = Timestamp.valueOf(dateFin);
+                //Timestamp timestampDebut = Timestamp.valueOf(dateDebut + " 00:00:00");
+                //Timestamp timestampFin = Timestamp.valueOf(dateFin + " 23:59:59");
+                Date debut = Date.valueOf(dateDebut);
+                Date fin = Date.valueOf(dateFin);
 
 
-                preparedStatement.setTimestamp(1, timestampDebut);
-                preparedStatement.setTimestamp(2, timestampFin);
+                preparedStatement.setDate(1, debut);
+                preparedStatement.setDate(2, fin);
 
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     while (resultSet.next()) {
                         V_vente vente = new V_vente();
-                        vente.setDateVente(resultSet.getTimestamp("datedevente"));
+                        vente.setDateVente(resultSet.getDate("datedevente"));
                         vente.setVente(resultSet.getDouble("montant"));
                         vente.setPourcentage(resultSet.getFloat("comission"));
                         comission=(vente.getPourcentage()*vente.getVente())/100;
@@ -71,10 +72,10 @@ public class V_vente {
 
 
 
-    public Timestamp getDateVente() {
+    public Date getDateVente() {
         return dateVente;
     }
-    public void setDateVente(Timestamp dateVente) {
+    public void setDateVente(Date dateVente) {
         this.dateVente = dateVente;
     }
     public double getVente() {
