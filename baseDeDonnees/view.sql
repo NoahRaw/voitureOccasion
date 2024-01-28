@@ -90,3 +90,15 @@ from voitureutilisateur_view join annonceFavoris on
 voitureutilisateur_view.idutilisateur = annonceFavoris.idutilisateur and voitureutilisateur_view.idvoitureUtilisateur = annonceFavoris.idvoitureUtilisateur;
 
 
+CREATE VIEW voituredefini_view AS 
+SELECT voituredefini.*,marque.description as nommarque ,modele.description as nommodele,
+carburant.description as nomcarburant,puissance.kw,puissance.cv,boitedevitesse.description as nomboitedevitesse,
+typedevehicule.description as nomtypedevehicule
+FROM voituredefini
+JOIN marque ON voituredefini.idmarque = marque.idmarque
+JOIN modele ON voituredefini.idmodele = modele.idmodele
+JOIN carburant ON voituredefini.idcarburant = carburant.idcarburant
+JOIN puissance ON voituredefini.idpuissance = puissance.idpuissance
+JOIN boitedevitesse ON voituredefini.idboitedevitesse = boitedevitesse.idboiteDeVitesse
+JOIN typedevehicule ON voituredefini.idtypedevehicule = typedevehicule.idtypedevehicule
+;
