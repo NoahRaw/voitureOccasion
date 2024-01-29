@@ -30,11 +30,11 @@ public class AnnonceFavorisViewController {
         return annonceFavorisViewService.getAllAnnonceFavorisView();
     }
 
-    @GetMapping("/findAnnonceFavorisByIdUser/{idutilisateur}")
-    public ResponseEntity<List<AnnonceFavorisView>> findAnnonceFavorisByIdUser(@PathVariable Integer idutilisateur,HttpServletRequest request){
+    @GetMapping("/findAnnonceFavorisByIdUser")
+    public ResponseEntity<List<AnnonceFavorisView>> findAnnonceFavorisByIdUser(HttpServletRequest request){
         MyToken token=myTokenService.getToken(request);
         if(token!=null){
-            return ResponseEntity.ok(annonceFavorisViewService.findAnnonceFavorisByIdUser(idutilisateur));
+            return ResponseEntity.ok(annonceFavorisViewService.findAnnonceFavorisByIdUser(token.getIdutilisateur()));
         }
 
         // Retourner une réponse avec un statut non autorisé (401) en cas de token non valide

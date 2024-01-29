@@ -49,12 +49,21 @@ public class Voitureutilisateur_viewController {
         return v.rechercheMultiple(null,prixmin,prixmax);
     }
 
-    @GetMapping("/getHistoriqueAnnonce/{idutilisateur}")
+    @GetMapping("/getHistoriqueAnnonce/{idutilisateur}")    /*tsizy*/
     public List<Voitureutilisateur_view> getHistoriqueAnnonce(@PathVariable Integer idutilisateur) throws Exception{
         Voitureutilisateur_view v = new Voitureutilisateur_view();
         return v.getHistoriqueAnnonce(null,idutilisateur);
     }
 
+    @GetMapping("/getHistoriqueAnnonce")
+    public ResponseEntity<List<Voitureutilisateur_view>> getHistoriqueAnnonce(HttpServletRequest request) throws Exception{
+        MyToken token=myTokenService.getToken(request);
+        if(token!=null){
+            Voitureutilisateur_view v = new Voitureutilisateur_view();
+            return ResponseEntity.ok(v.getHistoriqueAnnonce(null,token.getIdutilisateur()));
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+    }
     
     @PostMapping("/annonce/{idUtilisateur}")
     public List<Voitureutilisateur_view> get_annonce_autre_utilisateur(@PathVariable Integer idUtilisateur) throws Exception{
