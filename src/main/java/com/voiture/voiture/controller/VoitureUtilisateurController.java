@@ -1,6 +1,7 @@
 package com.voiture.voiture.controller;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.voiture.voiture.modele.PhotoVoitureUtilisateur;
 import com.voiture.voiture.modele.Voitureutilisateur;
@@ -31,6 +32,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/VoitureUtilisateurs")
@@ -84,21 +86,16 @@ public class VoitureUtilisateurController {
     }
 
 @PostMapping("/createAnnonce")
-public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestBody Annonce annonceRequest) throws IOException {
+public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestBody Annonce annonceRequest,@RequestParam("file") List<MultipartFile> file) throws IOException {
     Voitureutilisateur voitureUtilc = voitureUtilisateurService.insertion(annonceRequest.getVoitureUtilisateur());
     PhotoVoitureUtilisateur photoVU = null;
     Integer idVoitureUtilc = voitureUtilc.getIdvoitureutilisateur();
     // 
-    for (Integer i = 0; i < annonceRequest.getPhoto().length; i++) {
+    for (MultipartFile f : file) {
         photoVU = new PhotoVoitureUtilisateur();
         photoVU.setIdVoitureUtilisateur(idVoitureUtilc);
-
-        String filePath = annonceRequest.getPhoto()[i];
-        Path path = Paths.get(filePath);
-        byte[] imageData = Files.readAllBytes(path);
-
+        byte[] imageData = f.getBytes();
         String imageUrl = imgBBService.uploadImage(imageData);
-
         photoVU.setNomPhoto(imageUrl);
         photoVoitureUtilisateurService.savePhotoVoitureUtilisateur(photoVU);
     }
