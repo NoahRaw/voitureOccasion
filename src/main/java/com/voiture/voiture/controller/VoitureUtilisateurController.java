@@ -94,8 +94,7 @@ public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestBody Annonce ann
     for (MultipartFile f : file) {
         photoVU = new PhotoVoitureUtilisateur();
         photoVU.setIdVoitureUtilisateur(idVoitureUtilc);
-        byte[] imageData = f.getBytes();
-        String imageUrl = imgBBService.uploadImage(imageData);
+        String imageUrl = imgBBService.uploadImages(f);
         photoVU.setNomPhoto(imageUrl);
         photoVoitureUtilisateurService.savePhotoVoitureUtilisateur(photoVU);
     }

@@ -19,7 +19,7 @@ public class ImageController {
     @Autowired
     private ImgBBService imgBBService;
 
-    @PostMapping("/upload")
+    /*@PostMapping("/upload")
     public String uploadImage(@RequestParam("file") MultipartFile file) {
         try {
             byte[] imageData = file.getBytes();
@@ -34,6 +34,6 @@ public class ImageController {
     @PostMapping("/teste")
     public String uploadImage() {
         return "a";
-    }
+    }*/
 }
 
