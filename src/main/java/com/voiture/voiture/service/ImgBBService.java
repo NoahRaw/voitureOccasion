@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -22,16 +26,17 @@ import org.springframework.http.ResponseEntity;
 @Service
 public class ImgBBService {
 
-    private final String apiKey;
-    private final RestTemplate restTemplate;
+    @Value("${imgbb.api-key}")
+    private String apiKey;
 
-    public ImgBBService(@Value("${imgbb.api-key}") String apiKey, RestTemplate restTemplate) {
-        this.apiKey = apiKey;
-        this.restTemplate = restTemplate;
+    private final WebClient webClient;
+
+    public ImgBBService(WebClient.Builder webClientBuilder) {
+        this.webClient = webClientBuilder.baseUrl("https://api.imgbb.com/1").build();
     }
 
 
-    public String uploadImage(byte[] imageData) {
+    /*public String uploadImage(byte[] imageData) {
         String apiUrl = "https://api.imgbb.com/1/upload";
         String base64Image = Base64.getEncoder().encodeToString(imageData);
 
@@ -68,6 +73,33 @@ public class ImgBBService {
             // Gérez les erreurs d'analyse JSON.
             e.printStackTrace();
             return null; // ou lancez une exception appropriée selon le contexte.
+        }
+    }*/
+
+    public String uploadImages(MultipartFile localImagePath) {
+        try {
+            
+            byte[] imageData = localImagePath.getBytes();
+            String base64Image = Base64.getEncoder().encodeToString(imageData);
+
+            MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
+            body.add("key", apiKey);
+            body.add("image", base64Image);
+
+            return webClient.post()
+                    .uri("/upload")
+                    .contentType(MediaType.MULTIPART_FORM_DATA)
+                    .body(BodyInserters.fromMultipartData(body))
+                    .retrieve()
+                    .bodyToMono(String.class)  // Change le type de réponse en String
+                    .block();
+        } catch (WebClientResponseException ex) {
+            String responseBody = ex.getResponseBodyAsString();
+            System.out.println("Erreur ImgBB - Corps de la réponse : " + responseBody);
+            return "Erreur lors du téléchargement de l'image. ImgBB response: " + responseBody;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Erreur lors du téléchargement de l'image. Exception: " + e.getMessage();
         }
     }
 
