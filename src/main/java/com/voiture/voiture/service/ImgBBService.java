@@ -59,7 +59,7 @@ public class ImgBBService {
 
 
     //image upload 
-    public String uploadImages(MultipartFile localImagePath) {
+    /*public String uploadImages(MultipartFile localImagePath) {
         try {
             
             byte[] imageData = localImagePath.getBytes();
