@@ -528,6 +528,7 @@ public class Voitureutilisateur_view {
                     v.setNomtypedevehicule(resultSet.getString("nomtypedevehicule"));
                     v.setNbrporte(resultSet.getInt("nbrporte"));
                     v.setPuissance(resultSet.getDouble("puissance"));
+                    v.setNomutilisateur(resultSet.getString("nomutilisateur"));
                     liste.add(v);
                 }
             }
