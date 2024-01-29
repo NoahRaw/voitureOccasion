@@ -19,8 +19,8 @@ public class ImgBBConfig {
         return new RestTemplate();
     }
 
-    @Bean
+    /*@Bean
     public ImgBBService imgBBService() {
         return new ImgBBService(imgBBApiKey, restTemplate());
-    }
+    }*/
 }
