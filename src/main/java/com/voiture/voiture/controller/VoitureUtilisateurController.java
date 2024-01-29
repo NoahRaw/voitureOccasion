@@ -9,6 +9,8 @@ import com.voiture.voiture.service.ImgBBService;
 import com.voiture.voiture.service.MyTokenService;
 import com.voiture.voiture.service.PhotoVoitureUtilisateurService;
 import com.voiture.voiture.service.VoitureUtilisateurService;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.voiture.voiture.modele.Annonce;
 import com.voiture.voiture.modele.MyToken;
 
@@ -33,6 +35,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 
 @RestController
 @RequestMapping("/VoitureUtilisateurs")
@@ -46,8 +49,10 @@ public class VoitureUtilisateurController {
     @Autowired
     private PhotoVoitureUtilisateurService photoVoitureUtilisateurService;
 
-    @Autowired
     private ImgBBService imgBBService;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Autowired
     public VoitureUtilisateurController(VoitureUtilisateurService voitureUtilisateurService,MyTokenService myTokenService,ImgBBService imgBBService){
@@ -86,16 +91,26 @@ public class VoitureUtilisateurController {
     }
 
 @PostMapping("/createAnnonce")
-public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestBody Annonce annonceRequest,@RequestParam("file") List<MultipartFile> file) throws IOException {
-    Voitureutilisateur voitureUtilc = voitureUtilisateurService.insertion(annonceRequest.getVoitureUtilisateur());
+public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestPart("annonceRequest") Voitureutilisateur annonceRequest,@RequestPart("files") List<MultipartFile> response) throws IOException {
+    System.out.println("tafiditra");
+    Voitureutilisateur voitureUtilc = voitureUtilisateurService.insertion(annonceRequest);
     PhotoVoitureUtilisateur photoVU = null;
     Integer idVoitureUtilc = voitureUtilc.getIdvoitureutilisateur();
-    // 
-    for (MultipartFile f : file) {
+    
+
+    for (MultipartFile file : response) {
+        System.out.println("--------------------------------------------file : "+file.getName());
         photoVU = new PhotoVoitureUtilisateur();
         photoVU.setIdVoitureUtilisateur(idVoitureUtilc);
-        String imageUrl = imgBBService.uploadImages(f);
-        photoVU.setNomPhoto(imageUrl);
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode = objectMapper.readTree(this.imgBBService.uploadImages(file));
+
+        if (jsonNode.has("data")) {
+            JsonNode dataNode = jsonNode.get("data");
+            if (dataNode.has("display_url")) {
+                photoVU.setNomPhoto(dataNode.get("display_url").asText());
+            }
+        }
         photoVoitureUtilisateurService.savePhotoVoitureUtilisateur(photoVU);
     }
 

@@ -104,6 +104,33 @@ public class ImgBBService {
             e.printStackTrace();
             return null; // ou lancez une exception appropriée selon le contexte.
         }
+    }*/
+
+    public String uploadImages(MultipartFile localImagePath) {
+        try {
+            
+            byte[] imageData = localImagePath.getBytes();
+            String base64Image = Base64.getEncoder().encodeToString(imageData);
+
+            MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
+            body.add("key", apiKey);
+            body.add("image", base64Image);
+
+            return webClient.post()
+                    .uri("/upload")
+                    .contentType(MediaType.MULTIPART_FORM_DATA)
+                    .body(BodyInserters.fromMultipartData(body))
+                    .retrieve()
+                    .bodyToMono(String.class)  // Change le type de réponse en String
+                    .block();
+        } catch (WebClientResponseException ex) {
+            String responseBody = ex.getResponseBodyAsString();
+            System.out.println("Erreur ImgBB - Corps de la réponse : " + responseBody);
+            return "Erreur lors du téléchargement de l'image. ImgBB response: " + responseBody;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Erreur lors du téléchargement de l'image. Exception: " + e.getMessage();
+        }
     }
 
 }
