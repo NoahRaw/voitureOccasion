@@ -52,6 +52,11 @@ public class UtilisateurController {
         return this.utilisateurService.insertion(vehicule);
     }
 
+    @GetMapping({"/{id}"})
+    public Optional<Utilisateur> findById(@PathVariable Integer id){
+        return this.utilisateurService.findById(id);
+    }
+
     @GetMapping
     public List<Utilisateur> getListeUtilisateur(){ 
         return this.utilisateurService.listeUtilisateur();
@@ -158,5 +163,10 @@ public class UtilisateurController {
             @RequestParam("dateFin") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dateFin
     ) {
         return boiteDeVitesseService.statistiqueUtilisateurRevenue(dateDebut, dateFin);
+    }
+
+    @GetMapping("/byIds")
+    public List<Utilisateur> getUtilisateursByIds(@RequestParam List<Integer> ids) {
+        return utilisateurService.findUtilisateursByIdutilisateurList(ids);
     }
 }

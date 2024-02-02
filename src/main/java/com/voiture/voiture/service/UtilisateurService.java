@@ -16,6 +16,10 @@ public class UtilisateurService{
         this.utilisateurRepository = utilisateurRepository;
     }
 
+    public Optional<Utilisateur> findById(Integer idUtilisateur){
+        return this.utilisateurRepository.findById(idUtilisateur);
+    }
+
     public Utilisateur insertion(Utilisateur utilisateur){
         return this.utilisateurRepository.save(utilisateur);
     } 
@@ -43,5 +47,9 @@ public class UtilisateurService{
     public Optional<Utilisateur> findByEmailAndMdp(String login,String pwd,Integer etat)
     {
         return utilisateurRepository.findByEmailAndMdpAndEtat(login, pwd, etat);
+    }
+
+    public List<Utilisateur> findUtilisateursByIdutilisateurList(List<Integer> ids) {
+        return utilisateurRepository.findAllByIdutilisateurIn(ids);
     }
 }

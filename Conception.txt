@@ -71,3 +71,12 @@ Base
     AnnonceFavoris(idAnnonceFavoris,idUtilisateur,idVoitureUtilisateur)
 
 Systeme messagerie
+
+01/02/2024
+Base
+    Utilisateur(...,image)
+
+Fonction
+    Utilisateur
+        ReponseEntity<List<Utilisateur>> getListConversation(httprequest request)
+            List<String> getListIdUser
