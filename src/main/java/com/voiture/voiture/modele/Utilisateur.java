@@ -12,8 +12,19 @@ public class Utilisateur {
 	String email;
 	String mdp;
     Integer etat;
+    String image;
 
     public Utilisateur() {
+    }
+
+    public Utilisateur(Integer idutilisateur, String nomutilisateur, String email, String mdp, Integer etat,
+            String image) {
+        this.idutilisateur = idutilisateur;
+        this.nomutilisateur = nomutilisateur;
+        this.email = email;
+        this.mdp = mdp;
+        this.etat = etat;
+        this.image = image;
     }
 
     public Utilisateur(Integer  idutilisateur,String email,String mdp,String nomutilisateur,Integer etat) {
@@ -62,5 +73,13 @@ public class Utilisateur {
 
     public void setEtat(Integer etat) {
         this.etat = etat;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
