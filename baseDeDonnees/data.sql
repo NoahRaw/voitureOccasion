@@ -1,9 +1,11 @@
-INSERT INTO Utilisateur (nomutilisateur,email, mdp) VALUES
-    ('Noah Raw','noah@gmail.com', '0000'),
-    ('Thony','thony@gmail.com', '1111'),
-    ('Rodriguez','rod@gmail.com', '2222'),
-    ('Fy Amtra','antra@gmail.com', '3333'),
-    ('Jean','jean@gmail.com', '4444');
+INSERT INTO Utilisateur (nomutilisateur,email, mdp,etat) VALUES
+    ('Noah Raw','noah@gmail.com', '0000',0),
+    ('Thony','thony@gmail.com', '1111',0),
+    ('Rodriguez','rod@gmail.com', '2222',0),
+    ('Fy Amtra','antra@gmail.com', '3333',0),
+    ('Jean','jean@gmail.com', '4444',0);
+INSERT INTO Utilisateur (nomutilisateur,email, mdp,etat) VALUES
+    ('Admin','admin@gmail.com', '0000',1);
 
     UPDATE utilisateur
     SET etat = 0
@@ -127,15 +129,15 @@ INSERT INTO VoitureDefini (idMarque, idModele, idCarburant, idPuissance, idboite
 
 
 INSERT INTO photoVoitureUtilisateur (idVoitureUtilisateur, nomPhoto) VALUES
-    (15, 'https://i.ibb.co/LJV2bxt/camry.jpg'),
-    (16, 'https://i.ibb.co/LJV2bxt/camry.jpg'),
-    (17, 'https://i.ibb.co/LJV2bxt/camry.jpg'),
-    (18, 'https://i.ibb.co/LJV2bxt/camry.jpg'),
-    (19, 'https://i.ibb.co/LJV2bxt/camry.jpg'),
-    (20, 'https://i.ibb.co/LJV2bxt/camry.jpg'),
-    (21, 'https://i.ibb.co/LJV2bxt/camry.jpg'),
-    (22, 'https://i.ibb.co/LJV2bxt/camry.jpg');
+    (30, 'https://i.ibb.co/LJV2bxt/camry.jpg'),
+    (31, 'https://i.ibb.co/LJV2bxt/camry.jpg'),
+    (32, 'https://i.ibb.co/LJV2bxt/camry.jpg'),
+    (33, 'https://i.ibb.co/LJV2bxt/camry.jpg'),
+    (34, 'https://i.ibb.co/LJV2bxt/camry.jpg'),
+    (35, 'https://i.ibb.co/LJV2bxt/camry.jpg'),
+    (36, 'https://i.ibb.co/LJV2bxt/camry.jpg'),
+    (237, 'https://i.ibb.co/LJV2bxt/camry.jpg');
 
 INSERT INTO annoncefavoris (idUtilisateur, idVoitureUtilisateur) VALUES
-    (1, 15), (2,16), (3,17), (4,18), (5, 18);
+    (1, 30), (2,31), (3,32), (4,33), (5, 34);
     
