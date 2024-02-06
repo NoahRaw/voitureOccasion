@@ -1,6 +1,8 @@
 package modele;
 
 
+import java.sql.ResultSet;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -214,4 +216,6 @@ public class Voituredefini_view {
     }
 
 
+
+    
 }

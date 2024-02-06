@@ -1,5 +1,10 @@
 package com.voiture.voiture.modele;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -105,6 +110,33 @@ public class Voituredefini {
 
     public void setPuissance(Double puissance) {
         this.puissance = puissance;
-    }  
+    } 
+    
+    public boolean if_voiture_exist(Connection con) throws SQLException{
+
+        String sql = "SELECT * FROM voituredefini WHERE idmarque = ? AND idmodele = ? AND idcarburant = ? AND idpuissance = ? AND idboitedevitesse = ? AND idtypedevehicule AND nbrporte = ? AND puissance = ?";
+
+       try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setInt(1, this.getIdmarque());
+            pstmt.setInt(2, this.getIdmodele());
+            pstmt.setInt(3, this.getIdcarburant());
+            pstmt.setInt(4, this.getIdpuissance());
+            pstmt.setInt(5, this.getIdboitedevitesse());
+            pstmt.setInt(6, this.getIdtypedevehicule());
+            pstmt.setInt(7, this.getNbrporte());
+            pstmt.setDouble(8, this.getPuissance());
+
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace(); 
+        }
+
+        return false;
+   }
 }
 
