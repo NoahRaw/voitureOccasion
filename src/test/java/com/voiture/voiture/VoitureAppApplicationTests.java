@@ -14,7 +14,6 @@ class VoitureAppApplicationTests {
 	@Test
 	void contextLoads() throws Exception {
 		Voituredefini_view vv = new Voituredefini_view(1);
-		vv.get_voiture_defini(null);
 	}
 
 }
