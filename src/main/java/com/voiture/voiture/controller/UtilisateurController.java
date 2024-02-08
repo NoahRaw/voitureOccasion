@@ -1,16 +1,24 @@
 package com.voiture.voiture.controller;
 
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.voiture.voiture.modele.MyToken;
+import com.voiture.voiture.modele.PhotoVoitureUtilisateur;
 import com.voiture.voiture.modele.Utilisateur;
 import com.voiture.voiture.modele.Utilisateurrevenue;
+import com.voiture.voiture.modele.Voitureutilisateur;
 import com.voiture.voiture.service.BoiteDeVitesseService;
+import com.voiture.voiture.service.ImgBBService;
 import com.voiture.voiture.service.MyTokenService;
 import com.voiture.voiture.service.MyTokenServiceIplement;
 import com.voiture.voiture.service.UtilisateurService;
 
+import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -31,6 +39,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 
 @RestController
 @RequestMapping("/Utilisateurs")
@@ -40,17 +49,25 @@ public class UtilisateurController {
     private final MyTokenService myTokenService;
     private final BoiteDeVitesseService boiteDeVitesseService;
 
+    private ImgBBService imgBBService;
+
     @Autowired
-    public UtilisateurController(UtilisateurService utilisateurService,MyTokenService myTokenService,BoiteDeVitesseService boiteDeVitesseService){
+    public UtilisateurController(UtilisateurService utilisateurService,MyTokenService myTokenService,BoiteDeVitesseService boiteDeVitesseService,ImgBBService imgBBService){
         this.utilisateurService = utilisateurService;
         this.myTokenService = myTokenService;
         this.boiteDeVitesseService=boiteDeVitesseService;
+        this.imgBBService = imgBBService;
     }
 
     @PostMapping
     public Utilisateur create(@RequestBody Utilisateur vehicule){
         return this.utilisateurService.insertion(vehicule);
     }
+
+    // @GetMapping({"/{id}"})
+    // public Optional<Utilisateur> findById(@PathVariable Integer id){
+    //     return this.utilisateurService.findById(id);
+    // }
 
     @GetMapping
     public List<Utilisateur> getListeUtilisateur(){ 
@@ -159,4 +176,73 @@ public class UtilisateurController {
     ) {
         return boiteDeVitesseService.statistiqueUtilisateurRevenue(dateDebut, dateFin);
     }
+
+    // @GetMapping("/byIds")
+    // public List<Utilisateur> getUtilisateursByIds(@RequestParam List<Integer> ids) {
+    //     return utilisateurService.findUtilisateursByIdutilisateurList(ids);
+    // }
+
+
+// @PostMapping("/createUtilisateur")
+// public ResponseEntity<Utilisateur> createUtilisateur(@RequestPart("utilisateurRequest") Utilisateur utilisateurRequest,@RequestPart("files") List<MultipartFile> response) throws IOException {
+//     System.out.println("tafiditra");
+//     //Utilisateur utilc = utilisateurService.insertion(utilisateurRequest);
+//     //PhotoVoitureUtilisateur photoVU = null;
+//     //Integer idVoitureUtilc = utilc.getIdutilisateur();
+//     Utilisateur utilc=null;
+    
+
+//     for (MultipartFile file : response) {
+//         System.out.println("--------------------------------------------file : "+file.getName());
+//         //photoVU = new PhotoVoitureUtilisateur();
+//         //photoVU.setIdVoitureUtilisateur(idVoitureUtilc);
+//         utilc = new Utilisateur();
+
+//         ObjectMapper objectMapper = new ObjectMapper();
+//         JsonNode jsonNode = objectMapper.readTree(this.imgBBService.uploadImages(file));
+
+//         if (jsonNode.has("data")) {
+//             JsonNode dataNode = jsonNode.get("data");
+//             if (dataNode.has("display_url")) {
+//                 utilc.setImage(dataNode.get("display_url").asText());
+//             }
+//         }
+//         utilisateurService.insertion(utilc);
+//     }
+
+//     return new ResponseEntity<>(utilc, HttpStatus.CREATED);
+// }
+@PostMapping("/createUtilisateur")
+public ResponseEntity<Utilisateur> createUtilisateur(@RequestPart("utilisateurRequest") Utilisateur utilisateurRequest,
+                                                           @RequestPart("files") List<MultipartFile> response) throws IOException {
+   Utilisateur  utilc = utilisateurService.insertion(utilisateurRequest);
+    // Parcours de la liste des fichiers reçus en tant que réponse
+    for (MultipartFile file : response) {
+
+        try {
+            // Téléchargement de l'image et analyse de la réponse JSON
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(imgBBService.uploadImages(file));
+            System.out.println(jsonNode);
+
+            // Vérification si la réponse contient des données
+            if (jsonNode.has("data")) {
+                JsonNode dataNode = jsonNode.get("data");
+                // Récupération de l'URL d'affichage de l'image
+                if (dataNode.has("display_url")) {
+                    utilc.setImage(dataNode.get("display_url").asText());
+                }
+            }
+
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Retourne la liste des Utilisateurs créés avec le code de statut HTTP 201 (Created)
+    //return new ResponseEntity<>(utilisateurs, HttpStatus.CREATED);
+    return new ResponseEntity<>(utilc, HttpStatus.CREATED);
+}
+
 }
