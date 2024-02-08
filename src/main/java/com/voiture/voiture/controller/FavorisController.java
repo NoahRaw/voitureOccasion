@@ -29,6 +29,7 @@ public class FavorisController {
     public ResponseEntity<AnnonceFavoris> create(@RequestBody AnnonceFavoris annonceFavoris,HttpServletRequest request){
         MyToken token=myTokenService.getToken(request);
         if(token!=null){
+            annonceFavoris.setIdutilisateur(token.getIdutilisateur());
             return ResponseEntity.ok(favorisService.insertFavoris(annonceFavoris));
         }
         // Retourner une réponse avec un statut non autorisé (401) en cas de token non valide

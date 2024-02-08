@@ -85,9 +85,9 @@ JOIN utilisateur ON voitureutilisateur.idutilisateur = utilisateur.idutilisateur
 
 CREATE or replace VIEW annonceFavoris_view AS  --liste des annonces dans favoris
 select idannoncefavoris, annonceFavoris.idvoitureutilisateur ,annonceFavoris.idutilisateur ,dateventedebut ,dateventefin ,matricule ,
-kilometrage ,prix,statut ,nommarque,nommodele ,nomcarburant, kw, cv ,nomboitedevitesse,nomtypedevehicule,nbrporte,puissance
+kilometrage ,prix,statut ,nomutilisateur ,nommarque,nommodele ,nomcarburant, kw, cv ,nomboitedevitesse,nomtypedevehicule,nbrporte,puissance
 from voitureutilisateur_view join annonceFavoris on 
-voitureutilisateur_view.idutilisateur = annonceFavoris.idutilisateur and voitureutilisateur_view.idvoitureUtilisateur = annonceFavoris.idvoitureUtilisateur;
+voitureutilisateur_view.idvoitureUtilisateur = annonceFavoris.idvoitureUtilisateur;
 
 
 CREATE VIEW voituredefini_view AS 

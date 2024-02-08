@@ -20,6 +20,7 @@ public class AnnonceFavorisView {
     double kilometrage;
     double prix;
     Integer statut;
+    String nomutilisateur;
     String nommarque;
     String nommodele;
     String nomcarburant;
@@ -33,7 +34,7 @@ public class AnnonceFavorisView {
     public AnnonceFavorisView() {
     }
 
-    public AnnonceFavorisView(Integer idannoncefavoris, Integer idvoitureutilisateur, Integer idutilisateur, Date dateventedebut, Date dateventefin, String matricule, double kilometrage, double prix, Integer statut, String nommarque, String nommodele, String nomcarburant, double kw, double cv, String nomboitedevitesse, String nomtypedevehicule, Integer nbrporte, double puissance) {
+    public AnnonceFavorisView(Integer idannoncefavoris, Integer idvoitureutilisateur, Integer idutilisateur, Date dateventedebut, Date dateventefin, String matricule, double kilometrage, double prix, Integer statut, String nommarque, String nommodele, String nomcarburant, double kw, double cv, String nomboitedevitesse, String nomtypedevehicule, Integer nbrporte, double puissance, String nom) {
         this.idannoncefavoris = idannoncefavoris;
         this.idvoitureutilisateur = idvoitureutilisateur;
         this.idutilisateur = idutilisateur;
@@ -52,6 +53,7 @@ public class AnnonceFavorisView {
         this.nomtypedevehicule = nomtypedevehicule;
         this.nbrporte = nbrporte;
         this.puissance = puissance;
+        this.nomutilisateur = nom;
     }
 
     public Integer getIdannoncefavoris() {
@@ -196,5 +198,13 @@ public class AnnonceFavorisView {
 
     public void setPuissance(double puissance) {
         this.puissance = puissance;
+    }
+
+    public void setNomutilisateur(String nomutilisateur) {
+        this.nomutilisateur = nomutilisateur;
+    }
+
+    public String getNomutilisateur() {
+        return nomutilisateur;
     }
 }
