@@ -91,30 +91,37 @@ public class VoitureUtilisateurController {
     }
 
 @PostMapping("/createAnnonce")
-public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestPart("annonceRequest") Voitureutilisateur annonceRequest,@RequestPart("files") List<MultipartFile> response) throws IOException {
-    System.out.println("tafiditra");
-    Voitureutilisateur voitureUtilc = voitureUtilisateurService.insertion(annonceRequest);
-    PhotoVoitureUtilisateur photoVU = null;
-    Integer idVoitureUtilc = voitureUtilc.getIdvoitureutilisateur();
-    
+public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestPart("annonceRequest") Voitureutilisateur annonceRequest,@RequestPart("files") List<MultipartFile> response,HttpServletRequest request) throws IOException {
+    MyToken token=myTokenService.getToken(request);
 
-    for (MultipartFile file : response) {
-        System.out.println("--------------------------------------------file : "+file.getName());
-        photoVU = new PhotoVoitureUtilisateur();
-        photoVU.setIdVoitureUtilisateur(idVoitureUtilc);
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode jsonNode = objectMapper.readTree(this.imgBBService.uploadImages(file));
 
-        if (jsonNode.has("data")) {
-            JsonNode dataNode = jsonNode.get("data");
-            if (dataNode.has("display_url")) {
-                photoVU.setNomPhoto(dataNode.get("display_url").asText());
+    if(token != null){
+        annonceRequest.setIdutilisateur(token.getIdutilisateur());
+        annonceRequest.setStatut(0);
+        Voitureutilisateur voitureUtilc = voitureUtilisateurService.insertion(annonceRequest);
+        PhotoVoitureUtilisateur photoVU = null;
+        Integer idVoitureUtilc = voitureUtilc.getIdvoitureutilisateur();
+        
+
+        for (MultipartFile file : response) {
+            System.out.println("--------------------------------------------file : "+file.getName());
+            photoVU = new PhotoVoitureUtilisateur();
+            photoVU.setIdVoitureUtilisateur(idVoitureUtilc);
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(this.imgBBService.uploadImages(file));
+
+            if (jsonNode.has("data")) {
+                JsonNode dataNode = jsonNode.get("data");
+                if (dataNode.has("display_url")) {
+                    photoVU.setNomPhoto(dataNode.get("display_url").asText());
+                }
             }
+            photoVoitureUtilisateurService.savePhotoVoitureUtilisateur(photoVU);
         }
-        photoVoitureUtilisateurService.savePhotoVoitureUtilisateur(photoVU);
+        return new ResponseEntity<>(voitureUtilc, HttpStatus.CREATED);
     }
 
-    return new ResponseEntity<>(voitureUtilc, HttpStatus.CREATED);
+    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
 }
 
 

@@ -44,7 +44,7 @@ public class Voitureutilisateur_viewController {
         return v.getAllVoitureUtilisateutNonConfirmer(null);
     }
 
-    @GetMapping("/rechercheMultiple")
+    @PostMapping("/rechercheMultiple")
     public List<Voitureutilisateur_view> rechercheMultiple(@RequestBody Voitureutilisateur_view v,@RequestParam double prixmin,@RequestParam double prixmax) throws Exception{
         return v.rechercheMultiple(null,prixmin,prixmax);
     }

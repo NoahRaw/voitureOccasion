@@ -28,7 +28,7 @@ public class ConnexionBdd {
         Connection con=null;
         try {
             Class.forName("org.postgresql.Driver");
-            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/voiture","voiture","0000"); 
+            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/voiture","postgres","0000"); 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             throw e;
