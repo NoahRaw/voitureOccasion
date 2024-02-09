@@ -71,7 +71,7 @@ CREATE VIEW voitureutilisateur_view AS
 SELECT voitureutilisateur.*,marque.description as nommarque,modele.description as nommodele,marque.idmarque,modele.idmodele,
 carburant.idcarburant,puissance.idpuissance,boitedevitesse.idboitedevitesse,typedevehicule.idtypedevehicule,
 carburant.description as nomcarburant,puissance.kw,puissance.cv,boitedevitesse.description as nomboitedevitesse,
-typedevehicule.description as nomtypedevehicule,voituredefini.nbrporte,voituredefini.puissance,utilisateur.nomutilisateur
+typedevehicule.description as nomtypedevehicule,voituredefini.nbrporte,voituredefini.puissance,utilisateur.nomutilisateur,utilisateur.image
 FROM voitureutilisateur
 JOIN voituredefini ON voituredefini.idvoituredefini = voitureutilisateur.idvoituredefini
 JOIN marque ON voituredefini.idmarque = marque.idmarque
