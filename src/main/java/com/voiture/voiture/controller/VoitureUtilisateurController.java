@@ -125,13 +125,14 @@ public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestPart("annonceReq
 }
 
 
-    @PutMapping("/vendu/{idvoitureutilisateur}")
+    @PostMapping("/vendu/{idvoitureutilisateur}")
     public ResponseEntity<Boolean> vendu(@PathVariable int idvoitureutilisateur,HttpServletRequest request){ 
         MyToken token=myTokenService.getToken(request);
         if(token!=null){
             long timestamp_aujourdhui = System.currentTimeMillis();
         Date date = new Date(timestamp_aujourdhui);
             this.voitureUtilisateurService.vendu(2,date,idvoitureutilisateur);
+            System.out.println("");
             return ResponseEntity.ok(true);
             
         }
