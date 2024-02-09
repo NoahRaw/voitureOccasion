@@ -36,7 +36,6 @@ public class Voitureutilisateur_view {
     Integer idboitedevitesse;
     Integer idtypedevehicule;
     String nomutilisateur;
-    String image;
     
 
 
@@ -45,7 +44,7 @@ public class Voitureutilisateur_view {
             String nommarque, String nommodele, String nomcarburant, double kw, double cv, String nomboitedevitesse,
             String nomtypedevehicule, Integer nbrporte, double puissance, Integer idmarque, Integer idmodele,
             Integer idcarburant, Integer idpuissance, Integer idboitedevitesse, Integer idtypedevehicule,
-            String nomutilisateur,String image) {
+            String nomutilisateur) {
         this.idvoitureutilisateur = idvoitureutilisateur;
         this.idutilisateur = idutilisateur;
         this.idvoituredefini = idvoituredefini;
@@ -71,7 +70,6 @@ public class Voitureutilisateur_view {
         this.idboitedevitesse = idboitedevitesse;
         this.idtypedevehicule = idtypedevehicule;
         this.nomutilisateur = nomutilisateur;
-        this.image = image;
     }
 
 
@@ -669,7 +667,6 @@ public class Voitureutilisateur_view {
                 v.setNbrporte(resultSet.getInt("nbrporte"));
                 v.setPuissance(resultSet.getDouble("puissance"));
                 v.setNomutilisateur(resultSet.getString("nomutilisateur"));
-                v.setImage(resultSet.getString("image"));
                 v.setIdmarque(resultSet.getInt("idmarque"));
                 v.setIdcarburant(resultSet.getInt("idcarburant"));
                 v.setIdpuissance(resultSet.getInt("idpuissance"));
@@ -689,20 +686,4 @@ public class Voitureutilisateur_view {
         }
         return liste;
    }
-
-public String getImage() {
-    return image;
-}
-
-public void setImage(String image) {
-    this.image = image;
-}
-
-public ConnexionBdd getConnexionBdd() {
-    return connexionBdd;
-}
-
-public void setConnexionBdd(ConnexionBdd connexionBdd) {
-    this.connexionBdd = connexionBdd;
-}
 }
