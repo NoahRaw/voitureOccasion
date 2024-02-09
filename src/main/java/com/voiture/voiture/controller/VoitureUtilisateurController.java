@@ -125,7 +125,7 @@ public ResponseEntity<Voitureutilisateur> createAnnonce(@RequestPart("annonceReq
 }
 
 
-    @PutMapping("/vendu/{idvoitureutilisateur}")
+    @PostMapping("/vendu/{idvoitureutilisateur}")
     public ResponseEntity<Boolean> vendu(@PathVariable int idvoitureutilisateur,HttpServletRequest request){ 
         MyToken token=myTokenService.getToken(request);
         if(token!=null){
