@@ -223,7 +223,7 @@ public ResponseEntity<Utilisateur> createUtilisateur(@RequestPart("utilisateurRe
             // Téléchargement de l'image et analyse de la réponse JSON
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode jsonNode = objectMapper.readTree(imgBBService.uploadImages(file));
-            System.out.println(jsonNode);
+            //System.out.println(jsonNode);
 
             // Vérification si la réponse contient des données
             if (jsonNode.has("data")) {
@@ -231,6 +231,7 @@ public ResponseEntity<Utilisateur> createUtilisateur(@RequestPart("utilisateurRe
                 // Récupération de l'URL d'affichage de l'image
                 if (dataNode.has("display_url")) {
                     utilc.setImage(dataNode.get("display_url").asText());
+                    utilisateurService.insertion(utilc);
                 }
             }
 
