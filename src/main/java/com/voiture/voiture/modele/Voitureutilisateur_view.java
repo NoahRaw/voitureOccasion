@@ -30,6 +30,7 @@ public class Voitureutilisateur_view {
     Integer nbrporte;
     double puissance;
     Integer idmarque;
+    Integer idmodele;
     Integer idcarburant;
     Integer idpuissance;
     Integer idboitedevitesse;
@@ -38,12 +39,12 @@ public class Voitureutilisateur_view {
     
 
 
-    ConnexionBdd connexionBdd = new ConnexionBdd();
-
     public Voitureutilisateur_view(Integer idvoitureutilisateur, Integer idutilisateur, Integer idvoituredefini,
-        Date dateventedebut, Date dateventefin, String matricule, double kilometrage, double prix, Integer statut,
-        String nommarque, String nommodele, String nomcarburant, double kw, double cv, String nomboitedevitesse,
-        String nomtypedevehicule, Integer nbrporte, double puissance) {
+            Date dateventedebut, Date dateventefin, String matricule, double kilometrage, double prix, Integer statut,
+            String nommarque, String nommodele, String nomcarburant, double kw, double cv, String nomboitedevitesse,
+            String nomtypedevehicule, Integer nbrporte, double puissance, Integer idmarque, Integer idmodele,
+            Integer idcarburant, Integer idpuissance, Integer idboitedevitesse, Integer idtypedevehicule,
+            String nomutilisateur) {
         this.idvoitureutilisateur = idvoitureutilisateur;
         this.idutilisateur = idutilisateur;
         this.idvoituredefini = idvoituredefini;
@@ -62,7 +63,19 @@ public class Voitureutilisateur_view {
         this.nomtypedevehicule = nomtypedevehicule;
         this.nbrporte = nbrporte;
         this.puissance = puissance;
+        this.idmarque = idmarque;
+        this.idmodele = idmodele;
+        this.idcarburant = idcarburant;
+        this.idpuissance = idpuissance;
+        this.idboitedevitesse = idboitedevitesse;
+        this.idtypedevehicule = idtypedevehicule;
+        this.nomutilisateur = nomutilisateur;
     }
+
+
+    ConnexionBdd connexionBdd = new ConnexionBdd();
+
+    
     
     
     public String getNomutilisateur() {
@@ -282,6 +295,15 @@ public class Voitureutilisateur_view {
         this.statut = statut;
     }
 
+    public Integer getIdmodele() {
+        return idmodele;
+    }
+
+    public void setIdmodele(Integer idmodele) {
+        this.idmodele = idmodele;
+    }
+
+
     public List<Voitureutilisateur_view> getAllVoitureUtilisateutNonVendu(Connection con) throws Exception {
          List<Voitureutilisateur_view> liste = new ArrayList<>();
         String query = "SELECT * FROM voitureutilisateur_view WHERE statut = 1";
@@ -408,6 +430,9 @@ public class Voitureutilisateur_view {
        String idboitedevitesseRequete = " idboitedevitesse = "+this.getIdboitedevitesse();
        String nbrPorteRequete = " nbrporte = "+this.getNbrporte();
        String puissanceRequete = " puissance >= "+this.getPuissance();
+       String idTypeDeVehiculeRequete = "idtypedevehicule = "+this.getIdtypedevehicule();
+       String idmodeleRequete = "idmodele = "+this.getIdmodele();
+
 
         if(this.getDateventedebut() != null)
         {
@@ -439,6 +464,12 @@ public class Voitureutilisateur_view {
         }
         if(this.getPuissance() != 0){
             query = query+"AND \r\n"+puissanceRequete;
+        }
+        if(this.getIdmodele() != 0){
+            query = query + "AND \r\n"+ idmodeleRequete;
+        }
+        if(this.getIdtypedevehicule() != 0){
+            query = query + "AND \r\n"+ idTypeDeVehiculeRequete;
         }
 
         System.out.println(query);
